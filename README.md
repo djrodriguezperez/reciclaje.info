@@ -2,6 +2,7 @@
 <strong>Recicjale.info </strong>  es un sistema consumidor de datos abiertos que permite al ciudadano la identificación y geolocalización de equipamiento, contenedores y puntos de interés para la recogida o depósito selectivo de residuos. 
 Es una implementación de aplicación web progresiva (PWA) bajo nuevos estándares de desarrollo web utilizando el framework open-source Blazor WebAssembly.
 
+Recicjale.info is an open data consumer system that allows the identification and geolocation of equipment, containers and points of interest for the selective collection of waste. The implementation is a progressive web application (PWA) under new web development standards using the open-source framework Blazor WebAssembly.
 
 Demo: https://reciclaje.azurewebsites.net/  | http://www.reciclaje.info/ | http://reciclaje.info/
 
