@@ -1,0 +1,128 @@
+[
+ {
+  "Nombre": "Contenedor Restos",
+  "Avatar": "content/img/Icon-Contenedor-Restos.svg",
+  "Color": "#ff3300",
+  "Equipamiento": "CONTENEDOR RESTO (TAPA NARANJA) ",
+  "Residuos": "Arena de gato o similar #Excrementos de animales domésticos #Bombilla convencional y halógena #Cerámica y porcelana #Guantes de látex, nitrilo #Goma #Pañales y compresas #Toallitas húmedas, hilo dental #Residuos de pequeñas curas como tiritas, esparadrapo, gasas, vendas, algodón… #Papel: servilletas, papel de cocina, folios... y cartón sucios (de pintura o de otros líquidos que no son de uso alimentario…) #Encerados #Pelo #Plástico que no sea envases, bolsas ni envoltorios, como muñecos, maquinillas de afeitar, agujas de coser, tejer, de plástico… #Residuos de limpieza doméstica: Polvo, restos de barrer, bolsas de aspiradora… #Adhesivos: celo, cintas de embalar, pegatinas… #Sellos adhesivos sin usar #Cristal: vasos, vajillas, copas u otros objetos de cristal (en pequeñas cantidades) #Pírex #Espejos rotos (en pequeñas cantidades) #Fotografías #Chicles #Tetinas de biberones #Funda de gafas #Gafas de sol\/ de ver y su cristal  #Botones #Espumaderas de teflón #Escoba, cepillo, plumero, fregona #Esponjas, estropajos, bayetas #Cepillos de dientes, cepillos del pelo #Colillas #Lentillas #Plastilina, fimo #Bolsas de sílice (antihumedad) #Restos de escayola, arcillas en pequeñas cantidades #Gelatinas hidropónicas #Piedras de peceras #Rotuladores de pintar, permanentes y fluorescentes #Pinturas de niños, ceras #Lápices de madera #Restos de enseres de madera (en pequeñas cantidades) #Reglas, escuadras, cartabón, semicirculo… #Recipientes de cocina de cristal, de madera y de plástico #Adornos navideños, espumillón #Pelucas  #Cubiertos y pequeños objetos metálicos: llaves, cerraduras #Coleteros, pulseras de tela, goma… #Pelotas: de fútbol, baloncesto, tenis… #Palas y raquetas: de ténis, de pádel… "
+ },
+ {
+  "Nombre": "Contendor Orgánica",
+  "Avatar": "content/img/Icon-Contenedor-Organico.svg",
+  "Color": "#663300",
+  "Equipamiento": "CONTENEDOR ORGÁNICA (TAPA MARRÓN)",
+  "Residuos": "Bolsas biodegradables #Servilletas y papel manchadas de grasa, aceite o restos de comida #Restos de frutas y verduras #Frutos secos #Restos de comidas #Restos de carnes o pescados #Papel y cartón sucios de aceite #Cáscaras de huevo, de marisco y frutos secos #Posos de café #Restos de infusiones #Tapones de corcho #Cerillas #Serrín #Pequeños restos de poda y jardinería: plantas, hojarasca, ramos de flores…"
+ },
+ {
+  "Nombre": "Contenedor Envases",
+  "Avatar": "content/img/Icon-Contenedor-Envases.svg",
+  "Color": "#ffcc00",
+  "Equipamiento": "CONTENEDOR ENVASES (AMARILLO)",
+  "Residuos": "Briks de leche, nata, zumo, batido, vino, caldo… #Envases de plástico para alimentación: botellas de bebidas, aceite, salsas, envases de plástico de productos lácteos y sus tapas: yogures, mantequillas... bandejas, cajas y embalajes de \"corcho blanco\" o \"poliespán\" usado en alimentación y como protector de productos frágiles, hueveras de plástico, vasos y platos de plástico desechables, tapones y tapas de plástico, mallas de frutas y verduras… #Envases de plástico de productos de aseo y limpieza: botes de productos de aseo no aerosoles, botes de limpieza vacíos: jabones de baño, detergentes... #Envases de cosméticos de plástico (envases de maquillaje, pincel de pintauñas, pintalabios… ) #Envases de metales: aerosoles vacíos: desodorantes, limpiadores domésticos..., botes de bebidas, latas de conserva, platos y bandejas de aluminio, chapas y tapas de metal… #Tippex #Cajas de madera, de vino, fresas, puros, estuches… #Bolsas y envoltorios de plástico y aluminio: bolsas de plástico para alimentos, bolsas y recipientes de aluminio para alimentos, papel de aluminio, bolsas de supermercado, envases  al vacío, envoltorios de plástico, film de polietileno... #Plástico de los envases tipo blíster: donde vienen las pilas, las cuchillas de afeitar… #Papel de aluminio o film #Papel de plata de los paquetes de cigarro"
+ },
+ {
+  "Nombre": "Contenedor Papel-Cartón",
+  "Avatar": "content/img/Icon-Contenedor-Carton.svg",
+  "Color": "#006699",
+  "Equipamiento": "CONTENEDOR PAPEL-CARTÓN (AZUL)",
+  "Residuos": "Papel: todo tipo de papel y cartón que no se encuentren manchados de grasa o pintura #Todo tipo de envases de cartón o papel, como cajas de zapatos, cereales… #Hojas, cuadernos, sobres (con sellos pegados inclusive), periódicos, revistas, y demás productos de papel y cartón #Billetes de metro  #Servilletas manchadas de polvo o húmedas de agua (sin manchar) #Sobres (plástico\/papel) #Envoltorio de pan (de papel) #Guías telefónicas, folletos y propaganda #Hueveras de cartón #Tubos y canutos de cartón #Bases de cartón de los envoltorios de productos"
+ },
+ {
+  "Nombre": "Contenedor Vidrio",
+  "Avatar": "content/img/Icon-Contenedor-Vidrio.svg",
+  "Color": "#339933",
+  "Equipamiento": "CONTENEDOR VIDRIO (VERDE)",
+  "Residuos": "Botellas de vidrio, de zumos, refrescos, cervezas, mostos, sidras, vinos, licores… de cualquier color #Tarros de vidrio de conservas, mermeladas o salsas #Frascos de vidrio con roll-on o atomizador #Envases de cosméticos de vidrio (envases de maquillaje, pincel de pintauñas, pintalabios, etc.) #Frascos de colonia, esmaltes de uñas… #Recipientes velas vidrio"
+ },
+ {
+  "Nombre": "Punto Limpio Fijo",
+  "Avatar": "content/img/Icon-Punto-Fijo.svg",
+  "Color": "#d6d6c2",
+  "Equipamiento": "PUNTO LIMPIO FIJO",
+  "Residuos": "Aceite vegetal de cocina (producción doméstica) #Ropa y calzado usado (producción doméstica) #Cápsulas de café (producción doméstica) #Radiografías (50 unidades) #Aerosoles (10 unidades) #Pilas alcalinas, salinas y baterías usadas (producción doméstica) #Cartuchos de tinta y tóner (4 unidades) #Bombillas de bajo consumo y tubos fluorescentes (3 unidades) #CD´s, DVD´s, casetes... y sus embalajes (50 unidades) #Cintas de video (50 unidades) #Pequeños aparatos elécrtricos y electrónicos (RAEE´s): ebooks, MP3, MP4, MP5, Ipods, tablets, mandos de televisión, USB´s y teléfonos móviles, lectores de DVDs y CDs… (producción doméstica)  #Envases  (producción doméstica) #Envases contaminados (producción doméstica) #Baterías de automovil (2 unidades) #Pintura y disolventes (5 Kg) #Aceite mineral o sintético de motor (10 Litros) #Jeringuillas y agujas hipodérmicas de origen doméstico: 50 unidades #Neumáticos de bicicleta: 3 unidades #Tapones de plástico de recipientes domésticos. #Metales (producción doméstica) #Vidrio  (producción doméstica) #Papel y cartón (producción doméstica) #Cristal plano de ventanas, cuadros, vitrocerámicas o espejos #Frigoríficos y aires acondicionados (1 unidad) #Lavavajillas, cocinas, lavadoras, tv, etc (6 unidades) #Maderas (hasta 150 Kg) #Muebles, estanterías, somieres, colchones  y enseres… (5 unidades) #Escombros de pequeñas obras domésticas (120 Kg\/4 sacos pequeños) #Restos de poda (producción doméstica) #Termómetros (2 unidades) #Medicamentos y sus envases (1 Kg) #Pequeñas bombonas de gas de hasta 10 litros de volumen (tipo camping gas, helio...): 1 unidad #Porexpán  de grandes embalajes domésticos."
+ },
+ {
+  "Nombre": "Punto limpio Móvil",
+  "Avatar": "content/img/Icon-Punto-Movil.svg",
+  "Color": "#d6d6c2",
+  "Equipamiento": "PUNTO LIMPIO MÓVIL",
+  "Residuos": "Aceite vegetal de cocina (5 Litros) #Ropa y calzado usado (producción doméstica) #Cápsulas de café (producción doméstica) #Radiografías (50 unidades) #Aerosoles (5 unidades) #Pilas alcalinas, salinas y baterías usadas (producción doméstica) #Cartuchos de tinta y tóner (4 unidades) #Bombillas de bajo consumo y tubos fluorescentes (3 unidades) #CD´s, DVD´s, casetes... y sus embalajes (20 unidades) #Cintas de video (20 unidades) #Pequeños aparatos elécrtricos y electrónicos (RAEE´s): ebooks, MP3, MP4, MP5, Ipods, tablets, mandos de televisión, USB´s y teléfonos móviles, lectores de DVDs y CDs… (1 unidad)  #Envases  (producción doméstica) #Envases contaminados (6 unidades) #Baterías de automovil (1 unidades) #Pintura y disolventes (5 Kg) #Aceite mineral o sintético de motor (5 Litros) #Jeringuillas y agujas hipodérmicas de origen doméstico: 30 unidades #Neumáticos de bicicleta: 1 unidades #Tapones de plástico de recipientes domésticos. #Pequeño menaje metálico de cocina: 2 unidades. La máxima dimensión no debe superar los 40 cm de longitud (no se contabilizará el mango de sartenes en esta limitación). Sí admiten sartenes, ollas, cazos, espumaderas y similares."
+ },
+ {
+  "Nombre": "Punto Limpio Proximidad",
+  "Avatar": "content/img/Icon-Punto-Proximidad.svg",
+  "Color": "#d6d6c2",
+  "Equipamiento": "PUNTO LIMPIO DE PROXIMIDAD",
+  "Residuos": "Aceite vegetal de cocina (5 Litros) #Ropa y calzado usado (producción doméstica) #Cápsulas de café (producción doméstica) #Radiografías (50 unidades) #Aerosoles (5 unidades) #Pilas alcalinas, salinas y baterías usadas (producción doméstica) #Cartuchos de tinta y tóner (4 unidades) #Bombillas de bajo consumo y tubos fluorescentes (3 unidades) #CD´s, DVD´s, casetes... y sus embalajes (20 unidades) #Cintas de video (20 unidades) #Pequeños aparatos elécrtricos y electrónicos (RAEE´s): ebooks, MP3, MP4, MP5, Ipods, tablets, mandos de televisión, USB´s y teléfonos móviles, lectores de DVDs y CDs… (1 unidad) "
+ },
+ {
+  "Nombre": "Punto Sigre",
+  "Avatar": "content/img/Icon-Punto-Sigre.svg",
+  "Color": "#d6d6c2",
+  "Equipamiento": "PUNTE SIGRE",
+  "Residuos": "Medicamentos y sus envases"
+ },
+ {
+  "Nombre": "Marquesina Paradas Autobús",
+  "Avatar": "content/img/Icon-Marquesina-Bus.svg",
+  "Color": "#d6d6c2",
+  "Equipamiento": "MARQUESINA PARADAS AUTOBÚS",
+  "Residuos": "Pilas alcalinas\/salinas y de botón usadas"
+ },
+ {
+  "Nombre": "Centro De Salud",
+  "Avatar": "content/img/Icon-Centro-Salud.svg",
+  "Color": "#d6d6c2",
+  "Equipamiento": "CENTRO DE SALUD",
+  "Residuos": "Jeringuillas"
+ },
+ {
+  "Nombre": "Servicio De Recogida De Animales Muertos",
+  "Avatar": "content/img/Icon-Generico.svg",
+  "Color": "#d6d6c2",
+  "Equipamiento": "SERVICIO DE RECOGIDA DE ANIMALES MUERTOS",
+  "Residuos": "Animales muertos"
+ },
+ {
+  "Nombre": "Contenedor De Residuos Textiles",
+  "Avatar": "content/img/Icon-Contenedor-Generico.svg",
+  "Color": "#d6d6c2",
+  "Equipamiento": "CONTENEDOR DE RESIDUOS TEXTILES",
+  "Residuos": "Ropa y calzado usados #Bolsos, cinturones y complementos de vestir #Muñecos de peluche"
+ },
+ {
+  "Nombre": "Contenedor De Recogida De Aceite Vegetal Usado",
+  "Avatar": "content/img/Icon-Contenedor-Generico.svg",
+  "Color": "#d6d6c2",
+  "Equipamiento": "CONTENEDOR DE RECOGIDA DE ACEITE VEGETAL USADO",
+  "Residuos": "Aceite vegetal de cocina"
+ },
+ {
+  "Nombre": "Tienda Especializada",
+  "Avatar": "content/img/Icon-Tienda-Especializada.svg",
+  "Color": "#d6d6c2",
+  "Equipamiento": "TIENDA ESPECIALIZADA",
+  "Residuos": "Los residuos de aparatos eléctricos y electrónios (RAEE´s), menores de 25 cm pueden ser depositados en superficies de venta de más de 400 m2, así como los RAEES más voluminosos en superficies de venta cuando se adquiera otro producto nuevo."
+ },
+ {
+  "Nombre": "Talleres",
+  "Avatar": "content/img/Icon-Taller.svg",
+  "Color": "#d6d6c2",
+  "Equipamiento": "TALLERES",
+  "Residuos": "Neumáticos al sustituir los antiguos"
+ },
+ {
+  "Nombre": "Óptica",
+  "Avatar": "content/img/Icon-Optica.svg",
+  "Color": "#d6d6c2",
+  "Equipamiento": "ÓPTICA",
+  "Residuos": "Gafas (de sol y de ver)"
+ },
+ {
+  "Nombre": "Recogida De Muebles Y Enseres Y Ropa Usada",
+  "Avatar": "content/img/Icon-Recogida-Muebles.svg",
+  "Color": "#d6d6c2",
+  "Equipamiento": "RETIRADA GRATUITA 010: RECOGIDA DE MUEBLES Y ENSERES Y ROPA USADA",
+  "Residuos": "Frigoríficos, radiadores, lavavajillas, cocinas, lavadoras, etc #Muebles y enseres #Ropa y calzado usados #Cristal plano de ventanas, cuadros o espejos"
+ }
+]
