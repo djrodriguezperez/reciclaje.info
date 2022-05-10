@@ -1,0 +1,86 @@
+﻿@page "/"
+@using Reciclaje.Info.Shared.Dto
+
+
+@inject HttpClient client
+
+
+
+<MudText Typo="Typo.h6" GutterBottom="true">Identificador de equipamiento</MudText>
+
+<MudTextField @bind-Value="@filtro" Label="Describa su residuo..." Variant="Variant.Text" Adornment="Adornment.End"
+			  AdornmentIcon="@Icons.Filled.Search" AdornmentColor="Color.Secondary" OnAdornmentClick=findData Class="mb-4" />
+@if (!cargado)
+{
+
+
+	<MudOverlay Visible="esVisible" DarkBackground="true" Absolute="true" ZIndex="9999">
+            <MudProgressCircular Color="Color.Secondary" Indeterminate="true" />
+    </MudOverlay>
+}
+else
+{
+	@if (equipamiento != null && equipamiento.Any())
+	{
+		<MudExpansionPanels Class="mb-2">
+			@foreach (var item in equipamiento)
+			{
+				<MudExpansionPanel>
+					<TitleContent>
+						<div class="d-flex">
+							<MudAvatar Size="Size.Medium" Color="Color.Primary" Variant="Variant.Outlined" Class="mr-3" Image=@item.Avatar> </MudAvatar>
+							<MudText Typo="Typo.body1"> <strong> @item.Equipamiento</strong></MudText>
+
+
+						</div>
+					</TitleContent>
+					<ChildContent>
+						<h4>Tipología de residuos que debes incluir en este equipamiento:</h4>
+						@item.Residuos
+					</ChildContent>
+				</MudExpansionPanel>
+			}
+
+		</MudExpansionPanels>
+	}
+	else
+	{
+
+		<MudAlert Severity="Severity.Warning" AlertTextPosition="AlertTextPosition.End">No hemos encontrado equipamiento en base su descripción.Pruebe de nuevo!</MudAlert>
+
+	}
+
+}
+
+
+@code {
+	public string filtro { get; set; } = string.Empty;
+	public Boolean cargado { get; set; } 
+	public	Boolean	esVisible { get; set; }
+
+	private IReadOnlyList<EquipamientoDto>? equipamiento;
+
+	public async void findData()
+	{
+		cargado  = false;
+		esVisible = true;
+
+		if (string.IsNullOrEmpty(filtro) || string.IsNullOrWhiteSpace(filtro))
+		{
+			 /// Open Toast
+
+		}
+		else
+		{
+			
+			equipamiento = await client.GetFromJsonAsync<IReadOnlyList<EquipamientoDto>>("api/v1/proxy/equipamiento/" + filtro);
+			
+		}
+		
+				
+		cargado  = true;
+		StateHasChanged();
+	}
+
+
+}
