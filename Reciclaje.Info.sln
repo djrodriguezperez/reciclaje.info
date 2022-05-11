@@ -3,11 +3,11 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.1.32421.90
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Reciclaje.Info.Client", "Client\Reciclaje.Info.Client.csproj", "{F46AE812-A4E0-4F49-9547-021F636AC605}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Reciclaje.Info.Client", "Client\Reciclaje.Info.Client.csproj", "{F46AE812-A4E0-4F49-9547-021F636AC605}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Reciclaje.Info.Server", "Server\Reciclaje.Info.Server.csproj", "{4722DC09-7A4E-401F-A0F5-3CF2FF2C2FA8}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Reciclaje.Info.Server", "Server\Reciclaje.Info.Server.csproj", "{4722DC09-7A4E-401F-A0F5-3CF2FF2C2FA8}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Reciclaje.Info.Shared", "Shared\Reciclaje.Info.Shared.csproj", "{911C15C6-67DA-4DFE-AF65-32A474D524BD}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Reciclaje.Info.Shared", "Shared\Reciclaje.Info.Shared.csproj", "{911C15C6-67DA-4DFE-AF65-32A474D524BD}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

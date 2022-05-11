@@ -4,38 +4,62 @@
 ///
 
 
-//// Global Script Functions 
+//// Create global script functions 
 (function () {
-    var map;
-    function inicializarMapa() {
-        var divMap = document.getElementById('map');
+    let map;
+    let currentPosition = null;
+    function tryGetCurrentPosition() {
 
-        if (divMap != undefined) {
-            map = new L.map(divMap, {
-                center: { lat: 40.5, lng: -3.7 },
-                zoom: 11,
-            });
-
-            L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-                attribution: 'Map data &copy; <a href="https://openstreetmap.org">OpenStreetMap</a>, Reciclaje.info © 2020',
-                maxZoom: 19
-            }).addTo(map);
+        if ('geolocation' in navigator) {
+            window.navigator.geolocation.getCurrentPosition(loadPositionMap, showError);
         } else {
-            divMap.innerText='Opps!! No ha sido posible cargar el mapa de geolocalización, actualice la aplicación o espere unos minutos y vuelva a intentarlo.'
+           
         }
 
 
+        
+    }
+    function inicializarMapa() {
+        try {
+            let divMap = document.getElementById('map');
 
+            if (divMap != undefined) {
+                map = new L.map(divMap, {
+                    center: { lat: position.coords.latitude, lng: position.coords.longitude },
+                    zoom: 11,
+                });
 
-        // Obtener ubicación dispositivo
+                L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+                    attribution: 'Map data &copy; <a href="https://openstreetmap.org">OpenStreetMap</a>, Reciclaje.info © 2020',
+                    maxZoom: 19
+                }).addTo(map);
+            } else {
+                divMap.innerText = 'Opps!! No ha sido posible cargar el mapa de geolocalización, actualice la aplicación o espere unos minutos y vuelva a intentarlo.'
+            }
+        } catch (e) {
+            alert(e.error);
+        }
+    }
 
-        //loadLatLong(txtLatitud.GetValue(), txtLongitud.GetValue(), false);
-
+    function showError(error) {
+        switch (error.code) {
+            case error.PERMISSION_DENIED:
+                x.innerHTML = "User denied the request for Geolocation."
+                break;
+            case error.POSITION_UNAVAILABLE:
+                x.innerHTML = "Location information is unavailable."
+                break;
+            case error.TIMEOUT:
+                x.innerHTML = "The request to get user location timed out."
+                break;
+            case error.UNKNOWN_ERROR:
+                x.innerHTML = "An unknown error occurred."
+                break;
+        }
     }
 
 
-
-
+    window.tryGetCurrentPosition = tryGetCurrentPosition;
     window.onInicializarMapa = inicializarMapa;
 
 })();

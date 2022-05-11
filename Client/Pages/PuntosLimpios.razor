@@ -4,55 +4,56 @@
 @using System.Text.Json
 @using Reciclaje.Info.Shared.Dto
 
-@inject IJSRuntime JSRuntime;
 @inject HttpClient client
+@inject IJSRuntime JSRuntime;
+@inject IDialogService DialogService
+
+<MudText Typo="Typo.h6 "><MudIcon Icon="@Icons.Material.Filled.Map" />  <b>Eco-Mapa</b> Puntos Limpios</MudText>
+
+<MudSelect Class="mb-5" @bind-Value="endpoint"  HelperText="Por favor, selecciona un valor" AdornmentIcon="@Icons.Material.Filled.LocationSearching" OnAdornmentClick="LoadDataAsync"  Clearable="true" AdornmentColor="Color.Primary">
+	<MudSelectItem Value="@("api/v1/proxy/pl/proximidad")">Puntos Limpios de Proximidad</MudSelectItem>
+	<MudSelectItem Value="@("api/v1/proxy/pl/moviles")">Puntos Limpios Móviles</MudSelectItem>
+</MudSelect>
 
 
 
-<MudText Typo="Typo.h6 " ><MudIcon Icon="@Icons.Material.Filled.Map" />  <b>Eco-Mapa</b> Puntos Limpios</MudText>
-
-<MudSelect Class="mb-5" @bind-Value="valueSelected" OnBlur=LoadDataAsync HelperText="Por favor, selecciona un valor"  AdornmentIcon="@Icons.Material.Filled.LocationCity" AdornmentColor="Color.Primary">
-    <MudSelectItem Value="@("api/gateway/pl-proximidad")">Puntos Limpios de Proximidad</MudSelectItem>
-    <MudSelectItem Value="@("api/gateway/pl-moviles")">Puntos Limpios Móviles</MudSelectItem>
-  </MudSelect>
-
-
-
-  <div id="map" class="vw-100  vh-100"></div>
+<div id="map" class="vw-100  vh-100"></div>
 
 
 
 @code {
-    public string  valueSelected { get; set; }
-    public PuntosLimpiosFijosDto? data { get; set; }
-    public Boolean loading { get; set; }
-       
+	
+    
+	public string endpoint { get; set; }
+	public GeoAtomDto? data { get; set; }
+	public Boolean loading { get; set; }
 
-    protected override void  OnAfterRender(bool firstRender)
-    {
-        if (firstRender)
-        {
-            JSRuntime.InvokeVoidAsync("onInicializarMapa");
-            Task.Run(async()=> await LoadDataAsync());
-         }
-         base.OnAfterRender(firstRender);
 
-    }
+	protected override void OnAfterRender(bool firstRender)
+	{
+		if (firstRender)
+		{
+			JSRuntime.InvokeVoidAsync("onInicializarMapa");
+			//Task.Run(async () => await LoadDataAsync());
+		}
+		//base.OnAfterRender(firstRender);
 
-     public async Task  LoadDataAsync()
-    {
-        loading = true;
-        
-        var result =  await client.GetStringAsync(valueSelected);
+	}
 
-        if (result != null)
-        {
-             data = JsonSerializer.Deserialize<PuntosLimpiosFijosDto>(result, new JsonSerializerOptions() { PropertyNameCaseInsensitive = true });
+	public async Task LoadDataAsync()
+	{
 
-        }
-        loading = false;
-        StateHasChanged();
-    }
+		if (endpoint != null)
+		{
+			loading = true;
+			var result = await client.GetFromJsonAsync<GeoAtomDto>(endpoint);
+			//TODO: Realizar tratamiento de la info
+
+			loading = false;
+			StateHasChanged();
+		}
+
+	}
 
 
 }

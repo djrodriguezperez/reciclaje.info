@@ -1,57 +1,52 @@
-﻿@inherits LayoutComponentBase
+﻿@using Reciclaje.Info.Client.Components
+@inherits LayoutComponentBase
+@inject IJSRuntime jsRuntime
+@inject IDialogService dialogService
 
 <MudThemeProvider Theme="AppTheme"/>
-<MudDialogProvider />
+<MudDialogProvider
+    FullWidth="true"
+    MaxWidth="MaxWidth.ExtraSmall"
+    CloseButton="true"
+    DisableBackdropClick="true"
+    NoHeader="false"
+    Position="DialogPosition.Center"
+    CloseOnEscapeKey="true"
+/>
 <MudSnackbarProvider />
 
 <MudLayout>
     @*Menú Superior*@
     <MudAppBar Elevation="1">
             <MudAvatar Color="Color.Primary" Size="Size.Medium" Image="content/img/Icon-Reciclaje-Info.svg" />
-            <MudText  Typo="Typo.h6" Class="pl-3">Reciclaje.info</MudText>
-        
+            <MudText  Typo="Typo.h6" Class="pl-3">Reciclaje.info</MudText>        
         <MudSpacer />
         <MudIconButton Icon="@Icons.Material.Filled.Notifications" Color="Color.Dark" Edge="Edge.End" />
-       <MudIconButton Icon="@Icons.Material.Filled.MyLocation" Color="Color.Secondary" Edge="Edge.End" />
-       <MudIconButton Icon="@Icons.Material.Filled.Menu" Color="Color.Inherit" Edge="Edge.End" OnClick="@((e) => DrawerLeftToggle())" />
-      
-        @*<MudIconButton Icon="@Icons.Material.Filled.MoreVert" Color="Color.Inherit" Edge="Edge.End" OnClick="@(() => DrawerRightToogle(Anchor.End))"/>*@
-      
+       <MudIconButton Icon="@Icons.Material.Filled.MyLocation" Color="Color.Secondary" Edge="Edge.End" OnClick="ShowCurrentPosition"/>
+       <MudIconButton Icon="@Icons.Material.Filled.Menu" Color="Color.Inherit" Edge="Edge.End" OnClick="DrawerRightToggle" />
+                  
     </MudAppBar>
 
-    @*Menú Flotante Izquierdo*@
-    <MudDrawer @bind-Open="@_drawerLeft" Anchor="Anchor.End" Elevation="0" ClipMode="DrawerClipMode.Always"  >
-        <MudDrawerHeader >
-            
-            <MudText  Typo="Typo.h6">Menú</MudText>
+    @*Menú Flotante*@
+    <MudDrawer @bind-Open="@_drawerRight" Anchor="Anchor.End" Elevation="0" ClipMode="DrawerClipMode.Always"  >
+        <MudDrawerHeader >            
+            <MudText Typo="Typo.h6">Menú</MudText>
         </MudDrawerHeader>
         <NavMenu />
     </MudDrawer>
-
-      @* Menú Flotante Derecho*@
-        <MudDrawer @bind-Open="@_drawerRight" Anchor="@anchor" Elevation="1" Variant="@DrawerVariant.Temporary">
-            <MudDrawerHeader>
-                <MudText Typo="Typo.h6">Configuración</MudText>
-            </MudDrawerHeader>
-            <MudNavMenu>
-                <MudNavLink Match="NavLinkMatch.All">Open Data</MudNavLink>
-                <MudNavLink Match="NavLinkMatch.All">MudBlazor Components</MudNavLink>
-                <MudNavLink Match="NavLinkMatch.All">Open Streep Maps</MudNavLink>
-            </MudNavMenu>
-        </MudDrawer>
-      @* Cuerpo*@
+     @* Cuerpo*@
         <MudMainContent>
             <MudContainer MaxWidth="MaxWidth.Large" Class="pt-5">
                 @Body
             </MudContainer>
         </MudMainContent>
+
+    
 </MudLayout>
 
-@code {    
-    
-    bool _drawerRight ;
-    bool _drawerLeft;
-    Anchor anchor;
+@code {
+
+    bool _drawerRight ; 
 
     MudTheme AppTheme = new MudTheme()
     {
@@ -67,23 +62,53 @@
         {
             DrawerWidthLeft = "300px",
             DrawerWidthRight = "300px"          
-            
+
         }
     };
-
-
-
-
-    void DrawerLeftToggle()
+    void DrawerRightToggle()
     {
-        _drawerLeft = !_drawerLeft;
+        _drawerRight = !_drawerRight;
     }   
-    void DrawerRightToogle(Anchor anchor)
-    {
-        _drawerRight = true;
-        this.anchor = anchor;
-    }
+    private WindowNavigatorGeolocation? geolocationWrapper;
+    private GeolocationResult? currentPosition;
 
+    async Task ShowCurrentPosition()
+    {
+
+        var window = await jsRuntime.Window();
+        var navigator = await window.Navigator();
+        geolocationWrapper = navigator.Geolocation;
+
+
+
+        currentPosition = (await geolocationWrapper.GetCurrentPosition(new PositionOptions()
+        {
+            EnableHighAccuracy = true,
+            MaximumAgeTimeSpan = TimeSpan.FromHours(1),
+            TimeoutTimeSpan = TimeSpan.FromMinutes(1)
+        }));
+        var parameters = new DialogParameters();
+        if (currentPosition.Error?.Code > 0)
+        {
+            parameters.Add("ContentText", string.Format ("Datos de Golocalización: {0}-{1}", 
+                currentPosition.Error.CodeEnum.ToString(), currentPosition.Error.Message));
+                parameters.Add("Color", Color.Error);
+        }
+        else
+        {
+                parameters.Add("ContentText", string.Format ("Datos de Golocalización: {0}-{1}", 
+                currentPosition.Location.Coords.Latitude, currentPosition.Location.Coords.Longitude));
+                parameters.Add("Color", Color.Success);
+        }
+
+    
+       
+       
+        parameters.Add("ButtonText", "Ok");
+        
+
+        dialogService.Show<Dialog>("Información", parameters);
+    }
 
 }
 
