@@ -10,14 +10,15 @@
 
 <MudText Typo="Typo.h6 "><MudIcon Icon="@Icons.Material.Filled.Map" />  <b>Eco-Mapa</b> Puntos Limpios</MudText>
 
-<MudSelect Class="mb-5" @bind-Value="endpoint"  HelperText="Por favor, selecciona un valor" AdornmentIcon="@Icons.Material.Filled.LocationSearching" OnAdornmentClick="LoadDataAsync"  Clearable="true" AdornmentColor="Color.Primary">
+<MudSelect Class="mb-5" @bind-Value="endpoint"  HelperText="Por favor, selecciona un valor" AdornmentIcon="@Icons.Material.Filled.LocationCity" OnAdornmentClick="LoadDataAsync"  Clearable="true" AdornmentColor="Color.Primary">
 	<MudSelectItem Value="@("api/v1/proxy/pl/proximidad")">Puntos Limpios de Proximidad</MudSelectItem>
 	<MudSelectItem Value="@("api/v1/proxy/pl/moviles")">Puntos Limpios Móviles</MudSelectItem>
 </MudSelect>
 
 
-
-<div id="map" class="vw-100  vh-100"></div>
+<div id="mapContainer"style="width:100%;height:500px">
+	<LeafletMap Map="_map" />
+</div>
 
 
 
@@ -33,7 +34,7 @@
 	{
 		if (firstRender)
 		{
-			JSRuntime.InvokeVoidAsync("onInicializarMapa");
+			//JSRuntime.InvokeVoidAsync("onInicializarMapa");
 			//Task.Run(async () => await LoadDataAsync());
 		}
 		//base.OnAfterRender(firstRender);

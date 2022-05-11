@@ -3,7 +3,7 @@
 
 
 @inject HttpClient client
-
+@inject ISnackbar Snackbar
 
 
 <MudText Typo="Typo.h6" GutterBottom="true">Identificador de equipamiento</MudText>
@@ -12,8 +12,6 @@
 			  AdornmentIcon="@Icons.Filled.Search" AdornmentColor="Color.Secondary" OnAdornmentClick=findData Class="mb-4" />
 @if (!cargado)
 {
-
-
 	<MudOverlay Visible="esVisible" DarkBackground="true" Absolute="true" ZIndex="9999">
             <MudProgressCircular Color="Color.Secondary" Indeterminate="true" />
     </MudOverlay>
@@ -45,8 +43,8 @@ else
 	}
 	else
 	{
-
-		<MudAlert Severity="Severity.Warning" AlertTextPosition="AlertTextPosition.End">No hemos encontrado equipamiento en base su descripción.Pruebe de nuevo!</MudAlert>
+		Snackbar.Add($"Opps! No hemos encontrado equipamiento en base su descripción. Pruebe con otra descripción!", Severity.Error);
+		@*<MudAlert Severity="Severity.Warning" AlertTextPosition="AlertTextPosition.End">No hemos encontrado equipamiento en base su descripción.Pruebe de nuevo!</MudAlert>*@
 
 	}
 

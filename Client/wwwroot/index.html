@@ -12,13 +12,13 @@
     <link href="manifest.json" rel="manifest" />
     <link rel="apple-touch-icon" sizes="512x512" href="icon-512.png" />
 
-    <!--Estilos Leaflet Library -->
+    <!--Estilos Leaflet Library-->
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css"
           integrity="sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A=="
           crossorigin="" />
+    <!--Script Component Library MudBlazor-->
+    <script src="_content/MudBlazor/MudBlazor.min.js"></script>
 
-
-    
 </head>
 
 <body>
@@ -35,15 +35,20 @@
         <a href="" class="reload">Recargar</a>
         <a class="dismiss">🗙</a>
     </div>
+    <!--Script WebAssembly Blazor-->
     <script src="_framework/blazor.webassembly.js"></script>
-    <script src="_content/MudBlazor/MudBlazor.min.js"></script>
     <!--Script Leaflet Library-->
     <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"
             integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA=="
             crossorigin=""></script>
 
-    <script src="content/js/app.js"></script>
+    <!--Script BrowserInterop Library-->
     <script src="_content/BrowserInterop/scripts.js"></script>
+    <!--Script Leaflet Interop Blazor-->
+    <script src="_content/BlazorLeaflet/leafletBlazorInterops.js"></script>
+    <!--Script Reciclaje.Info-->
+    <script src="content/js/app.js"></script>
+    <!--Service Worker WPA-->
     <script>navigator.serviceWorker.register('service-worker.js');</script>
 </body>
 
