@@ -32,8 +32,6 @@ namespace Reciclaje.Info.Server.Controllers
             BaseUriApi = new Uri(_config[BaseUriParam]);
         }
 
-
-
         #region Puntos Limpios
         [HttpGet]
         [Route("pl/{tipologia}/{filtro?}", Name ="")]
@@ -48,49 +46,12 @@ namespace Reciclaje.Info.Server.Controllers
                 return new JsonResult(result);
             }
             else // Geo 
-            {
-                //Uri endpoint = new Uri(BaseUriApi, _config[tipologia.ToString()]);
+            {               
                 return await invokeApiExterna(endpoint);
             }
            
-        }
-
-        //[HttpGet]
-        //[Route("pl/proximidad")]
-        //public async Task<ActionResult<GeoAtomDto>> GetPuntosLimpiosProximidadAsync()
-        //{
-        //    Uri endpoint = new Uri(BaseUriApi, _config["PuntosLimpiosProximidad"]);
-        //    return await invokeApiExterna(endpoint);
-        //}
-
-        //[HttpGet]
-        //[Route("pl/fijos/{filtro}")]
-        //public async Task<ActionResult<PuntosLimpiosFijosDto>> GetPuntoLimpiosFijosAsync(string? filtro)
-        //{
-
-        //    HttpResponseMessage response;
-        //    Uri endpoint = new Uri(BaseUriApi, _config["Fijos"]);
-        //    string result = string.Empty;
-
-
-        //    var httpClient = _httpClientFactory.CreateClient();
-        //    response = await httpClient.GetAsync(endpoint);
-        //    if (response.IsSuccessStatusCode)
-        //    {
-        //        result = await response.Content.ReadAsStringAsync();
-        //        result = result.NormalizarJson(); ///Extend Methods!
-        //        return new JsonResult(result);
-        //    }
-        //    else
-        //    {
-        //        return NotFound();
-        //    }
-
-
-
-        //}
+        }        
         #endregion
-
 
         #region Equipamiento
         [HttpGet("equipamiento/{filtro}")]
@@ -101,16 +62,17 @@ namespace Reciclaje.Info.Server.Controllers
             IReadOnlyList<EquipamientoDto>? data = JsonSerializer.Deserialize<IReadOnlyList<EquipamientoDto>?>(jsonString);
 
             if (data != null && data.Any())
+            {
+                //query = query.Where(p => EF.Functions.Like(p.Name, $"%{criteria.Term}%") || EF.Functions.Like(p.Description, $"%{criteria.Term}%"));
                 return data.Where(t => t.Residuos.ToLowerInvariant().Contains(filtro.ToLowerInvariant())).ToList();
+            }
+              
             else
             {
                 return NotFound();
             }
         }
         #endregion
-
-
-
 
         #region Contenedores
         /// <summary>
@@ -126,24 +88,8 @@ namespace Reciclaje.Info.Server.Controllers
             Uri endpoint = new Uri(BaseUriApi, _config[tipologia.ToString()]);
             return await invokeApiExterna(endpoint);
         }
-        //[HttpGet]
-        //[Route("contenedores/pilas")]
-        //public async Task<ActionResult<GeoAtomDto>> GetContendoresPilasAsync()
-        //{
-
-        //    Uri endpoint = new Uri(BaseUriApi, _config["ContenedoresPilasMarquesinas"]);
-        //    return await invokeApiExterna(endpoint);
-        //}
-        //[HttpGet]
-        //[Route("contenedores/aceite")]
-        //public async Task<ActionResult<GeoAtomDto>> GetContendoresAceitesUsadoAsync()
-        //{
-        //    Uri endpoint = new Uri(BaseUriApi, _config["ContenedoresAceiteUsado"]);
-        //    return await invokeApiExterna(endpoint);
-        //}
+        
         #endregion
-
-
 
 
         private async Task<ActionResult<GeoAtomDto>> invokeApiExterna(Uri endpoint)

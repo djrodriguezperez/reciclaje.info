@@ -1,0 +1,514 @@
+
+{
+	"@context": {
+		"c": "http://www.w3.org/2002/12/cal#",
+		"dcterms": "http://purl.org/dc/terms/",
+		"geo": "http://www.w3.org/2003/01/geo/wgs84_pos#",
+		"loc": "http://purl.org/ctic/infraestructuras/localizacion#",
+		"org": "http://purl.org/ctic/infraestructuras/organizacion#",
+		"vcard": "http://www.w3.org/2006/vcard/ns#",
+		"schema": "https://schema.org/",
+		"title": "vcard:fn",
+		"id": "dcterms:identifier",
+		"relation": "dcterms:relation",
+		"references": "dcterms:references",
+		"address": "vcard:adr",
+		"area": "loc:barrio",
+		"district": "loc:distrito",
+		"locality": "vcard:locality",
+		"postal-code": "vcard:postal-code",
+		"street-address": "vcard:street-address",
+		"location": "vcard:geo",
+		"latitude": "geo:lat",
+		"longitude": "geo:long",
+		"organization": "vcard:org",
+		"organization-desc": "dcterms:description",
+		"accesibility": "org:accesibilidad",
+		"services": "org:servicios",
+		"schedule": "org:horario",
+		"organization-name": "vcard:organization-name",
+		"description": "c:summary",
+		"link": "c:url",
+		"uid": "c:uid",
+		"dtstart": "c:dtstart",
+		"dtend": "c:dtend",
+		"time": "c:time",
+		"excluded-days": "c:exdate",
+		"event-location": "c:location",
+		"free": "schema:free",
+		"price": "c:resource",
+		"recurrence": "c:rrule",
+		"days": "c:byday",
+		"frequency": "c:freq",
+		"interval": "c:interval",
+		"audience": "dc:audience"
+	},
+	"@graph": [
+	
+	{
+		"@id": "https://datos.madrid.es/egob/catalogo/tipo/entidadesyorganismos/19960-punto-limpio-fijo-ayuntamiento-madrid-distrito-arganzuela.json",
+		"@type": "https://datos.madrid.es/egob/kos/entidadesYorganismos/PuntosLimpiosFijos",
+		"id": "19960",
+		"title": "Punto Limpio Fijo del Ayuntamiento de Madrid. Distrito de Arganzuela",
+		"relation": "http://www.madrid.es/sites/v/index.jsp?vgnextchannel=bfa48ab43d6bb410VgnVCM100000171f5a0aRCRD&vgnextoid=8c3592355c51c010VgnVCM2000000c205a0aRCRD",		
+		"address": {
+			"district": {
+				"@id": "https://datos.madrid.es/egob/kos/Provincia/Madrid/Municipio/Madrid/Distrito/Arganzuela"
+			},
+			"area": {
+				"@id": "https://datos.madrid.es/egob/kos/Provincia/Madrid/Municipio/Madrid/Distrito/Arganzuela/Barrio/Delicias"
+			},
+			"locality": "MADRID",			
+			"postal-code": "28045",
+			"street-address": "CALLE ESTRELLA DENEBOLA 5"
+		},
+		"location": {
+			"latitude": 40.39419901357015,
+			"longitude": -3.6834210425750737
+		},
+		"organization": {
+			"organization-desc": " El traslado de residuos correrá a cuenta de la persona interesada que solo podrá acceder con un  vehículo particular. No se  permitirá el acceso a furgonetas  rotuladas o con publicidad, ya que éstas se consideran vehículos industriales, salvo previa autorización municipal (Información relacionada).    Si tiene dudas puede contactar con el teléfono 010 Línea Madrid (915 298 210 si llama desde fuera de la ciudad de Madrid). Metro: Méndez Álvaro (línea 6)Bus: 148, 102, 152",
+			"accesibility": "0",
+			"schedule": "De lunes a sábados de 8 a 20 horas. Domingos y festivos de 9 a 14 horas. Los días 24 y 31 de diciembre de 9 a 14 horas. Cerrado días 25 de diciembre y 1 y 6 de enero.",
+			"services": "",
+			"organization-name": "Punto Limpio Fijo del Ayuntamiento de Madrid. Distrito de Arganzuela"
+		}
+	},
+	{
+		"@id": "https://datos.madrid.es/egob/catalogo/tipo/entidadesyorganismos/138166-punto-limpio-fijo-ayuntamiento-madrid-distrito-barajas.json",
+		"@type": "https://datos.madrid.es/egob/kos/entidadesYorganismos/PuntosLimpiosFijos",
+		"id": "138166",
+		"title": "Punto Limpio Fijo del Ayuntamiento de Madrid. Distrito de Barajas",
+		"relation": "http://www.madrid.es/sites/v/index.jsp?vgnextchannel=bfa48ab43d6bb410VgnVCM100000171f5a0aRCRD&vgnextoid=5fe55f463b81c010VgnVCM1000000b205a0aRCRD",		
+		"address": {
+			"district": {
+				"@id": "https://datos.madrid.es/egob/kos/Provincia/Madrid/Municipio/Madrid/Distrito/Barajas"
+			},
+			"area": {
+				"@id": "https://datos.madrid.es/egob/kos/Provincia/Madrid/Municipio/Madrid/Distrito/Barajas/Barrio/Timon"
+			},
+			"locality": "MADRID",			
+			"postal-code": "28042",
+			"street-address": "CALLE ALHAURIN 5"
+		},
+		"location": {
+			"latitude": 40.473907649051704,
+			"longitude": -3.5855350682202047
+		},
+		"organization": {
+			"organization-desc": " El traslado de residuos correrá a cuenta de la persona interesada que solo podrá acceder con un  vehículo particular. No se  permitirá el acceso a furgonetas  rotuladas o con publicidad, ya que éstas se consideran vehículos industriales, salvo previa autorización municipal (Información relacionada). Metro: Barajas (línea 8)Bus: 105 , 115",
+			"accesibility": "0",
+			"schedule": "De lunes a sábados de 8 a 20 horas. Domingos y festivos de 9 a 14 horas. Los días 24 y 31 de diciembre de 9 a 14 horas. Cerrado días 25 de diciembre y 1 y 6 de enero.",
+			"services": "",
+			"organization-name": "Punto Limpio Fijo del Ayuntamiento de Madrid. Distrito de Barajas"
+		}
+	},
+	{
+		"@id": "https://datos.madrid.es/egob/catalogo/tipo/entidadesyorganismos/135224-punto-limpio-fijo-ayuntamiento-madrid-distrito-carabanchel.json",
+		"@type": "https://datos.madrid.es/egob/kos/entidadesYorganismos/PuntosLimpiosFijos",
+		"id": "135224",
+		"title": "Punto Limpio Fijo del Ayuntamiento de Madrid. Distrito de Carabanchel",
+		"relation": "http://www.madrid.es/sites/v/index.jsp?vgnextchannel=bfa48ab43d6bb410VgnVCM100000171f5a0aRCRD&vgnextoid=a5165f463b81c010VgnVCM1000000b205a0aRCRD",		
+		"address": {
+			"district": {
+				"@id": "https://datos.madrid.es/egob/kos/Provincia/Madrid/Municipio/Madrid/Distrito/Carabanchel"
+			},
+			"area": {
+				"@id": "https://datos.madrid.es/egob/kos/Provincia/Madrid/Municipio/Madrid/Distrito/Carabanchel/Barrio/Buenavista"
+			},
+			"locality": "MADRID",			
+			"postal-code": "28044",
+			"street-address": "CALLE CIDRO 5"
+		},
+		"location": {
+			"latitude": 40.36815527702884,
+			"longitude": -3.7458547551539705
+		},
+		"organization": {
+			"organization-desc": " El traslado de residuos correrá a cuenta de la persona interesada que solo podrá acceder con un  vehículo particular. No se  permitirá el acceso a furgonetas  rotuladas o con publicidad, ya que éstas se consideran vehículos industriales, salvo previa autorización municipal (Información relacionada). Bus: 47 , 108 , 118",
+			"accesibility": "0",
+			"schedule": "De lunes a sábados de 8 a 20 horas. Domingos y festivos de 9 a 14 horas. Los días 24 y 31 de diciembre de 9 a 14 horas. Cerrado días 25 de diciembre y 1 y 6 de enero.",
+			"services": "",
+			"organization-name": "Punto Limpio Fijo del Ayuntamiento de Madrid. Distrito de Carabanchel"
+		}
+	},
+	{
+		"@id": "https://datos.madrid.es/egob/catalogo/tipo/entidadesyorganismos/13893-punto-limpio-fijo-ayuntamiento-madrid-distrito-chamartin.json",
+		"@type": "https://datos.madrid.es/egob/kos/entidadesYorganismos/PuntosLimpiosFijos",
+		"id": "13893",
+		"title": "Punto Limpio Fijo del Ayuntamiento de Madrid. Distrito de Chamartín",
+		"relation": "http://www.madrid.es/sites/v/index.jsp?vgnextchannel=bfa48ab43d6bb410VgnVCM100000171f5a0aRCRD&vgnextoid=e9e65a0f8161c010VgnVCM1000000b205a0aRCRD",		
+		"address": {
+			"district": {
+				"@id": "https://datos.madrid.es/egob/kos/Provincia/Madrid/Municipio/Madrid/Distrito/Chamartin"
+			},
+			"area": {
+				"@id": "https://datos.madrid.es/egob/kos/Provincia/Madrid/Municipio/Madrid/Distrito/Chamartin/Barrio/Hispanoamerica"
+			},
+			"locality": "MADRID",			
+			"postal-code": "28016",
+			"street-address": "AVENIDA ALFONSO XIII 128 ENTRADA JUNTO GASOLINERA"
+		},
+		"location": {
+			"latitude": 40.45887476564644,
+			"longitude": -3.6664670709154676
+		},
+		"organization": {
+			"organization-desc": " El traslado de residuos correrá a cuenta de la persona interesada que solo podrá acceder con un  vehículo particular. No se  permitirá el acceso a furgonetas  rotuladas o con publicidad, ya que éstas se consideran vehículos industriales, salvo previa autorización municipal (Información relacionada). Bus: 7 , 11 , 40 , 52",
+			"accesibility": "0",
+			"schedule": "De lunes a sábados de 8 a 20 horas. Domingos y festivos de 9 a 14 horas. Los días 24 y 31 de diciembre de 9 a 14 horas. Cerrado días 25 de diciembre y 1 y 6 de enero.",
+			"services": "",
+			"organization-name": "Punto Limpio Fijo del Ayuntamiento de Madrid. Distrito de Chamartín"
+		}
+	},
+	{
+		"@id": "https://datos.madrid.es/egob/catalogo/tipo/entidadesyorganismos/43200-punto-limpio-fijo-ayuntamiento-madrid-distrito-ciudad-lineal.json",
+		"@type": "https://datos.madrid.es/egob/kos/entidadesYorganismos/PuntosLimpiosFijos",
+		"id": "43200",
+		"title": "Punto Limpio Fijo del Ayuntamiento de Madrid. Distrito de Ciudad Lineal",
+		"relation": "http://www.madrid.es/sites/v/index.jsp?vgnextchannel=bfa48ab43d6bb410VgnVCM100000171f5a0aRCRD&vgnextoid=0da9f0bde551c010VgnVCM2000000c205a0aRCRD",		
+		"address": {
+			"district": {
+				"@id": "https://datos.madrid.es/egob/kos/Provincia/Madrid/Municipio/Madrid/Distrito/CiudadLineal"
+			},
+			"area": {
+				"@id": "https://datos.madrid.es/egob/kos/Provincia/Madrid/Municipio/Madrid/Distrito/CiudadLineal/Barrio/Ventas"
+			},
+			"locality": "MADRID",			
+			"postal-code": "28032",
+			"street-address": "AVENIDA DAROCA 104 JUNTO AL CEMENTERIO DE LA ALMUDENA"
+		},
+		"location": {
+			"latitude": 40.41826330408995,
+			"longitude": -3.630928382853009
+		},
+		"organization": {
+			"organization-desc": " El traslado de residuos correrá a cuenta de la persona interesada que solo podrá acceder con un  vehículo particular. No se  permitirá el acceso a furgonetas  rotuladas o con publicidad, ya que éstas se consideran vehículos industriales, salvo previa autorización municipal (Información relacionada). Bus: 70 , 106",
+			"accesibility": "0",
+			"schedule": "De lunes a sábados de 8 a 20 horas. Domingos y festivos de 9 a 14 horas. Los días 24 y 31 de diciembre de 9 a 14 horas. Cerrado días 25 de diciembre y 1 y 6 de enero.",
+			"services": "",
+			"organization-name": "Punto Limpio Fijo del Ayuntamiento de Madrid. Distrito de Ciudad Lineal"
+		}
+	},
+	{
+		"@id": "https://datos.madrid.es/egob/catalogo/tipo/entidadesyorganismos/13890-punto-limpio-fijo-ayuntamiento-madrid-distrito-fuencarral-pardo.json",
+		"@type": "https://datos.madrid.es/egob/kos/entidadesYorganismos/PuntosLimpiosFijos",
+		"id": "13890",
+		"title": "Punto Limpio Fijo del Ayuntamiento de Madrid. Distrito de Fuencarral - El Pardo",
+		"relation": "http://www.madrid.es/sites/v/index.jsp?vgnextchannel=bfa48ab43d6bb410VgnVCM100000171f5a0aRCRD&vgnextoid=30175a0f8161c010VgnVCM1000000b205a0aRCRD",		
+		"address": {
+			"district": {
+				"@id": "https://datos.madrid.es/egob/kos/Provincia/Madrid/Municipio/Madrid/Distrito/Fuencarral-ElPardo"
+			},
+			"area": {
+				"@id": "https://datos.madrid.es/egob/kos/Provincia/Madrid/Municipio/Madrid/Distrito/Fuencarral-ElPardo/Barrio/PenaGrande"
+			},
+			"locality": "MADRID",			
+			"postal-code": "28034",
+			"street-address": "CALLE UBEDA 6 C/V ISLA DE AROSA"
+		},
+		"location": {
+			"latitude": 40.48225121586361,
+			"longitude": -3.71646391915977
+		},
+		"organization": {
+			"organization-desc": " El traslado de residuos correrá a cuenta de la persona interesada que solo podrá acceder con un  vehículo particular. No se  permitirá el acceso a furgonetas  rotuladas o con publicidad, ya que éstas se consideran vehículos industriales, salvo previa autorización municipal (Información relacionada). Metro: Avda. IlustraciónBus: 67 , 83 , 133 , 124",
+			"accesibility": "0",
+			"schedule": "De lunes a sábados de 8 a 20 horas. Domingos y festivos de 9 a 14 horas. Los días 24 y 31 de diciembre de 9 a 14 horas. Cerrado días 25 de diciembre y 1 y 6 de enero.",
+			"services": "",
+			"organization-name": "Punto Limpio Fijo del Ayuntamiento de Madrid. Distrito de Fuencarral - El Pardo"
+		}
+	},
+	{
+		"@id": "https://datos.madrid.es/egob/catalogo/tipo/entidadesyorganismos/169981-punto-limpio-fijo-ayuntamiento-madrid-distrito-hortaleza.json",
+		"@type": "https://datos.madrid.es/egob/kos/entidadesYorganismos/PuntosLimpiosFijos",
+		"id": "169981",
+		"title": "Punto Limpio Fijo del Ayuntamiento de Madrid. Distrito de Hortaleza",
+		"relation": "http://www.madrid.es/sites/v/index.jsp?vgnextchannel=bfa48ab43d6bb410VgnVCM100000171f5a0aRCRD&vgnextoid=494129ea9281c010VgnVCM1000000b205a0aRCRD",		
+		"address": {
+			"district": {
+				"@id": "https://datos.madrid.es/egob/kos/Provincia/Madrid/Municipio/Madrid/Distrito/Hortaleza"
+			},
+			"area": {
+				"@id": "https://datos.madrid.es/egob/kos/Provincia/Madrid/Municipio/Madrid/Distrito/Hortaleza/Barrio/Valdefuentes"
+			},
+			"locality": "MADRID",			
+			"postal-code": "28033",
+			"street-address": "CALLE TOMAS REDONDO 8"
+		},
+		"location": {
+			"latitude": 40.47006424276577,
+			"longitude": -3.6277914577312402
+		},
+		"organization": {
+			"organization-desc": " El traslado de residuos correrá a cuenta de la persona interesada que solo podrá acceder con un  vehículo particular. No se  permitirá el acceso a furgonetas  rotuladas o con publicidad, ya que éstas se consideran vehículos industriales, salvo previa autorización municipal (Información relacionada). Bus: 104",
+			"accesibility": "0",
+			"schedule": "De lunes a sábados de 8 a 20 horas. Domingos y festivos de 9 a 14 horas. Los días 24 y 31 de diciembre de 9 a 14 horas. Cerrado días 25 de diciembre y 1 y 6 de enero.",
+			"services": "",
+			"organization-name": "Punto Limpio Fijo del Ayuntamiento de Madrid. Distrito de Hortaleza"
+		}
+	},
+	{
+		"@id": "https://datos.madrid.es/egob/catalogo/tipo/entidadesyorganismos/67093-punto-limpio-fijo-ayuntamiento-madrid-distrito-latina.json",
+		"@type": "https://datos.madrid.es/egob/kos/entidadesYorganismos/PuntosLimpiosFijos",
+		"id": "67093",
+		"title": "Punto Limpio Fijo del Ayuntamiento de Madrid. Distrito de Latina",
+		"relation": "http://www.madrid.es/sites/v/index.jsp?vgnextchannel=bfa48ab43d6bb410VgnVCM100000171f5a0aRCRD&vgnextoid=e2aa5cee4051c010VgnVCM2000000c205a0aRCRD",		
+		"address": {
+			"district": {
+				"@id": "https://datos.madrid.es/egob/kos/Provincia/Madrid/Municipio/Madrid/Distrito/Latina"
+			},
+			"area": {
+				"@id": "https://datos.madrid.es/egob/kos/Provincia/Madrid/Municipio/Madrid/Distrito/Latina/Barrio/LosCarmenes"
+			},
+			"locality": "MADRID",			
+			"postal-code": "28047",
+			"street-address": "AVENIDA ANGEL SANZ BRIZ 4"
+		},
+		"location": {
+			"latitude": 40.400246158259336,
+			"longitude": -3.7361726816379295
+		},
+		"organization": {
+			"organization-desc": " El traslado de residuos correrá a cuenta de la persona interesada que solo podrá acceder con un  vehículo particular. No se  permitirá el acceso a furgonetas  rotuladas o con publicidad, ya que éstas se consideran vehículos industriales, salvo previa autorización municipal (Información relacionada). Bus: 119 , 138",
+			"accesibility": "0",
+			"schedule": "De lunes a sábados de 8 a 20 horas. Domingos y festivos de 9 a 14 horas. Los días 24 y 31 de diciembre de 9 a 14 horas. Cerrado días 25 de diciembre y 1 y 6 de enero.",
+			"services": "",
+			"organization-name": "Punto Limpio Fijo del Ayuntamiento de Madrid. Distrito de Latina"
+		}
+	},
+	{
+		"@id": "https://datos.madrid.es/egob/catalogo/tipo/entidadesyorganismos/5568093-punto-limpio-fijo-ayuntamiento-madrid-distrito-moncloa-aravaca.json",
+		"@type": "https://datos.madrid.es/egob/kos/entidadesYorganismos/PuntosLimpiosFijos",
+		"id": "5568093",
+		"title": "Punto Limpio Fijo del Ayuntamiento de Madrid. Distrito de Moncloa - Aravaca",
+		"relation": "http://www.madrid.es/sites/v/index.jsp?vgnextchannel=bfa48ab43d6bb410VgnVCM100000171f5a0aRCRD&vgnextoid=f6df1a8633e96210VgnVCM2000000c205a0aRCRD",		
+		"address": {
+			"district": {
+				"@id": "https://datos.madrid.es/egob/kos/Provincia/Madrid/Municipio/Madrid/Distrito/Moncloa-Aravaca"
+			},
+			"area": {
+				"@id": "https://datos.madrid.es/egob/kos/Provincia/Madrid/Municipio/Madrid/Distrito/Moncloa-Aravaca/Barrio/CiudadUniversitaria"
+			},
+			"locality": "MADRID",			
+			"postal-code": "28040",
+			"street-address": "PASEO SENDA DEL REY ACCESO AVDA. PUERTA DE HIERRO SALIDA 6 A-6 FACULTAD DE VETERINARIA"
+		},
+		"location": {
+			"latitude": 40.451963071822604,
+			"longitude": -3.7403391301631927
+		},
+		"organization": {
+			"organization-desc": " El traslado de residuos correrá a cuenta de la persona interesada que solo podrá acceder con un  vehículo particular. No se  permitirá el acceso a furgonetas  rotuladas o con publicidad, ya que éstas se consideran vehículos industriales, salvo previa autorización municipal (Información relacionada). Bus: 83, 133",
+			"accesibility": "0",
+			"schedule": "De lunes a sábados de 8 a 20 horas. Domingos y festivos de 9 a 14 horas. Los días 24 y 31 de diciembre de 9 a 14 horas. Cerrado días 25 de diciembre y 1 y 6 de enero.",
+			"services": "",
+			"organization-name": "Punto Limpio Fijo del Ayuntamiento de Madrid. Distrito de Moncloa - Aravaca"
+		}
+	},
+	{
+		"@id": "https://datos.madrid.es/egob/catalogo/tipo/entidadesyorganismos/4910478-punto-limpio-fijo-ayuntamiento-madrid-distrito-moratalaz.json",
+		"@type": "https://datos.madrid.es/egob/kos/entidadesYorganismos/PuntosLimpiosFijos",
+		"id": "4910478",
+		"title": "Punto Limpio Fijo del Ayuntamiento de Madrid. Distrito de Moratalaz",
+		"relation": "http://www.madrid.es/sites/v/index.jsp?vgnextchannel=bfa48ab43d6bb410VgnVCM100000171f5a0aRCRD&vgnextoid=67bc4d69197c9110VgnVCM1000000b205a0aRCRD",		
+		"address": {
+			"district": {
+				"@id": "https://datos.madrid.es/egob/kos/Provincia/Madrid/Municipio/Madrid/Distrito/Moratalaz"
+			},
+			"area": {
+				"@id": "https://datos.madrid.es/egob/kos/Provincia/Madrid/Municipio/Madrid/Distrito/Moratalaz/Barrio/Marroquina"
+			},
+			"locality": "MADRID",			
+			"postal-code": "28030",
+			"street-address": "CALLE ARROYO DE LA MEDIA LEGUA 72"
+		},
+		"location": {
+			"latitude": 40.414609663505665,
+			"longitude": -3.6513204448781815
+		},
+		"organization": {
+			"organization-desc": " El traslado de residuos correrá a cuenta de la persona interesada que solo podrá acceder con un  vehículo particular. No se  permitirá el acceso a furgonetas  rotuladas o con publicidad, ya que éstas se consideran vehículos industriales, salvo previa autorización municipal (Información relacionada). Metro: Vinateros (línea 9)Bus: 30 , 32 , 71 , 113",
+			"accesibility": "0",
+			"schedule": "De lunes a sábados de 8 a 20 horas. Domingos y festivos de 9 a 14 horas. Los días 24 y 31 de diciembre de 9 a 14 horas. Cerrado días 25 de diciembre y 1 y 6 de enero.",
+			"services": "",
+			"organization-name": "Punto Limpio Fijo del Ayuntamiento de Madrid. Distrito de Moratalaz"
+		}
+	},
+	{
+		"@id": "https://datos.madrid.es/egob/catalogo/tipo/entidadesyorganismos/32555-punto-limpio-fijo-ayuntamiento-madrid-distrito-puente-vallecas.json",
+		"@type": "https://datos.madrid.es/egob/kos/entidadesYorganismos/PuntosLimpiosFijos",
+		"id": "32555",
+		"title": "Punto Limpio Fijo del Ayuntamiento de Madrid. Distrito de Puente de Vallecas",
+		"relation": "http://www.madrid.es/sites/v/index.jsp?vgnextchannel=bfa48ab43d6bb410VgnVCM100000171f5a0aRCRD&vgnextoid=179a444a2951c010VgnVCM2000000c205a0aRCRD",		
+		"address": {
+			"district": {
+				"@id": "https://datos.madrid.es/egob/kos/Provincia/Madrid/Municipio/Madrid/Distrito/PuenteDeVallecas"
+			},
+			"area": {
+				"@id": "https://datos.madrid.es/egob/kos/Provincia/Madrid/Municipio/Madrid/Distrito/PuenteDeVallecas/Barrio/Numancia"
+			},
+			"locality": "MADRID",			
+			"postal-code": "28038",
+			"street-address": "CALLE JOSE PAULETE 43"
+		},
+		"location": {
+			"latitude": 40.39406006570005,
+			"longitude": -3.654492342880955
+		},
+		"organization": {
+			"organization-desc": " El traslado de residuos correrá a cuenta de la persona interesada que solo podrá acceder con un  vehículo particular. No se  permitirá el acceso a furgonetas  rotuladas o con publicidad, ya que éstas se consideran vehículos industriales, salvo previa autorización municipal (Información relacionada). Bus: 63 , 143 , E",
+			"accesibility": "0",
+			"schedule": "De lunes a sabados de 8 a 20 horas. Domingos y festivos de 9 a 14 horas. Los días 24 y 31 de diciembre de 9 a 14 horas Cerrado días 25 de diciembre y 1 y 6 de enero.",
+			"services": "",
+			"organization-name": "Punto Limpio Fijo del Ayuntamiento de Madrid. Distrito de Puente de Vallecas"
+		}
+	},
+	{
+		"@id": "https://datos.madrid.es/egob/catalogo/tipo/entidadesyorganismos/4566529-punto-limpio-fijo-ayuntamiento-madrid-distrito-san-blas-canillejas.json",
+		"@type": "https://datos.madrid.es/egob/kos/entidadesYorganismos/PuntosLimpiosFijos",
+		"id": "4566529",
+		"title": "Punto Limpio Fijo del Ayuntamiento de Madrid. Distrito de San Blas-Canillejas",
+		"relation": "http://www.madrid.es/sites/v/index.jsp?vgnextchannel=bfa48ab43d6bb410VgnVCM100000171f5a0aRCRD&vgnextoid=c34261715dd22110VgnVCM1000000b205a0aRCRD",		
+		"address": {
+			"district": {
+				"@id": "https://datos.madrid.es/egob/kos/Provincia/Madrid/Municipio/Madrid/Distrito/SanBlas-Canillejas"
+			},
+			"area": {
+				"@id": "https://datos.madrid.es/egob/kos/Provincia/Madrid/Municipio/Madrid/Distrito/SanBlas-Canillejas/Barrio/Simancas"
+			},
+			"locality": "MADRID",			
+			"postal-code": "28037",
+			"street-address": "CALLE SAN ROMUALDO 20 C/V c/ Maratón"
+		},
+		"location": {
+			"latitude": 40.4407089,
+			"longitude": -3.6230157
+		},
+		"organization": {
+			"organization-desc": " El traslado de residuos correrá a cuenta de la persona interesada que solo podrá acceder con un  vehículo particular. No se  permitirá el acceso a furgonetas  rotuladas o con publicidad, ya que éstas se consideran vehículos industriales, salvo previa autorización municipal (Información relacionada). Bus: 28 , 105",
+			"accesibility": "0",
+			"schedule": "De lunes a sábados de 8 a 20 horas. Domingos y festivos de 9 a 14 horas. Los días 24 y 31 de diciembre de 9 a 14 horas. Cerrado días 25 de diciembre y 1 y 6 de enero.",
+			"services": "",
+			"organization-name": "Punto Limpio Fijo del Ayuntamiento de Madrid. Distrito de San Blas-Canillejas"
+		}
+	},
+	{
+		"@id": "https://datos.madrid.es/egob/catalogo/tipo/entidadesyorganismos/67286-punto-limpio-fijo-ayuntamiento-madrid-distrito-usera.json",
+		"@type": "https://datos.madrid.es/egob/kos/entidadesYorganismos/PuntosLimpiosFijos",
+		"id": "67286",
+		"title": "Punto Limpio Fijo del Ayuntamiento de Madrid. Distrito de Usera",
+		"relation": "http://www.madrid.es/sites/v/index.jsp?vgnextchannel=bfa48ab43d6bb410VgnVCM100000171f5a0aRCRD&vgnextoid=39ca5cee4051c010VgnVCM2000000c205a0aRCRD",		
+		"address": {
+			"district": {
+				"@id": "https://datos.madrid.es/egob/kos/Provincia/Madrid/Municipio/Madrid/Distrito/Usera"
+			},
+			"area": {
+				"@id": "https://datos.madrid.es/egob/kos/Provincia/Madrid/Municipio/Madrid/Distrito/Usera/Barrio/Pradolongo"
+			},
+			"locality": "MADRID",			
+			"postal-code": "28026",
+			"street-address": "CALLE CRISTO DE LA VICTORIA 245"
+		},
+		"location": {
+			"latitude": 40.37882471603663,
+			"longitude": -3.7096418581029984
+		},
+		"organization": {
+			"organization-desc": " El traslado de residuos correrá a cuenta de la persona interesada que solo podrá acceder con un  vehículo particular. No se  permitirá el acceso a furgonetas  rotuladas o con publicidad, ya que éstas se consideran vehículos industriales, salvo previa autorización municipal (Información relacionada).  Ubicado entre la Avda. Rafaela Ybarra y la C/ Primitiva Gañán Bus: 6 , 60 , 78 , 81",
+			"accesibility": "0",
+			"schedule": "De lunes a sábados de 8 a 20 horas. Domingos y festivos de 9 a 14 horas. Los días 24 y 31 de diciembre de 9 a 14 horas. Cerrado días 25 de diciembre y 1 y 6 de enero.",
+			"services": "",
+			"organization-name": "Punto Limpio Fijo del Ayuntamiento de Madrid. Distrito de Usera"
+		}
+	},
+	{
+		"@id": "https://datos.madrid.es/egob/catalogo/tipo/entidadesyorganismos/146362-punto-limpio-fijo-ayuntamiento-madrid-distrito-vicalvaro.json",
+		"@type": "https://datos.madrid.es/egob/kos/entidadesYorganismos/PuntosLimpiosFijos",
+		"id": "146362",
+		"title": "Punto Limpio Fijo del Ayuntamiento de Madrid. Distrito de Vicálvaro",
+		"relation": "http://www.madrid.es/sites/v/index.jsp?vgnextchannel=bfa48ab43d6bb410VgnVCM100000171f5a0aRCRD&vgnextoid=458b8f90a581c010VgnVCM1000000b205a0aRCRD",		
+		"address": {
+			"district": {
+				"@id": "https://datos.madrid.es/egob/kos/Provincia/Madrid/Municipio/Madrid/Distrito/Vicalvaro"
+			},
+			"area": {
+				"@id": "https://datos.madrid.es/egob/kos/Provincia/Madrid/Municipio/Madrid/Distrito/Vicalvaro/Barrio/Ambroz"
+			},
+			"locality": "MADRID",			
+			"postal-code": "28032",
+			"street-address": "CALLE SEPIOLITA 6 CON VUELTA POLIDEPORTIVO"
+		},
+		"location": {
+			"latitude": 40.40676752985184,
+			"longitude": -3.598776933365321
+		},
+		"organization": {
+			"organization-desc": " El traslado de residuos correrá a cuenta de la persona interesada que solo podrá acceder con un  vehículo particular. No se  permitirá el acceso a furgonetas  rotuladas o con publicidad, ya que éstas se consideran vehículos industriales, salvo previa autorización municipal (Información relacionada). Metro: San Cipriano (línea 9) Bus: 100 , 106",
+			"accesibility": "0",
+			"schedule": "De lunes a sábados de 8 a 20 horas. Domingos y festivos de 9 a 14 horas. Los días 24 y 31 de diciembre de 9 a 14 horas. Cerrado días 25 de diciembre y 1 y 6 de enero.",
+			"services": "",
+			"organization-name": "Punto Limpio Fijo del Ayuntamiento de Madrid. Distrito de Vicálvaro"
+		}
+	},
+	{
+		"@id": "https://datos.madrid.es/egob/catalogo/tipo/entidadesyorganismos/13891-punto-limpio-fijo-ayuntamiento-madrid-distrito-villa-vallecas.json",
+		"@type": "https://datos.madrid.es/egob/kos/entidadesYorganismos/PuntosLimpiosFijos",
+		"id": "13891",
+		"title": "Punto Limpio Fijo del Ayuntamiento de Madrid. Distrito de Villa de Vallecas",
+		"relation": "http://www.madrid.es/sites/v/index.jsp?vgnextchannel=bfa48ab43d6bb410VgnVCM100000171f5a0aRCRD&vgnextoid=86375a0f8161c010VgnVCM1000000b205a0aRCRD",		
+		"address": {
+			"district": {
+				"@id": "https://datos.madrid.es/egob/kos/Provincia/Madrid/Municipio/Madrid/Distrito/VillaDeVallecas"
+			},
+			"area": {
+				"@id": "https://datos.madrid.es/egob/kos/Provincia/Madrid/Municipio/Madrid/Distrito/VillaDeVallecas/Barrio/CascoHVallecas"
+			},
+			"locality": "MADRID",			
+			"postal-code": "28031",
+			"street-address": "CALLE LUIS I 40"
+		},
+		"location": {
+			"latitude": 40.375993577726476,
+			"longitude": -3.6438334111886936
+		},
+		"organization": {
+			"organization-desc": " El traslado de residuos correrá a cuenta de la persona interesada que solo podrá acceder con un  vehículo particular. No se  permitirá el acceso a furgonetas  rotuladas o con publicidad, ya que éstas se consideran vehículos industriales, salvo previa autorización municipal (Información relacionada). Bus: 130",
+			"accesibility": "0",
+			"schedule": "De lunes a sábados de 8 a 20 horas. Domingos y festivos de 9 a 14 horas. Los días 24 y 31 de diciembre de 9 a 14 horas. Cerrado días 25 de diciembre y 1 y 6 de enero.",
+			"services": "",
+			"organization-name": "Punto Limpio Fijo del Ayuntamiento de Madrid. Distrito de Villa de Vallecas"
+		}
+	},
+	{
+		"@id": "https://datos.madrid.es/egob/catalogo/tipo/entidadesyorganismos/23605-punto-limpio-fijo-ayuntamiento-madrid-distrito-villaverde.json",
+		"@type": "https://datos.madrid.es/egob/kos/entidadesYorganismos/PuntosLimpiosFijos",
+		"id": "23605",
+		"title": "Punto Limpio Fijo del Ayuntamiento de Madrid. Distrito de Villaverde",
+		"relation": "http://www.madrid.es/sites/v/index.jsp?vgnextchannel=bfa48ab43d6bb410VgnVCM100000171f5a0aRCRD&vgnextoid=d26592355c51c010VgnVCM2000000c205a0aRCRD",		
+		"address": {
+			"district": {
+				"@id": "https://datos.madrid.es/egob/kos/Provincia/Madrid/Municipio/Madrid/Distrito/Villaverde"
+			},
+			"area": {
+				"@id": "https://datos.madrid.es/egob/kos/Provincia/Madrid/Municipio/Madrid/Distrito/Villaverde/Barrio/SanAndres"
+			},
+			"locality": "MADRID",			
+			"postal-code": "28021",
+			"street-address": "CALLE BASCUÑUELOS 3"
+		},
+		"location": {
+			"latitude": 40.33860368148312,
+			"longitude": -3.7103387295498003
+		},
+		"organization": {
+			"organization-desc": " El traslado de residuos correrá a cuenta de la persona interesada que solo podrá acceder con un  vehículo particular. No se  permitirá el acceso a furgonetas  rotuladas o con publicidad, ya que éstas se consideran vehículos industriales, salvo previa autorización municipal (Información relacionada). Bus: 79",
+			"accesibility": "0",
+			"schedule": "De lunes a sábados de 8 a 20 horas. Domingos y festivos de 9 a 14 horas. Los días 24 y 31 de diciembre de 9 a 14 horas. Cerrado días 25 de diciembre y 1 y 6 de enero.",
+			"services": "",
+			"organization-name": "Punto Limpio Fijo del Ayuntamiento de Madrid. Distrito de Villaverde"
+		}
+	}	  
+  ]
+}
+

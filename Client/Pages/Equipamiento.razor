@@ -9,7 +9,10 @@
 <MudText Typo="Typo.h6" GutterBottom="true">Identificador de equipamiento</MudText>
 
 <MudTextField @bind-Value="@filtro" Label="Describa su residuo..." Variant="Variant.Text" Adornment="Adornment.End"
-			  AdornmentIcon="@Icons.Filled.Search" AdornmentColor="Color.Secondary" OnAdornmentClick=findData Class="mb-4" />
+			  AdornmentIcon="@Icons.Filled.Search" 
+			  AdornmentColor="Color.Secondary"
+			  TextChanged="findData"
+			  Class="mb-4" />
 @if (!cargado)
 {
 	<MudOverlay Visible="esVisible" DarkBackground="true" Absolute="true" ZIndex="9999">

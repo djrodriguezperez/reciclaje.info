@@ -5,13 +5,12 @@
 @using Reciclaje.Info.Shared.Dto
 
 @inject HttpClient client
-@inject IJSRuntime JSRuntime;
 @inject IDialogService DialogService
 
 <MudText Typo="Typo.h6 "><MudIcon Icon="@Icons.Material.Filled.Map" />  <b>Eco-Mapa</b> Puntos Limpios</MudText>
 
 <MudSelect Class="mb-5" @bind-Value="endpoint"  HelperText="Por favor, selecciona un valor" AdornmentIcon="@Icons.Material.Filled.LocationCity" OnAdornmentClick="LoadDataAsync"  Clearable="true" AdornmentColor="Color.Primary">
-	<MudSelectItem Value="@("api/v1/proxy/pl/proximidad")">Puntos Limpios de Proximidad</MudSelectItem>
+	<MudSelectItem  Value="@("api/v1/proxy/pl/proximidad")">Puntos Limpios de Proximidad</MudSelectItem>
 	<MudSelectItem Value="@("api/v1/proxy/pl/moviles")">Puntos Limpios Móviles</MudSelectItem>
 </MudSelect>
 
@@ -34,10 +33,9 @@
 	{
 		if (firstRender)
 		{
-			//JSRuntime.InvokeVoidAsync("onInicializarMapa");
-			//Task.Run(async () => await LoadDataAsync());
+	
 		}
-		//base.OnAfterRender(firstRender);
+	
 
 	}
 
