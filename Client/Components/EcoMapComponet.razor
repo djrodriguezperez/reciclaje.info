@@ -15,7 +15,7 @@
 	[Parameter] public LatLng InitPosition { get; set; } = new LatLng() { Lat = 40.470491685969996F, Lng = -3.5898632639571653F };
 	[Parameter] public GeoAtomDto? Markers { get; set; } = null;
 	private Map? _map;
-	private Layer? _currentLayer;
+	
 	private LatLng location = new LatLng();
 
 	protected override void OnAfterRender(bool firstRender)

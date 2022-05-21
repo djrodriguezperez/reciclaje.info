@@ -22,7 +22,6 @@ namespace Reciclaje.Info.Client.Services
 		}
 
 
-
 		private void InicializarService()
 		{
 

@@ -20,11 +20,11 @@ else
 	@if (datos != null && datos.entries.Any())
 	{
 		<EcoMapComponet Markers="datos"></EcoMapComponet>
-		Snackbar.Add($"Total de elementos encontrados:" + datos.entries.Count(), Severity.Success);
+		Snackbar.Add(string.Format("Total de elementos encontrados: {0}",datos.entries.Count()), Severity.Success);
 	}
 	else
 	{
-		Snackbar.Add($"Opps! No hemos logrado recuperar información de Portal de Datos Abiertos.!", Severity.Error);
+		Snackbar.Add(string.Format("Opps! No hemos logrado recuperar información del conjunto de datos abiertos!"), Severity.Error);
 	}
 }
 
@@ -56,32 +56,17 @@ else
 			await LoadDataAsync();
 		}		
 	}
-	private async Task  LoadDataAsync()
+	private async Task LoadDataAsync()
 	{
-		try
-		{
+		
 			cargado = false;
 			esVisible = true;
 			ContenedorService service = new ContenedorService(client, IdContenedor);
 			Titulo = service.Titulo;
 			Descripcion = service.Descripcion;
 			datos = await service.GetDataAsync<GeoAtomDto>();
-		
-		}
-		catch (Exception ex)
-		{
-			Snackbar.Add(string.format("Error:{0}", ex.message), Severity.Error);
-		}
-		finally { 
-			cargado = true;
-		}
-
+			cargado = true;		
 	}
-
-
-
-
-
 }
 
 

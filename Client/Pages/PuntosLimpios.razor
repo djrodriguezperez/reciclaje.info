@@ -20,11 +20,11 @@ else
 	@if (datos != null && datos.entries.Any())
 	{
 		<EcoMapComponet Markers="datos"></EcoMapComponet>
-		Snackbar.Add($"Total de elementos encontrados:" + datos.entries.Count(), Severity.Success);
+		Snackbar.Add(string.Format("Total de elementos encontrados: {0}",datos.entries.Count()), Severity.Success);
 	}
 	else
 	{
-		Snackbar.Add($"Opps! No hemos logrado recuperar información de Portal de Datos Abiertos.!", Severity.Error);
+		Snackbar.Add(string.Format("Opps! No hemos logrado recuperar información del conjunto de datos abiertos!"), Severity.Error);
 	}
 }
 
@@ -40,25 +40,29 @@ else
 	private Boolean esVisible;
 
 
-	protected override async Task OnAfterRenderAsync(bool firstRender)
+
+	protected override async Task OnInitializedAsync()
 	{
-		cargado = false;
-		esVisible = true;
+		await LoadDataAsync();
+	}
 
-
-		ContenedorService service = new ContenedorService(client, IdPuntoLimpio);
-		Titulo = service.Titulo;
-		Descripcion = service.Descripcion;
-		datos = await service.GetDataAsync<GeoAtomDto>();
-
-
-		if (firstRender)
+	protected override async Task OnParametersSetAsync()
+	{
+		if (ShouldRender())
 		{
-			StateHasChanged();
-		}
-
-		cargado = true;
+			await LoadDataAsync();
+		}		
+	}
+	private async Task LoadDataAsync()
+	{
 		
+			cargado = false;
+			esVisible = true;
+			PuntoLimpioService service = new PuntoLimpioService(client, IdPuntoLimpio);
+			Titulo = service.Titulo;
+			Descripcion = service.Descripcion;
+			datos = await service.GetDataAsync<GeoAtomDto>();
+			cargado = true;		
 	}
 
 }

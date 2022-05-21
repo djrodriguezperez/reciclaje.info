@@ -3,14 +3,15 @@
     public enum ContenedorType
     {
         Ropa,
-        PilasMarquesinas,
-        AceiteUsado
+        AceiteUsado,
+        PilasMarquesinas        
     }
     public enum PuntosLimpiosType
-    {
-        Proximidad,
+    {        
         Fijos,
-        Moviles
+        Moviles,
+        Proximidad
     }
+    
     
 }
