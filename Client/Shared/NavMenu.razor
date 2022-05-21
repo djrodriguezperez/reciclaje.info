@@ -1,22 +1,31 @@
 ﻿<MudNavMenu>
     
-     
+     <MudText Typo="Typo.h6" Class="px-4">Menú</MudText>
+        
+        
 
-     <MudNavGroup Title="Buscador" Expanded="true" Icon="@Icons.Material.Filled.FindReplace">
-        <MudNavLink Href="" Match="NavLinkMatch.All" >Residuos-Equipamiento</MudNavLink>
+     <MudNavGroup Title="Identificador" Expanded="true" Icon="@Icons.Material.Filled.FindReplace">
+        <MudNavLink Href="" Match="NavLinkMatch.All" >Equipamiento</MudNavLink>
     </MudNavGroup>
 
-    <MudNavGroup Title="Eco-Mapas" Expanded="true" Icon="@Icons.Material.Filled.Map">
-        <MudNavLink Href="/PuntosLimpios" Match="NavLinkMatch.Prefix" Icon="@Icons.Material.Filled.ShareLocation">Puntos Limpios</MudNavLink>
+    <MudNavGroup Title="Puntos Limpios" Expanded="true" Icon="@Icons.Material.Filled.ShareLocation">
+        <MudNavLink Href="/PuntosLimpios" Match="NavLinkMatch.Prefix" Icon="@Icons.Material.Filled.LocationOn">Fijos</MudNavLink>
+        <MudNavLink Href="/PuntosLimpios" Match="NavLinkMatch.Prefix" Icon="@Icons.Material.Filled.EditLocation">Móviles</MudNavLink>
+        <MudNavLink Href="/PuntosLimpios" Match="NavLinkMatch.Prefix" Icon="@Icons.Material.Filled.LocationSearching">Proximidad</MudNavLink>
 
-        <MudNavLink Href="/Contenedores" Match="NavLinkMatch.Prefix" Icon="@Icons.Material.Filled.RestoreFromTrash">Contenedores Especiales</MudNavLink>
+        
     </MudNavGroup>
-
+    <MudNavGroup Title="Contenedores Especiales" Expanded="true" Icon="@Icons.Material.Filled.RestoreFromTrash">
+        <MudNavLink Href="/Contenedores/0" Match="NavLinkMatch.Prefix" Icon="@Icons.Material.Filled.Checkroom">Ropa (Autorizados)</MudNavLink>
+        <MudNavLink Href="/Contenedores/1" Match="NavLinkMatch.Prefix" Icon="@Icons.Material.Filled.DeleteForever">Aceite Usado</MudNavLink>
+        <MudNavLink Href="/Contenedores/2" Match="NavLinkMatch.Prefix" Icon="@Icons.Material.Filled.BatterySaver">Pilas (Marquesinas)</MudNavLink>
+    </MudNavGroup>
        
     
-       <MudNavGroup Title="Información" Icon="@Icons.Material.Outlined.Info" Expanded="true">
-            <MudNavLink Href="/#">Endpoint API</MudNavLink>
-            <MudNavLink Href="/#">OpenData Source</MudNavLink>
+       <MudNavGroup Title="Acerca de" Icon="@Icons.Material.Outlined.Info" >
+           <MudNavLink Href="/#">Reciclaje.Info</MudNavLink>
+            <MudNavLink Href="/#">Proxy API</MudNavLink>
+            <MudNavLink Href="/#">OpenData</MudNavLink>
         </MudNavGroup>
 
         </MudNavMenu>

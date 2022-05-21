@@ -11,7 +11,7 @@ body {
 }
 
 html, body,  #app,  .mud-container {
-    /*height: 100% !important;*/
+    height: 100% !important;
     overflow: hidden;
 }
 #map {

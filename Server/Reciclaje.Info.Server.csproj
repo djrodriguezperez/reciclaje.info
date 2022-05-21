@@ -14,14 +14,6 @@
 	</ItemGroup>
 
 	<ItemGroup>
-	  <Content Remove="OpenAPIs\=200284-0-puntos-limpios-fijos.json" />
-	</ItemGroup>
-
-	<ItemGroup>
-	  <None Include="OpenAPIs\=200284-0-puntos-limpios-fijos.json" ClassName="PuntosLimpiosFijos" />
-	</ItemGroup>
-
-	<ItemGroup>
 		<PackageReference Include="dotNetRDF" Version="2.7.4" />
 		<PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly.Server" Version="6.0.5" />
 		<PackageReference Include="Microsoft.Extensions.ApiDescription.Client" Version="3.0.0">

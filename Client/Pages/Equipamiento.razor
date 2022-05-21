@@ -46,11 +46,11 @@ else
 	}
 	else
 	{
-		Snackbar.Add($"Opps! No hemos encontrado equipamiento en base su descripción. Pruebe con otra descripción!", Severity.Error);
-		@*<MudAlert Severity="Severity.Warning" AlertTextPosition="AlertTextPosition.End">No hemos encontrado equipamiento en base su descripción.Pruebe de nuevo!</MudAlert>*@
-
+		if (!string.IsNullOrWhiteSpace(filtro) && !string.IsNullOrEmpty(filtro))
+		{
+			Snackbar.Add($"Opps! No hemos encontrado equipamiento en base su descripción. Pruebe con otra descripción!", Severity.Error);		
+		}
 	}
-
 }
 
 
@@ -65,20 +65,13 @@ else
 	{
 		cargado  = false;
 		esVisible = true;
+		equipamiento = null;
 
-		if (string.IsNullOrEmpty(filtro) || string.IsNullOrWhiteSpace(filtro))
+		if (!string.IsNullOrEmpty(filtro) && !string.IsNullOrWhiteSpace(filtro))
 		{
-			 /// Open Toast
-
+			equipamiento = await client.GetFromJsonAsync<IReadOnlyList<EquipamientoDto>>("api/v1/proxy/equipamiento/" + filtro); 
 		}
-		else
-		{
-			
-			equipamiento = await client.GetFromJsonAsync<IReadOnlyList<EquipamientoDto>>("api/v1/proxy/equipamiento/" + filtro);
-			
-		}
-		
-				
+						
 		cargado  = true;
 		StateHasChanged();
 	}

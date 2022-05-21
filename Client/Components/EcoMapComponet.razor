@@ -1,5 +1,85 @@
-﻿<h3>EcoMap</h3>
+﻿@using BlazorLeaflet
+@using BlazorLeaflet.Models
+
+@inject IJSRuntime jsRuntime
+@inject ISnackbar Snackbar
+
+
+<div id="mapContainer" style="width:100%;height:500px">
+	<LeafletMap Map="_map" />
+</div>
 
 @code {
 
+
+	[Parameter] public LatLng InitPosition { get; set; } = new LatLng() { Lat = 40.470491685969996F, Lng = -3.5898632639571653F };
+	[Parameter] public GeoAtomDto? Markers { get; set; } = null;
+	private Map? _map;
+	private Layer? _currentLayer;
+	private LatLng location = new LatLng();
+
+	protected override void OnAfterRender(bool firstRender)
+	{
+		
+
+		if (_map != null)
+		{
+
+			//foreach (var item in Markers?.entries!)
+			//{
+
+			//	location.Lat = float.Parse(item.geolat!);
+			//	location.Lng = float.Parse(item.geolong!);
+
+			//	var marker = new Marker(location)
+			//		{
+			//			Draggable = false,
+			//			Title = "Titulo", //item.title,
+			//							  //Popup = new Popup { Content = string.Format("{0} - Geolocalización {1}",item.title, item.georsspoint) },
+			//							  //Tooltip = new Tooltip { Content = item?.id?.ToString()}
+			//		};
+
+			//	_map.AddLayer(marker);
+			//}
+			//var marker = new Marker(InitPosition)
+			//{
+			//	Draggable = true,
+			//	Title = "Marker 1",
+			//	Popup = new Popup { Content = string.Format("I am at {0:0.00}° lat, {1:0.00}° lng", InitPosition.Lat, InitPosition.Lng) },
+			//	Tooltip = new Tooltip { Content = "Click and drag to move me" }
+			//};
+			//_map.AddLayer(marker);
+
+		}
+
+		base.OnAfterRender(firstRender);
+	}
+
+	protected override Task OnInitializedAsync()
+	{
+
+		_map = new Map(jsRuntime)
+			{
+				Center = InitPosition,
+				Zoom = 13
+			};
+
+		_map.OnInitialized += () =>
+		{
+			_map.AddLayer(new TileLayer
+				{
+					UrlTemplate = "https://a.tile.openstreetmap.org/{z}/{x}/{y}.png",
+					Attribution = "&copy; <a href=\"https://www.openstreetmap.org/copyright\">OpenStreetMap</a> contributors",
+				});
+		};
+		
+		
+	
+
+		
+		return base.OnInitializedAsync();
+	}
+
+
+	
 }

@@ -39,7 +39,7 @@ namespace Reciclaje.Info.Server.Controllers
         {
             if (tipologia == null) throw new ArgumentNullException(nameof(tipologia));
             Uri endpoint = new Uri(BaseUriApi, _config[tipologia.ToString()]);
-            if (tipologia == PuntosLimpiosType.Fijos) // Json
+            if (tipologia == PuntosLimpiosType.Fijos) // Caso de Uso Especial - Invoca la API y devuelve objeo Json
             {
                 var httpClient = _httpClientFactory.CreateClient();
                 var result = await httpClient.GetFromJsonAsync<PuntosLimpiosFijosDto>(endpoint);
@@ -63,7 +63,7 @@ namespace Reciclaje.Info.Server.Controllers
 
             if (data != null && data.Any())
             {
-                //query = query.Where(p => EF.Functions.Like(p.Name, $"%{criteria.Term}%") || EF.Functions.Like(p.Description, $"%{criteria.Term}%"));
+                
                 return data.Where(t => t.Residuos.ToLowerInvariant().Contains(filtro.ToLowerInvariant())).ToList();
             }
               
@@ -92,8 +92,9 @@ namespace Reciclaje.Info.Server.Controllers
         #endregion
 
 
-        private async Task<ActionResult<GeoAtomDto>> invokeApiExterna(Uri endpoint)
+        private async Task<ActionResult<GeoAtomDto>> invokeApiExterna(Uri? endpoint)
         {
+            if (endpoint == null) throw new ArgumentNullException(nameof(endpoint));
             try
             {
                 var geoResult = await GeoParserCustom.DeserializeGeoFeedToDtoAsync(endpoint);
