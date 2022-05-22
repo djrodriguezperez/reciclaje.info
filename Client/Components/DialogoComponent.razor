@@ -1,17 +1,17 @@
 ﻿<MudDialog>
     <DialogContent>
-        <MudText>@ContentText</MudText>
+        <MudText>@Contenido</MudText>
     </DialogContent>
     <DialogActions>        
-        <MudButton Color="@Color" Variant="Variant.Filled" OnClick="Submit">@ButtonText</MudButton>
+        <MudButton Color="@Color" Variant="Variant.Filled" OnClick="Submit">@TextoBoton</MudButton>
     </DialogActions>
 </MudDialog>
 @code {
     [CascadingParameter] MudDialogInstance? MudDialog { get; set; }
 
-    [Parameter] public string? ContentText { get; set; }
+    [Parameter] public string? Contenido { get; set; }
 
-    [Parameter] public string? ButtonText { get; set; }
+    [Parameter] public string? TextoBoton { get; set; }
 
     [Parameter] public Color Color { get; set; }
 

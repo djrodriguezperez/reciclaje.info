@@ -23,23 +23,25 @@ else
 {
 	@if (equipamiento != null && equipamiento.Any())
 	{
-		<MudExpansionPanels Class="mb-2">
+		<MudExpansionPanels Elevation="1" DisableBorders="true" Class="mt-6">
 			@foreach (var item in equipamiento)
 			{
-				<MudExpansionPanel>
+				<MudExpansionPanel >
 					<TitleContent>
 						<div class="d-flex">
-							<MudAvatar Size="Size.Medium" Color="Color.Primary" Variant="Variant.Outlined" Class="mr-3" Image=@item.Avatar> </MudAvatar>
-							<MudText Typo="Typo.body1"> <strong> @item.Equipamiento</strong></MudText>
+							<MudAvatar Style="font-size: 1rem;"  Color="Color.Default"  Variant="Variant.Outlined" Class="mr-3" Image=@item.Avatar> </MudAvatar>
+							<MudText Typo="Typo.h6"> <strong> @item.Equipamiento</strong></MudText>
+							
 
 
 						</div>
 					</TitleContent>
 					<ChildContent>
-						<h4>Tipología de residuos que debes incluir en este equipamiento:</h4>
+						<MudText Typo="Typo.subtitle1"> <strong>Tipología de residuos que debes incluir en este equipamiento.</strong></MudText>					
 						@item.Residuos
 					</ChildContent>
 				</MudExpansionPanel>
+				<MudDivider Class="my-2"/>
 			}
 
 		</MudExpansionPanels>

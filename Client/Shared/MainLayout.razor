@@ -51,9 +51,9 @@
         Palette = new Palette()
         {
             Primary = Colors.Green.Darken3,
-            Secondary = Colors.Yellow.Darken3,
+            Secondary = "#fab43c",
             AppbarBackground = "#e3d2a7",
-            TextPrimary = Colors.Green.Darken3,
+            TextPrimary = Colors.Green.Lighten3,
             AppbarText = Colors.Green.Darken3
         },
         LayoutProperties = new LayoutProperties()
@@ -105,7 +105,7 @@
         parameters.Add("ButtonText", "Ok");
         
 
-        dialogService.Show<DialogComponent>("Información", parameters);
+        dialogService.Show<DialogoComponent>("Información", parameters);
     }
 
 }

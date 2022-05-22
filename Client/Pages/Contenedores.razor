@@ -1,13 +1,27 @@
 ﻿@page "/contenedores/{IdContenedor:int}"
 
 @using Reciclaje.Info.Client.Services
+@using Reciclaje.Info.Client.Components
 @using Reciclaje.Info.Shared.Types
 
 @inject HttpClient client
 @inject ISnackbar Snackbar
 
-<MudText Typo="Typo.h6" GutterBottom="true"> @Titulo </MudText>
-<MudText Typo="Typo.body1" GutterBottom="true"> @Descripcion </MudText>
+
+		<MudExpansionPanels Elevation="1" DisableBorders="true" Class="mt-3">
+				<MudExpansionPanel>
+					<TitleContent>						
+						<div class="d-flex">
+							<MudIconButton Icon="@Icono" Variant="Variant.Filled" Color="Color.Secondary " Size="Size.Small" class="mr-3"/>	
+							
+							<MudText Typo="Typo.h5" > @Titulo </MudText>
+						</div>						
+					</TitleContent>
+					<ChildContent>
+						<MudText Typo="Typo.subtitle2" GutterBottom="true"> @Descripcion </MudText>
+					</ChildContent>
+				</MudExpansionPanel>        
+		 </MudExpansionPanels>
 
 @if (!cargado)
 {
@@ -17,15 +31,7 @@
 }
 else
 {
-	@if (datos != null && datos.entries.Any())
-	{
-		<EcoMapComponet Markers="datos"></EcoMapComponet>
-		Snackbar.Add(string.Format("Total de elementos encontrados: {0}",datos.entries.Count()), Severity.Success);
-	}
-	else
-	{
-		Snackbar.Add(string.Format("Opps! No hemos logrado recuperar información del conjunto de datos abiertos!"), Severity.Error);
-	}
+	<EcoMapComponent GeoDatos="@geoDatos"></EcoMapComponent>
 }
 
 
@@ -38,22 +44,18 @@ else
 
 	public string? Titulo { get; set; }
 	public string? Descripcion { get; set; }
+	public string? Icono { get; set; }
 
-	private GeoAtomDto? datos;
+	private GeoAtomDto? geoDatos;
 	private Boolean cargado;
 	private Boolean esVisible;
 
-	protected override async Task OnInitializedAsync()
-	{
-
-		await LoadDataAsync();
-	}
 
 	protected override async Task OnParametersSetAsync()
 	{
 		if (ShouldRender())
 		{
-			await LoadDataAsync();
+			await LoadDataAsync();		
 		}		
 	}
 	private async Task LoadDataAsync()
@@ -64,7 +66,8 @@ else
 			ContenedorService service = new ContenedorService(client, IdContenedor);
 			Titulo = service.Titulo;
 			Descripcion = service.Descripcion;
-			datos = await service.GetDataAsync<GeoAtomDto>();
+			Icono = service.Icono; 
+			geoDatos = await service.GetDataAsync<GeoAtomDto>();
 			cargado = true;		
 	}
 }

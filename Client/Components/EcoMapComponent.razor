@@ -1,0 +1,54 @@
+﻿@using BlazorLeaflet
+@using BlazorLeaflet.Models
+
+@inject IJSRuntime jsRuntime
+@inject ISnackbar Snackbar
+
+<MudPaper Elevation="1" Class="pa-2" Style="height:550px; width:100%;">
+	<LeafletMap Map="_map" />    
+</MudPaper>
+
+@code {
+	[Parameter] public LatLng LocalizacionInicial { get; set; } = new LatLng() { Lat = 40.470491685969996F, Lng = -3.5898632639571653F }; //Location Default
+	[Parameter] public GeoAtomDto? GeoDatos { get; set; } = null;
+	private Map? _map;	
+	private LatLng location = new LatLng();
+
+
+
+	protected override Task OnInitializedAsync()
+	{
+
+		_map = new Map(jsRuntime)
+			{
+				Center = LocalizacionInicial,
+				Zoom = 13
+			};
+
+		_map.OnInitialized += () =>
+		{
+			_map.AddLayer(new TileLayer
+				{
+					UrlTemplate = "https://a.tile.openstreetmap.org/{z}/{x}/{y}.png",
+					Attribution = "&copy; <a href=\"https://www.openstreetmap.org/copyright\">OpenStreetMap</a> contributors. Reciclaje",
+				});
+		};
+
+
+		Snackbar.Clear();
+		@if (GeoDatos != null && GeoDatos.entries.Any())
+		{
+			Snackbar.Add(string.Format("Total de elementos encontrados: {0}",GeoDatos.entries.Count()), Severity.Success);
+		}
+		else
+		{
+			Snackbar.Add(string.Format("Opps! No hemos logrado recuperar información del conjunto de datos abiertos!"), Severity.Error);
+		}
+
+				
+		return base.OnInitializedAsync();
+	}
+
+
+	
+}

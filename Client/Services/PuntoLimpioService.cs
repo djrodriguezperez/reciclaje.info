@@ -1,5 +1,7 @@
-﻿using Reciclaje.Info.Shared.Types;
+﻿using MudBlazor;
+using Reciclaje.Info.Shared.Types;
 using System.Net.Http.Json;
+using static MudBlazor.CategoryTypes;
 
 namespace Reciclaje.Info.Client.Services
 {
@@ -31,16 +33,19 @@ namespace Reciclaje.Info.Client.Services
 				case PuntosLimpiosType.Fijos:
 					Titulo = "Puntos Limpios Fijos.";
 					Descripcion = "Información de datos, ubicación, características, horarios, coordenadas de localización y servicios de los distintos puntos limpios fijos municipales de la ciudad de Madrid..";
+					Icono = Icons.Material.Filled.LocationOn;
 					break;
 
 				case PuntosLimpiosType.Proximidad:
 					Titulo = "Puntos Limpios de Proximidad.";
 					Descripcion = "En estos  Puntos Limpios de Proximidad, se pueden depositar, para su posterior reutilización y reciclaje: aceite vegetal usado (se deberá depositar en una botella de plástico), tapones de botellas, libros y revistas, residuos de aparatos eléctricos y electrónicos de pequeño tamaño, pilas y baterías usadas, fluorescentes y bombillas de bajo consumo, cartuchos de tóner y aerosoles, cápsulas de café, radiografías, y CD's, DVD's y cintas de vídeo.";
+					Icono = Icons.Material.Filled.LocationSearching;
 					break;
 
 				case PuntosLimpiosType.Moviles:
 					Titulo = "Puntos Limpios Móviles.";
 					Descripcion = "Información de datos, ubicación, características, horarios y dias disponibles, coordenadas de localización y servicios de los distintos puntos limpios móviles municipales de la ciudad de Madrid.";
+					Icono = Icons.Material.Filled.EditLocation;
 					break;
 			}
 		}
@@ -50,7 +55,8 @@ namespace Reciclaje.Info.Client.Services
 		public string? Descripcion { get ; set ; }
 		public string? Endpoint { get ; set ; }
 		public string? Titulo { get ; set ; }
-		public HttpClient? httpClient { get ; set ; }
+        public string? Icono { get; set; }
+        public HttpClient? httpClient { get ; set ; }
 
 		public async Task<I?> GetDataAsync<I>()
 		{

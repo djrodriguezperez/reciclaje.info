@@ -12,12 +12,10 @@ body {
 
 html, body,  #app,  .mud-container {
     height: 100% !important;
-    overflow: hidden;
+    overflow: auto;
 }
 #map {
-  
-    margin-left: -15px;
-    /*margin-right: -24px;*/
+    margin-left: -15px;    
 }
 .vw-100 {
     width: 100vw !important;
@@ -41,12 +39,18 @@ html, body,  #app,  .mud-container {
     background-color: var(--color-bg-topbar);
 }
 
+.mud-expand-panel {
+    background-color: #2e7d320e;
+}
 
+
+.mud-expansion-panels {    
+    padding-bottom: 20px;
+}
 
 
 
 /* Estilos Spinner Preload */
-
 @keyframes spinner-border {
     100% {
         transform: rotate(360deg);
