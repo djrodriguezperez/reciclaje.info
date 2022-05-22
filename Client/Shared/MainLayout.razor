@@ -53,7 +53,7 @@
             Primary = Colors.Green.Darken3,
             Secondary = "#fab43c",
             AppbarBackground = "#e3d2a7",
-            TextPrimary = Colors.Green.Lighten3,
+            TextPrimary = Colors.Green.Darken3,
             AppbarText = Colors.Green.Darken3
         },
         LayoutProperties = new LayoutProperties()
@@ -88,13 +88,13 @@
         var parameters = new DialogParameters();
         if (currentPosition.Error?.Code > 0)
         {
-            parameters.Add("ContentText", string.Format ("Datos de Golocalización: {0}-{1}", 
+            parameters.Add("Contenido", string.Format ("Datos de Golocalización: {0}-{1}", 
                 currentPosition.Error.CodeEnum.ToString(), currentPosition.Error.Message));
                 parameters.Add("Color", Color.Error);
         }
         else
         {
-                parameters.Add("ContentText", string.Format ("Datos de Golocalización: {0}-{1}", 
+                parameters.Add("Contenido", string.Format ("Datos de Golocalización: {0}-{1}", 
                 currentPosition.Location.Coords.Latitude, currentPosition.Location.Coords.Longitude));
                 parameters.Add("Color", Color.Success);
         }
@@ -102,7 +102,7 @@
     
        
        
-        parameters.Add("ButtonText", "Ok");
+        parameters.Add("TextoBoton", "Ok");
         
 
         dialogService.Show<DialogoComponent>("Información", parameters);

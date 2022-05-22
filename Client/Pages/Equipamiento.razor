@@ -1,82 +1,120 @@
 ﻿@page "/"
+@using Reciclaje.Info.Client.Services
 @using Reciclaje.Info.Shared.Dto
+@using Reciclaje.Info.Shared.Utils
 
 
 @inject HttpClient client
 @inject ISnackbar Snackbar
+@inject IEquipamientoService servicio
+
+<div class="d-flex">
+	<MudIconButton Icon="@Icono" Variant="Variant.Outlined" Color="Color.Primary" Size="Size.Small" class="mr-3" />
+	<MudText Typo="Typo.h5" GutterBottom="true"> @Titulo </MudText>
+</div>
 
 
-<MudText Typo="Typo.h6" GutterBottom="true">Identificador de equipamiento</MudText>
-
-<MudTextField @bind-Value="@filtro" Label="Describa su residuo..." Variant="Variant.Text" Adornment="Adornment.End"
-			  AdornmentIcon="@Icons.Filled.Search" 
+<MudTextField @bind-Value="@Filtro" Label="Describa aquí su residuo..." Variant="Variant.Text" Adornment="Adornment.End"
+			  AdornmentIcon="@Icons.Filled.Search"
 			  AdornmentColor="Color.Secondary"
-			  TextChanged="findData"
+			  TextChanged="LoadDataAsync"
 			  Class="mb-4" />
+
+@if (datos == null)
+{
+	<MudText Typo="Typo.subtitle2" GutterBottom="true"> @SubTitulo </MudText>
+}
+
+
 @if (!cargado)
 {
 	<MudOverlay Visible="esVisible" DarkBackground="true" Absolute="true" ZIndex="9999">
-            <MudProgressCircular Color="Color.Secondary" Indeterminate="true" />
-    </MudOverlay>
+		<MudProgressCircular Color="Color.Secondary" Indeterminate="true" />
+	</MudOverlay>
 }
 else
 {
-	@if (equipamiento != null && equipamiento.Any())
+	@if (datos != null && datos.Equipamientos!.Any())
 	{
 		<MudExpansionPanels Elevation="1" DisableBorders="true" Class="mt-6">
-			@foreach (var item in equipamiento)
+			@foreach (var item in datos.Equipamientos!)
 			{
-				<MudExpansionPanel >
+				<MudExpansionPanel IsInitiallyExpanded="true">
 					<TitleContent>
 						<div class="d-flex">
-							<MudAvatar Style="font-size: 1rem;"  Color="Color.Default"  Variant="Variant.Outlined" Class="mr-3" Image=@item.Avatar> </MudAvatar>
-							<MudText Typo="Typo.h6"> <strong> @item.Equipamiento</strong></MudText>
-							
+							<MudAvatar Style="font-size: 1rem;" Color="Color.Default" Variant="Variant.Outlined" Class="mr-3" Image=@item.Avatar> </MudAvatar>
+							<MudText Typo="Typo.h6"> <strong> @item.Titulo</strong></MudText>
+
 
 
 						</div>
 					</TitleContent>
 					<ChildContent>
-						<MudText Typo="Typo.subtitle1"> <strong>Tipología de residuos que debes incluir en este equipamiento.</strong></MudText>					
+						<MudText Typo="Typo.subtitle1"> <strong>Tipología de residuos que debes incluir en este equipamiento.</strong></MudText>
+
 						@item.Residuos
 					</ChildContent>
 				</MudExpansionPanel>
-				<MudDivider Class="my-2"/>
+				<MudDivider Class="my-2" />
 			}
 
 		</MudExpansionPanels>
 	}
-	else
-	{
-		if (!string.IsNullOrWhiteSpace(filtro) && !string.IsNullOrEmpty(filtro))
-		{
-			Snackbar.Add($"Opps! No hemos encontrado equipamiento en base su descripción. Pruebe con otra descripción!", Severity.Error);		
-		}
-	}
+
 }
 
 
 @code {
-	public string filtro { get; set; } = string.Empty;
-	public Boolean cargado { get; set; } 
-	public	Boolean	esVisible { get; set; }
+	public string? Filtro { get; set; } = string.Empty;
+	public string? Titulo { get; set; }
+	public string? SubTitulo { get; set; }
+	public string? Icono { get; set; }
 
-	private IReadOnlyList<EquipamientoDto>? equipamiento;
+	private EquipamientosDto? datos;
+	private Boolean cargado;
+	private Boolean esVisible;
 
-	public async void findData()
+	protected override Task OnInitializedAsync()
 	{
-		cargado  = false;
-		esVisible = true;
-		equipamiento = null;
-
-		if (!string.IsNullOrEmpty(filtro) && !string.IsNullOrWhiteSpace(filtro))
-		{
-			equipamiento = await client.GetFromJsonAsync<IReadOnlyList<EquipamientoDto>>("api/v1/proxy/equipamiento/" + filtro); 
-		}
-						
-		cargado  = true;
-		StateHasChanged();
+		Titulo = servicio.Titulo;
+		SubTitulo = servicio.SubTitulo;
+		Icono = servicio.Icono;
+		return base.OnInitializedAsync();
 	}
 
+	private async Task LoadDataAsync()
+	{
+		try
+		{
+			Filtro = Filtro?.LimpiarDatos();
+			if (!string.IsNullOrEmpty(Filtro) && !string.IsNullOrWhiteSpace(Filtro))
+			{
+				cargado = false;
+				esVisible = true;
+				datos = await servicio.GetDataAsync(Filtro!);
 
+
+				@if (datos != null && datos.Equipamientos!.Any())
+				{
+					Snackbar.Add(string.Format("Total de equipamiento encontrado: {0}", datos.Equipamientos!.Count()), Severity.Success);
+				}
+				else
+				{
+					Snackbar.Add($"Opps! No hemos encontrado equipamiento en base su descripción. Pruebe con otro valor!", Severity.Info);
+				}
+
+
+				StateHasChanged();
+			}
+
+		}
+		catch (Exception ex)
+		{
+			Snackbar.Add(string.Format("Error: {0}", ex.Message), Severity.Error);
+		}
+		finally
+		{
+			cargado = true;
+		}
+	}
 }

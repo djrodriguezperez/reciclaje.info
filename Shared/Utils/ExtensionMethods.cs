@@ -11,14 +11,22 @@ namespace Reciclaje.Info.Shared.Utils
     {
         public static string NormalizarJson(this string str)
         {
-
-            str = str.Replace("@", "_"); ///Json-LD Deserialize
-            return Regex.Replace(str, @"\t|\n|\r", ""); // Clean especial characters
-
+            ///Json Deserialize
+            str = str.Replace("@", "_");
             
+            return Regex.Replace(str, @"\t|\n|\r", "");             
         }
 
-        
+        public static string LimpiarDatos(this string str)
+        {
+            // Elimina Caracteres Especiales de la cadena 
+            return Regex.Replace(str, @"[^\w\.@-]", "",RegexOptions.None);            
+        }
+
 
     }
+
+
+
+   
 }

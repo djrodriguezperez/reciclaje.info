@@ -50,23 +50,28 @@ namespace Reciclaje.Info.Server.Controllers
                 return await invokeApiExterna(endpoint);
             }
            
-        }        
+        }
         #endregion
 
         #region Equipamiento
+        /// <summary>
+        /// Metodo Get para la obtención de datos de equipamiento según los datos filtrados.     
+        /// </summary>
+        /// <param name="tipologia">Valores: Ropa, AceiteUsado, Pilas Marquesinas </param>
+        /// <returns> ActionResult<GeoAtomDto> </returns>
         [HttpGet("equipamiento/{filtro}")]
-        public async Task<ActionResult<IReadOnlyList<EquipamientoDto>>> GetEquipamientoAsync(string filtro)
+        public async Task<ActionResult<EquipamientosDto>> GetEquipamientoAsync(string filtro)
         {
             string fileName = "Model/Tipos_Residuos.json";
             string jsonString = await System.IO.File.ReadAllTextAsync(fileName);
-            IReadOnlyList<EquipamientoDto>? data = JsonSerializer.Deserialize<IReadOnlyList<EquipamientoDto>?>(jsonString);
+            EquipamientosDto? data = JsonSerializer.Deserialize<EquipamientosDto>(jsonString.NormalizarJson());
 
-            if (data != null && data.Any())
+            if (data != null && data.Equipamientos!.Any())
             {
-                
-                return data.Where(t => t.Residuos.ToLowerInvariant().Contains(filtro.ToLowerInvariant())).ToList();
-            }
-              
+                EquipamientosDto resultDto = new EquipamientosDto();
+                resultDto.Equipamientos = data.Equipamientos!.Where(t => t.Residuos.ToLowerInvariant().Contains(filtro.ToLowerInvariant())).ToList();
+                return Ok(resultDto);
+            }              
             else
             {
                 return NotFound();

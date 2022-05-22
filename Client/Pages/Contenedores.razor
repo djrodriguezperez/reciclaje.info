@@ -6,10 +6,11 @@
 
 @inject HttpClient client
 @inject ISnackbar Snackbar
+@inject IGenericGeoService<ContenedorType> servicio
 
 
 		<MudExpansionPanels Elevation="1" DisableBorders="true" Class="mt-3">
-				<MudExpansionPanel>
+				<MudExpansionPanel IsExpanded="true">
 					<TitleContent>						
 						<div class="d-flex">
 							<MudIconButton Icon="@Icono" Variant="Variant.Filled" Color="Color.Secondary " Size="Size.Small" class="mr-3"/>	
@@ -17,7 +18,7 @@
 							<MudText Typo="Typo.h5" > @Titulo </MudText>
 						</div>						
 					</TitleContent>
-					<ChildContent>
+					<ChildContent >
 						<MudText Typo="Typo.subtitle2" GutterBottom="true"> @Descripcion </MudText>
 					</ChildContent>
 				</MudExpansionPanel>        
@@ -45,6 +46,7 @@ else
 	public string? Titulo { get; set; }
 	public string? Descripcion { get; set; }
 	public string? Icono { get; set; }
+	public ContenedorType Tipo { get; set; }
 
 	private GeoAtomDto? geoDatos;
 	private Boolean cargado;
@@ -55,20 +57,34 @@ else
 	{
 		if (ShouldRender())
 		{
+			Tipo = (ContenedorType)IdContenedor;
 			await LoadDataAsync();		
 		}		
 	}
 	private async Task LoadDataAsync()
 	{
-		
+		try
+		{
 			cargado = false;
 			esVisible = true;
-			ContenedorService service = new ContenedorService(client, IdContenedor);
-			Titulo = service.Titulo;
-			Descripcion = service.Descripcion;
-			Icono = service.Icono; 
-			geoDatos = await service.GetDataAsync<GeoAtomDto>();
-			cargado = true;		
+			//ContenedorService service = new ContenedorService(client, IdContenedor);
+			Titulo = servicio.GetTitulo(Tipo);
+			Descripcion = servicio.GetSubTitulo(Tipo);
+			Icono = servicio.GetIcono(Tipo);
+			geoDatos = await servicio.GetDataAsync<GeoAtomDto>(Tipo);
+
+		}
+		catch (Exception ex)
+		{
+			Snackbar.Add(string.Format("Error: {0}", ex.Message), Severity.Error);
+		}
+		finally
+		{
+			cargado = true;	
+		}
+
+
+		
 	}
 }
 
