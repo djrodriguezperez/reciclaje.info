@@ -6,6 +6,7 @@
         <MudButton Color="@Color" Variant="Variant.Filled" OnClick="Submit">@TextoBoton</MudButton>
     </DialogActions>
 </MudDialog>
+
 @code {
     [CascadingParameter] MudDialogInstance? MudDialog { get; set; }
 
@@ -17,4 +18,6 @@
 
     void Submit() => MudDialog?.Close(DialogResult.Ok(true));
 
+
+    
 }

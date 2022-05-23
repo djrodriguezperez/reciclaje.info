@@ -1,112 +1,93 @@
 ﻿@using Reciclaje.Info.Client.Components
+@using Reciclaje.Info.Client.Services
 @inherits LayoutComponentBase
 @inject IJSRuntime jsRuntime
 @inject IDialogService dialogService
+@inject IGeolocationService geoService
 
-<MudThemeProvider Theme="AppTheme"/>
-<MudDialogProvider
-    FullWidth="true"
-    MaxWidth="MaxWidth.ExtraSmall"
-    CloseButton="true"
-    DisableBackdropClick="true"
-    NoHeader="false"
-    Position="DialogPosition.Center"
-    CloseOnEscapeKey="true"
-/>
+<MudThemeProvider Theme="AppTheme" />
+<MudDialogProvider FullWidth="true"
+				   MaxWidth="MaxWidth.ExtraSmall"
+				   CloseButton="true"
+				   DisableBackdropClick="true"
+				   NoHeader="false"
+				   Position="DialogPosition.Center"
+				   CloseOnEscapeKey="true" />
 <MudSnackbarProvider />
 
 <MudLayout>
-    @*Menú Superior*@
-    <MudAppBar Elevation="1">
-            <MudAvatar Color="Color.Primary" Size="Size.Medium" Image="content/img/Icon-Reciclaje-Info.svg" />
-            <MudText  Typo="Typo.h6" Class="pl-3">Reciclaje.info</MudText>        
-        <MudSpacer />
-        <MudIconButton Icon="@Icons.Material.Filled.Notifications" Color="Color.Dark" Edge="Edge.End" />
-       <MudIconButton Icon="@Icons.Material.Filled.MyLocation" Color="Color.Secondary" Edge="Edge.End" OnClick="ShowCurrentPosition"/>
-       <MudIconButton Icon="@Icons.Material.Filled.Menu" Color="Color.Inherit" Edge="Edge.End" OnClick="DrawerRightToggle" />
-                  
-    </MudAppBar>
 
-    @*Menú Flotante*@
-    <MudDrawer @bind-Open="@_drawerRight" Anchor="Anchor.End" Elevation="0" ClipMode="DrawerClipMode.Always"  >
-   
-        <NavMenu />
-    </MudDrawer>
-     @* Cuerpo*@
-        <MudMainContent>
-            <MudContainer MaxWidth="MaxWidth.Large" Class="pt-5">
-                @Body
-            </MudContainer>
-        </MudMainContent>
+	<MudAppBar Elevation="1">
+		<MudAvatar Color="Color.Primary" Size="Size.Medium" Image="content/img/Icon-Reciclaje-Info.svg" />
+		<MudText Typo="Typo.h6" Class="pl-3">Reciclaje.info</MudText>
+		<MudSpacer />
+		<MudIconButton Icon="@Icons.Material.Filled.Notifications" Color="Color.Dark" Edge="Edge.End" />
+		<MudIconButton Icon="@Icons.Material.Filled.MyLocation" Color="Color.Secondary" Edge="Edge.End" OnClick="OnGetPosition" />
+		<MudIconButton Icon="@Icons.Material.Filled.Menu" Color="Color.Inherit" Edge="Edge.End" OnClick="DrawerRightToggle" />
+	</MudAppBar>
+	@*Menú Flotante*@
+	<MudDrawer @bind-Open="@_drawerRight" Anchor="Anchor.End" Elevation="0" ClipMode="DrawerClipMode.Always">
 
-    
+		<NavMenu />
+	</MudDrawer>
+	@* Cuerpo*@
+	<MudMainContent>
+		<MudContainer MaxWidth="MaxWidth.Large" Class="pt-5">
+			@Body
+		</MudContainer>
+	</MudMainContent>
 </MudLayout>
 
 @code {
 
-    bool _drawerRight ; 
+	bool _drawerRight;
+	
 
-    MudTheme AppTheme = new MudTheme()
-    {
-        Palette = new Palette()
-        {
-            Primary = Colors.Green.Darken3,
-            Secondary = "#fab43c",
-            AppbarBackground = "#e3d2a7",
-            TextPrimary = Colors.Green.Darken3,
-            AppbarText = Colors.Green.Darken3
-        },
-        LayoutProperties = new LayoutProperties()
-        {
-            DrawerWidthLeft = "300px",
-            DrawerWidthRight = "300px"          
+	MudTheme AppTheme = new MudTheme()
+		{
+			Palette = new Palette()
+			{
+				Primary = Colors.Green.Darken3,
+				Secondary = "#fab43c",
+				AppbarBackground = "#e3d2a7",
+				TextPrimary = Colors.Green.Darken3,
+				AppbarText = Colors.Green.Darken3
+			},
+			LayoutProperties = new LayoutProperties()
+			{
+				DrawerWidthLeft = "300px",
+				DrawerWidthRight = "300px"
 
-        }
-    };
-    void DrawerRightToggle()
-    {
-        _drawerRight = !_drawerRight;
-    }   
-    private WindowNavigatorGeolocation? geolocationWrapper;
-    private GeolocationResult? currentPosition;
+			}
+		};
+	void DrawerRightToggle()
+	{
+		_drawerRight = !_drawerRight;
+	}
+	async Task OnGetPosition()
+	{
 
-    async Task ShowCurrentPosition()
-    {
-
-        var window = await jsRuntime.Window();
-        var navigator = await window.Navigator();
-        geolocationWrapper = navigator.Geolocation;
+		var result = await geoService .GetCurrentPosition();
 
 
+		var parameters = new DialogParameters();
+		if (result.Error?.Code > 0)
+		{
+			parameters.Add("Contenido", string.Format("Datos de Golocalización: {0}-{1}",
+				result.Error.CodeEnum.ToString(), result.Error.Message));
+			parameters.Add("Color", Color.Error);
+		}
+		else
+		{
+			parameters.Add("Contenido", string.Format("Datos de Golocalización: {0}-{1}",
+			result.Location.Coords.Latitude, result.Location.Coords.Longitude));
+			parameters.Add("Color", Color.Success);
+		}
 
-        currentPosition = (await geolocationWrapper.GetCurrentPosition(new PositionOptions()
-        {
-            EnableHighAccuracy = true,
-            MaximumAgeTimeSpan = TimeSpan.FromHours(1),
-            TimeoutTimeSpan = TimeSpan.FromMinutes(1)
-        }));
-        var parameters = new DialogParameters();
-        if (currentPosition.Error?.Code > 0)
-        {
-            parameters.Add("Contenido", string.Format ("Datos de Golocalización: {0}-{1}", 
-                currentPosition.Error.CodeEnum.ToString(), currentPosition.Error.Message));
-                parameters.Add("Color", Color.Error);
-        }
-        else
-        {
-                parameters.Add("Contenido", string.Format ("Datos de Golocalización: {0}-{1}", 
-                currentPosition.Location.Coords.Latitude, currentPosition.Location.Coords.Longitude));
-                parameters.Add("Color", Color.Success);
-        }
+		parameters.Add("TextoBoton", "Ok");
 
-    
-       
-       
-        parameters.Add("TextoBoton", "Ok");
-        
-
-        dialogService.Show<DialogoComponent>("Información", parameters);
-    }
+		dialogService.Show<DialogoComponent>("Información", parameters);
+	}
 
 }
 

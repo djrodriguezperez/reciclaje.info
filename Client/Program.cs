@@ -25,6 +25,7 @@ builder.Services.AddMudServices(config =>
     config.SnackbarConfiguration.SnackbarVariant = Variant.Filled;
 });
 // Inserción de dependencias de los servicios Reciclaje.Info
+builder.Services.AddScoped<IGeolocationService,GeolocationService>();
 builder.Services.AddScoped<IGenericGeoService<PuntosLimpiosType>, PuntoLimpioService>();
 builder.Services.AddScoped<IGenericGeoService<ContenedorType>, ContenedorService>();
 builder.Services.AddScoped<IEquipamientoService, EquipamientoService>();

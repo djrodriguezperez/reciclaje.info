@@ -6,10 +6,10 @@
 
 @inject HttpClient client
 @inject ISnackbar Snackbar
+@inject IGenericGeoService<PuntosLimpiosType> puntoslimpios
 
-@inject IGenericGeoService<PuntosLimpiosType> servicio
 <MudExpansionPanels Elevation="1" DisableBorders="true" Class="mt-3">
-	<MudExpansionPanel>
+	<MudExpansionPanel IsInitiallyExpanded="true">
 		<TitleContent>
 			<div class="d-flex">
 				<MudIconButton Icon="@Icono" Variant="Variant.Filled" Color="Color.Secondary " Size="Size.Small" class="mr-3" />
@@ -30,7 +30,7 @@
 }
 else
 {
-	<EcoMapComponent GeoDatos="@geoDatos"></EcoMapComponent>
+	<EcoMapComponent  GeoDatos="@geoDatos"></EcoMapComponent>
 }
 
 
@@ -71,10 +71,10 @@ else
 
 			cargado = false;
 			esVisible = true;
-			Titulo = servicio.GetTitulo(Tipo);
-			Descripcion = servicio.GetSubTitulo(Tipo);
-			Icono = servicio.GetIcono(Tipo);
-			geoDatos = await servicio.GetDataAsync<GeoAtomDto>(Tipo);
+			Titulo = puntoslimpios.GetTitulo(Tipo);
+			Descripcion = puntoslimpios.GetSubTitulo(Tipo);
+			Icono = puntoslimpios.GetIcono(Tipo);
+			geoDatos = await puntoslimpios.GetDataAsync<GeoAtomDto>(Tipo);
 		}
 		catch (Exception ex)
 		{

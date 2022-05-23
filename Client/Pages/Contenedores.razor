@@ -6,11 +6,13 @@
 
 @inject HttpClient client
 @inject ISnackbar Snackbar
-@inject IGenericGeoService<ContenedorType> servicio
+@inject IGenericGeoService<ContenedorType> contenedor
+
+
 
 
 		<MudExpansionPanels Elevation="1" DisableBorders="true" Class="mt-3">
-				<MudExpansionPanel IsExpanded="true">
+				<MudExpansionPanel IsInitiallyExpanded="true">
 					<TitleContent>						
 						<div class="d-flex">
 							<MudIconButton Icon="@Icono" Variant="Variant.Filled" Color="Color.Secondary " Size="Size.Small" class="mr-3"/>	
@@ -35,9 +37,6 @@ else
 	<EcoMapComponent GeoDatos="@geoDatos"></EcoMapComponent>
 }
 
-
-
-
 @code {
 
 
@@ -51,6 +50,11 @@ else
 	private GeoAtomDto? geoDatos;
 	private Boolean cargado;
 	private Boolean esVisible;
+
+
+
+
+
 
 
 	protected override async Task OnParametersSetAsync()
@@ -68,10 +72,10 @@ else
 			cargado = false;
 			esVisible = true;
 			//ContenedorService service = new ContenedorService(client, IdContenedor);
-			Titulo = servicio.GetTitulo(Tipo);
-			Descripcion = servicio.GetSubTitulo(Tipo);
-			Icono = servicio.GetIcono(Tipo);
-			geoDatos = await servicio.GetDataAsync<GeoAtomDto>(Tipo);
+			Titulo = contenedor.GetTitulo(Tipo);
+			Descripcion = contenedor.GetSubTitulo(Tipo);
+			Icono = contenedor.GetIcono(Tipo);
+			geoDatos = await contenedor.GetDataAsync<GeoAtomDto>(Tipo);
 
 		}
 		catch (Exception ex)
