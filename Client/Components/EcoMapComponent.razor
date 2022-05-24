@@ -3,6 +3,7 @@
 @using BrowserInterop.Geolocation
 @using Reciclaje.Info.Client.Services
 @using System.Drawing
+@using System.Globalization
 
 @inject IJSRuntime jsRuntime
 @inject ISnackbar Snackbar
@@ -16,7 +17,7 @@
 
 @code {
 	
-	[Parameter] public GeoAtomDto? GeoDatos { get; set; } = null;
+	[Parameter] public GeoAtomDto? GeoDatos { get; set; }
 	private Map? _map;	
 	private LatLng location = new LatLng();
 	private GeolocationResult? geolocalizacion = new GeolocationResult();
@@ -76,8 +77,7 @@
 		}
 
 
-		var point = new PointF( location.Lat,location.Lng);
-		_map.PanTo(position:point, animate: true, duration: 10f);
+
 		var _circle = new Circle
             {
                 Position = location,
@@ -88,26 +88,49 @@
                 }
 
             };
-	
-		var marker = new Marker(location)
+
+		var _markerCurrentLocation = new Marker(location)
         {
-            Draggable = false,
+            Draggable = true,
             Title = "Posición Dispositivo",
             Popup = new Popup { Content = string.Format("Tu localización es: {0:0.00}° lat, {1:0.00}° lng", location.Lat, location.Lng) },
             Tooltip = new Tooltip { Content = "Tu dispositivo esta aquí!" }
-			
+
         };
-			_map.AddLayer(_circle);
-		_map.AddLayer(marker);
-
-        await base.OnInitializedAsync();
+		_map.AddLayer(_circle);
+		_map.AddLayer(_markerCurrentLocation);
 
 
+		foreach (var item in GeoDatos!.entries)
+		{
+			var _marker = CreateGeoMarker(item, GeoDatos.title , GeoDatos.link);
+			_map.AddLayer(_marker);
+		}
+		var point = new PointF( location.Lat,location.Lng);
+		_map.PanTo(position:point, animate: true, duration: 10f);
+		await base.OnInitializedAsync();
 
-    }
 
 
-    private void ShowDialogError(GeolocationResult geolocalizacion)
+	}
+
+	private Marker CreateGeoMarker(Entry item, string titulo, string enlace)
+	{
+
+		var _lat = float.Parse(item.geolat!, CultureInfo.InvariantCulture);
+		var _long = float.Parse(item.geolong! , CultureInfo.InvariantCulture);
+
+		var _location = new LatLng() { Lat = _lat , Lng = _long }; 
+		var _marker = new Marker(_location)
+        {		
+            Title = titulo,
+            Popup = new Popup { Content = string.Format("Info: {0} \n Enlace: {1}", item.title, enlace ) }
+            //Tooltip = new Tooltip { Content = "Tu dispositivo esta aquí!" }
+
+        };
+		return _marker;
+	}
+	private void ShowDialogError(GeolocationResult geolocalizacion)
     {
         var parameters = new DialogParameters();
         parameters.Add("Contenido", string.Format("Error en la Geolocalizacón del dispositivo: {0}-{1}",
