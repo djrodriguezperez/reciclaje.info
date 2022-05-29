@@ -1,4 +1,4 @@
-# <img src="https://reciclaje.azurewebsites.net/content/img/Icon-Reciclaje-Info.svg" width="35" style="float:left;"> Reciclaje.info [BETA]
+# <img src="https://reciclaje.azurewebsites.net/content/img/Icon-Reciclaje-Info.svg" width="35" style="float:left;"> Reciclaje.info [0.1.0-Alpha]
 <strong>Recicjale.info </strong>  es un sistema consumidor de datos abiertos que permite al ciudadano la identificación y geolocalización de equipamiento, contenedores y puntos de interés para la recogida o depósito selectivo de residuos.
 
 Es una implementación de aplicación web progresiva (PWA) bajo nuevos estándares de desarrollo web utilizando el framework open-source Blazor WebAssembly Net6.0.
@@ -9,14 +9,16 @@ Demo: https://reciclaje.azurewebsites.net/  | http://www.reciclaje.info/ | http:
 
 
 ## Conjunto de Datos [Open Data]
-<img src="https://datos.madrid.es/FwFront/portal_egob/new/img/portal_logo_h.png" width="150">|
-https://datos.madrid.es/portal/site/egob. Portal dedicado a promover el acceso a los datos del gobierno municipal e impulsar el desarrollo de herramientas creativas para atraer y servir a la ciudadanía.
-## Geocodificación y base de datos geográfica
-<img src="https://www.openstreetmap.org/assets/osm_logo-d4979005d8a03d67bbf051b4e7e6ef1b26c6a34a5cd1b65908e2947c360ca391.svg" width="25"> | 
-https://www.openstreetmap.org/ - OpenStreetMap es un proyecto colaborativo para crear mapas editables y libres. En lugar del mapa en sí, los datos generados por el proyecto se consideran su salida principal. Los mapas se crean utilizando información geográfica capturada con dispositivos GPS móviles, ortofotografías y otras fuentes libres.
+- Portal dedicado a promover el acceso a los datos del gobierno municipal e impulsar el desarrollo de herramientas creativas para atraer y servir a la ciudadanía.
+ https://datos.madrid.es/portal/site/egob. 
 
-<img src="https://www.vectorlogo.zone/logos/leafletjs/leafletjs-ar21.svg" width="50"> | https://leafletjs.com/
-Leaflet es la principal biblioteca JavaScript de código abierto para mapas interactivos adaptados a dispositivos móviles. Con un peso de sólo 39 KB de JS, tiene todas las características de mapeo que la mayoría de los desarrolladores necesitan.
+## Dependencias
+- MudBlazor Blazor Component Library - Librería de Componentes Blazor. https://mudblazor.com/
+- OpenStreetMap es un proyecto colaborativo para crear mapas editables y libres. https://www.openstreetmap.org/ 
+- Leafletjs biblioteca JavaScript para mapas interactivos adaptados a dispositivos móviles. https://www.openstreetmap.org/
+- BlazorLeaflet Net6.0 [Fork https://github.com/Mehigh17/BlazorLeaflet]. https://github.com/djrodriguezperez/BlazorLeaflet-net6.0
+
+
 
 ## Base Tecnológica
 
