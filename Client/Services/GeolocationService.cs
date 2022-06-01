@@ -9,10 +9,19 @@ namespace Reciclaje.Info.Client.Services
         IJSRuntime jsRuntime;
         private WindowNavigatorGeolocation? geolocationWrapper;
         private GeolocationResult? currentPosition;
+        /// <summary>
+        /// Consctructor  (Injección de Dependencias:  JSRuntime)
+        /// </summary>
+        /// <param name="jSRuntime"></param>
         public GeolocationService(IJSRuntime jSRuntime)
         {
             jsRuntime = jSRuntime;
         }
+        /// <summary>
+        /// Método asíncrono que obtiene el objeto windows del navegador 
+        /// Invoca el método: GetCurrentPosition() 
+        /// </summary>
+        /// <returns></returns>
         public async Task<GeolocationResult> GetCurrentPosition()
         {
 
@@ -21,7 +30,7 @@ namespace Reciclaje.Info.Client.Services
             geolocationWrapper = navigator.Geolocation;
             currentPosition = (await geolocationWrapper.GetCurrentPosition(new PositionOptions()
             {
-                EnableHighAccuracy = true,
+                EnableHighAccuracy = false,
                 MaximumAgeTimeSpan = TimeSpan.FromHours(1),
                 TimeoutTimeSpan = TimeSpan.FromMinutes(1)
             }));

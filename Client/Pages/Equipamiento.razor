@@ -9,7 +9,7 @@
 @inject IEquipamientoService servicio
 
 <div class="d-flex">
-	<MudIconButton Icon="@Icono" Variant="Variant.Outlined" Color="Color.Primary" Size="Size.Small" class="mr-3" />
+	<MudIconButton Icon="@Icono" Variant="Variant.Filled" Color="Color.Primary" Size="Size.Small" class="mr-3" />
 	<MudText Typo="Typo.h5" GutterBottom="true"> @Titulo </MudText>
 </div>
 
@@ -17,7 +17,7 @@
 <MudTextField @bind-Value="@Filtro" Label="Describa aquí su residuo..." Variant="Variant.Text" Adornment="Adornment.End"
 			  AdornmentIcon="@Icons.Filled.Search"
 			  AdornmentColor="Color.Secondary"
-			  TextChanged="LoadDataAsync"
+			  TextChanged="FindDataAsync"
 			  Class="mb-4" />
 
 @if (datos == null)
@@ -50,12 +50,15 @@ else
 						</div>
 					</TitleContent>
 					<ChildContent>
-						<MudText Typo="Typo.subtitle1"> <strong>Tipología de residuos que debes incluir en este equipamiento.</strong></MudText>
-
-						@item.Residuos
+						<MudText Typo="Typo.subtitle1"> <strong>Tipología de residuos que puedes incluir en este tipo de equipamiento.</strong></MudText>
+						@foreach (var item in @item.Residuos.Split("#"))
+							{
+								<MudText Typo="Typo.body2">@item</MudText>								
+							}
+						
 					</ChildContent>
 				</MudExpansionPanel>
-				<MudDivider Class="my-2" />
+				
 			}
 
 		</MudExpansionPanels>
@@ -82,11 +85,11 @@ else
 		return base.OnInitializedAsync();
 	}
 
-	private async Task LoadDataAsync()
+	private async Task FindDataAsync()
 	{
 		try
 		{
-			Filtro = Filtro?.LimpiarDatos();
+			Filtro = Filtro?.QuitarCaracteresEspeciales();
 			if (!string.IsNullOrEmpty(Filtro) && !string.IsNullOrWhiteSpace(Filtro))
 			{
 				cargado = false;
@@ -94,7 +97,7 @@ else
 				datos = await servicio.GetDataAsync(Filtro!);
 
 
-				@if (datos != null && datos.Equipamientos!.Any())
+			@if (datos != null && datos.Equipamientos!.Any())
 				{
 					Snackbar.Add(string.Format("Total de equipamiento encontrado: {0}", datos.Equipamientos!.Count()), Severity.Success);
 				}
@@ -103,8 +106,8 @@ else
 					Snackbar.Add($"Opps! No hemos encontrado equipamiento en base su descripción. Pruebe con otro valor!", Severity.Info);
 				}
 
-
 				StateHasChanged();
+				//StateHasChanged();
 			}
 
 		}
@@ -113,7 +116,8 @@ else
 			Snackbar.Add(string.Format("Error: {0}", ex.Message), Severity.Error);
 		}
 		finally
-		{
+		{			
+			
 			cargado = true;
 		}
 	}

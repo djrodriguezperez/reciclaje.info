@@ -47,7 +47,7 @@ namespace Reciclaje.Info.Server.Controllers
             }
             else // Geo 
             {               
-                return await invokeApiExterna(endpoint);
+                return await GetOpenData(endpoint);
             }
            
         }
@@ -62,20 +62,59 @@ namespace Reciclaje.Info.Server.Controllers
         [HttpGet("equipamiento/{filtro}")]
         public async Task<ActionResult<EquipamientosDto>> GetEquipamientoAsync(string filtro)
         {
-            string fileName = "Model/Tipos_Residuos.json";
-            string jsonString = await System.IO.File.ReadAllTextAsync(fileName);
-            EquipamientosDto? data = JsonSerializer.Deserialize<EquipamientosDto>(jsonString.NormalizarJson());
-
-            if (data != null && data.Equipamientos!.Any())
+            if (string.IsNullOrWhiteSpace(filtro))
             {
-                EquipamientosDto resultDto = new EquipamientosDto();
-                resultDto.Equipamientos = data.Equipamientos!.Where(t => t.Residuos.ToLowerInvariant().Contains(filtro.ToLowerInvariant())).ToList();
-                return Ok(resultDto);
-            }              
-            else
-            {
-                return NotFound();
+                throw new ArgumentException($"\"{nameof(filtro)}\" no puede ser NULL ni un espacio en blanco.", nameof(filtro));
             }
+
+            string jsonFile = _config["Equipamiento"]; // Procesar Previamente
+            string jsonString = await System.IO.File.ReadAllTextAsync(jsonFile);
+            EquipamientosDto? data = JsonSerializer.Deserialize<EquipamientosDto>(jsonString.NormalizarJson());
+            EquipamientosDto resultDto = new EquipamientosDto();
+                                                   
+            resultDto = Buscar(filtro, data)!;
+
+
+            return resultDto;
+            
+    
+        }
+        /// <summary>
+        /// Algoritmo de búqueda en catálogo de equipamiento.
+        /// </summary>
+        /// <param name="filtro"></param>
+        /// <param name="data"></param>
+        /// <returns></returns>
+        private static EquipamientosDto? Buscar(string filtro, EquipamientosDto? data)
+        {
+            if (data == null || string.IsNullOrWhiteSpace(filtro)) return null;
+            var result = new EquipamientosDto();
+
+
+            /// 1º Buscamos contenido literal en título (prevalece a residuos).
+            foreach (var item in data.Equipamientos!)
+			{
+                if (item.Titulo!.ToLowerInvariant().Contains(filtro.ToLowerInvariant()))
+                {
+                    result.Equipamientos!.Add(item);
+                } 
+			}
+            /// 2º Si no existe resultados, realizamos una búsqueda en contenido de residuos admitidos.
+            if (result.Equipamientos!.Any() == false)
+            {
+                foreach (var item in data.Equipamientos!)
+                {
+                    if (item.Residuos.ToUpperInvariant().Contains(filtro.ToUpperInvariant()))
+                    {
+                        if (result.Equipamientos!.Contains(item) == false)
+                        {
+                            result.Equipamientos.Add(item);
+                        }
+                    }
+                }
+
+            }           
+            return result;
         }
         #endregion
 
@@ -91,13 +130,13 @@ namespace Reciclaje.Info.Server.Controllers
         {
             if (tipologia == null) throw new ArgumentNullException(nameof(tipologia));
             Uri endpoint = new Uri(BaseUriApi, _config[tipologia.ToString()]);
-            return await invokeApiExterna(endpoint);
+            return await GetOpenData(endpoint);
         }
         
         #endregion
 
 
-        private async Task<ActionResult<GeoAtomDto>> invokeApiExterna(Uri? endpoint)
+        private async Task<ActionResult<GeoAtomDto>> GetOpenData(Uri? endpoint)
         {
             if (endpoint == null) throw new ArgumentNullException(nameof(endpoint));
             try

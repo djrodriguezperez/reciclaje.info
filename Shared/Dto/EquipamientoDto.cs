@@ -4,8 +4,12 @@ namespace Reciclaje.Info.Shared.Dto
 {
     public class EquipamientosDto
     {
+        public EquipamientosDto()
+        {
+            Equipamientos = new List<Equipamiento>();
+        }
         [JsonPropertyName("Equipamientos")]
-        public IEnumerable<Equipamiento>? Equipamientos { get; set; }        
+        public List<Equipamiento>? Equipamientos { get; set; }        
     }
 
     public class Equipamiento
