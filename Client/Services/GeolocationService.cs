@@ -5,7 +5,7 @@ using Microsoft.JSInterop;
 namespace Reciclaje.Info.Client.Services
 {
     public class GeolocationService : IGeolocationService
-    {
+    {     
         IJSRuntime jsRuntime;
         private WindowNavigatorGeolocation? geolocationWrapper;
         private GeolocationResult? currentPosition;
@@ -28,12 +28,12 @@ namespace Reciclaje.Info.Client.Services
             var window = await jsRuntime.Window();
             var navigator = await window.Navigator();
             geolocationWrapper = navigator.Geolocation;
-            currentPosition = (await geolocationWrapper.GetCurrentPosition(new PositionOptions()
-            {
-                EnableHighAccuracy = false,
-                MaximumAgeTimeSpan = TimeSpan.FromHours(1),
-                TimeoutTimeSpan = TimeSpan.FromMinutes(1)
-            }));
+            currentPosition = (await geolocationWrapper.GetCurrentPosition((new PositionOptions()
+            {                 
+                EnableHighAccuracy = true,
+                MaximumAgeTimeSpan = TimeSpan.FromHours(0),
+                TimeoutTimeSpan = TimeSpan.FromSeconds(5)
+            })));
             return currentPosition;
         }
 

@@ -16,128 +16,194 @@
 </MudPaper>
 
 @code {
-	
+
 	[Parameter] public GeoAtomDto? GeoDatos { get; set; }
 	private Map? _map;	
-	private LatLng location = new LatLng();
+	private LatLng location = new LatLng() { Lat = 40.42094223941673F, Lng = -3.688429841397024F };  // Default Madrid Centro
 	private GeolocationResult? geolocalizacion = new GeolocationResult();
 
-	
-	
+
+	protected override async Task OnAfterRenderAsync(bool firstRender)
+	{
+		if (firstRender)
+		{
+
+		}		
+		await base.OnAfterRenderAsync(firstRender);
+	}
 
 
 	protected override async Task OnInitializedAsync()
 	{
+		InicializarMapaAsync();
+		await TryGetCurrentLocationAsync();
+		await CargarMarcadoresAsync();
+		await MostrarNotificaciones();
+	}
 
-		//40.42094223941673, -3.688429841397024
-		location = new LatLng() { Lat = 40.42094223941673F, Lng = -3.688429841397024F }; 
-			
-		
+
+	private async Task TryGetCurrentLocationAsync()
+	{
+
+		geolocalizacion =  await geoService.GetCurrentPosition();
+		if (geolocalizacion!.Error?.Code > 0)
+		{			
+			var contenido = string.Format("No hemos logrado obtener la geolocalizacón del dispositivo: <br/> {0}-{1}",geolocalizacion.Error.CodeEnum.ToString(), geolocalizacion.Error.Message);
+			ShowDialog("Advertencia!",contenido, MudBlazor.Color.Warning);
+		}
+		else
+		{
+			location = new LatLng() { Lat = (float)geolocalizacion.Location.Coords.Latitude, Lng = (float)geolocalizacion.Location.Coords.Longitude};
+		}
+		if (_map != null)
+		{
+			/// Agregamos el marcador especial de la ubicacion del dispositivo.
+			await CargarMarcadorDispositivoAsync(location);
+			var point = new PointF( location.Lat,location.Lng);
+			_map.PanTo(position:point, animate: true, duration: 1f);
+		}
+
+
+	}
+	private void InicializarMapaAsync()
+	{
+
+		/// Inicializamos objeto Map OSM (OpenStreepMap)
 		_map = new Map(jsRuntime)
-			{
-				Center = location,				
-				Zoom =16f				
-			};
+				{
+					Center = location,				
+					Zoom =15f				
+				};
 
 		_map.OnInitialized += () =>
 		{
 			_map.AddLayer(new TileLayer
-				{
-					UrlTemplate = "https://a.tile.openstreetmap.org/{z}/{x}/{y}.png",
-					Attribution = "&copy; <a href=\"https://www.openstreetmap.org/copyright\">OpenStreetMap</a> contributors. [Reciclaje.Info 2022]",
-				});
-			
+					{
+						UrlTemplate = "https://a.tile.openstreetmap.org/{z}/{x}/{y}.png",
+						Attribution = "&copy; <a href=\"https://www.openstreetmap.org/copyright\">OpenStreetMap</a> contributors. [Reciclaje.Info 2022]",
+					});
 		};
 
-
-
-
-		Snackbar.Clear();
-		@if (GeoDatos != null && GeoDatos.entries.Any())
-		{
-			Snackbar.Add(string.Format("Total de elementos geolozalizados: {0}",GeoDatos.entries.Count()), Severity.Success);
-		}
-		else
-		{
-			Snackbar.Add(string.Format("Opps! No hemos logrado recuperar información del conjunto de datos abiertos!"), Severity.Error);
-		}
-
-
-
-		geolocalizacion =  await geoService.GetCurrentPosition();
-		//40.47469489936393, -3.583934566245661
-
-		if (geolocalizacion!.Error?.Code > 0)
-		{
-			ShowDialogError(geolocalizacion);		}
-		else
-		{
-			location = new LatLng() { Lat = (float)geolocalizacion.Location.Coords.Latitude, Lng = (float)geolocalizacion.Location.Coords.Longitude};
-
-		}
-
-
-
-		var _circle = new Circle
-            {
-                Position = location,
-                Radius = 10f,
-                Popup = new Popup
-                {
-                     Content = "Tu dispositivo esta aquí!"
-                }
-
-            };
-
-		var _markerCurrentLocation = new Marker(location)
-        {
-            Draggable = true,
-            Title = "Posición Dispositivo",
-            Popup = new Popup { Content = string.Format("Tu localización es: {0:0.00}° lat, {1:0.00}° lng", location.Lat, location.Lng) },
-            Tooltip = new Tooltip { Content = "Tu dispositivo esta aquí!" }
-
-        };
-		_map.AddLayer(_circle);
-		_map.AddLayer(_markerCurrentLocation);
-
-
-		foreach (var item in GeoDatos!.entries)
-		{
-			var _marker = CreateGeoMarker(item, GeoDatos.title , GeoDatos.link);
-			_map.AddLayer(_marker);
-		}
-		var point = new PointF( location.Lat,location.Lng);
-		_map.PanTo(position:point, animate: true, duration: 10f);
-		await base.OnInitializedAsync();
-
-
-
 	}
-
-	private Marker CreateGeoMarker(Entry item, string titulo, string enlace)
+	private async Task MostrarNotificaciones()
 	{
-
-		var _lat = float.Parse(item.geolat!, CultureInfo.InvariantCulture);
-		var _long = float.Parse(item.geolong! , CultureInfo.InvariantCulture);
-
-		var _location = new LatLng() { Lat = _lat , Lng = _long }; 
-		var _marker = new Marker(_location)
-        {		
-            Title = titulo,
-            Popup = new Popup { Content = string.Format("Info: {0} \n Enlace: {1}", item.title, enlace ) }
-            //Tooltip = new Tooltip { Content = "Tu dispositivo esta aquí!" }
-
-        };
-		return _marker;
+		await Task.Run(()=>
+		{
+		/// Lanzamos notificacion del total de elementos geolocalizados
+			Snackbar.Clear();
+			if (GeoDatos != null && GeoDatos.entries.Any())
+			{
+				Snackbar.Add(string.Format("Total de elementos geolozalizados: {0}",GeoDatos.entries.Count()), Severity.Success);
+			}
+			else
+			{
+				Snackbar.Add(string.Format("Opps! No hemos logrado recuperar información del conjunto de datos abiertos!"), Severity.Error);
+			}
+		});
 	}
-	private void ShowDialogError(GeolocationResult geolocalizacion)
-    {
-        var parameters = new DialogParameters();
-        parameters.Add("Contenido", string.Format("Error en la Geolocalizacón del dispositivo: {0}-{1}",
-            geolocalizacion.Error.CodeEnum.ToString(), geolocalizacion.Error.Message));
-        parameters.Add("Color", MudBlazor.Color.Error);
-        parameters.Add("TextoBoton", "Ok");
-			dialogService.Show<DialogoComponent>("Información", parameters);
+
+
+	private async Task CargarMarcadorDispositivoAsync( LatLng location)
+	{
+		await Task.Run(()=>
+		{
+			var _circle = new Circle
+			{
+				Position = location,
+				Radius = 1000f,
+				Fill = true,				
+				FillColor = System.Drawing.Color.Gray,
+				StrokeWidth=0,
+				Popup = new Popup
+				{
+				  Content = "Su dispositivo se localiza en un radio 1000 metros"
+				}
+			};
+
+			var _position = new Circle
+			{
+				Position = location,
+				Radius = 25f,
+				StrokeColor = System.Drawing.Color.Red,
+				Fill = true,				
+				FillColor = System.Drawing.Color.Red,				
+				Popup = new Popup { Content = string.Format("Tu localización es: {0:0.00}° lat, {1:0.00}° lng", location.Lat, location.Lng) },
+						Tooltip = new Tooltip { Content = "Tu dispositivo esta aquí!" }
+
+					};
+
+
+
+			var _markerCurrentLocation = new Marker(location)
+			{
+				Title = "Tu posición!",
+				Icon = new Icon() {
+					Url = "https://reciclaje.azurewebsites.net/content/img/Icon-Reciclaje-Info/Icon-Reciclaje-Info_32x32.png",
+					Size =  new System.Drawing.Size(25, 41)
+				},
+				IsInteractive = true,
+				UseAutoPan=true,
+
+			Popup = new Popup { Content = string.Format("Tu localización es: {0:0.00}° lat, {1:0.00}° lng", location.Lat, location.Lng) },
+						Tooltip = new Tooltip { Content = "Tu dispositivo esta aquí!" }
+
+					};
+			if (_map != null)
+			{ 
+				_map.AddLayer(_circle);
+				_map.AddLayer(_position);		
+			}
+		});		
+	}
+
+	private async Task CargarMarcadoresAsync()
+	{
+		await Task.Run(()=>
+		{
+			if (_map != null)
+			{
+				foreach (var item in GeoDatos!.entries)
+				{
+					var _marker = CrearMarcador(item, GeoDatos.title , GeoDatos.link);
+					if (_marker != null)
+					{
+						_map.AddLayer(_marker);
+					}
+					
+				}
+			}
+		});
+	}
+
+	private Marker? CrearMarcador(Entry item, string titulo, string enlace)
+	{
+		
+			float _lat, _long;
+			bool bLat = float.TryParse(item.geolat,NumberStyles.Any, CultureInfo.InvariantCulture, out _lat);
+			bool bLong = float.TryParse(item.geolong!, NumberStyles.Any, CultureInfo.InvariantCulture, out _long);
+			if (bLat && bLong)
+			{
+				var _location = new LatLng() { Lat = _lat , Lng = _long }; 
+				var _marker = new Marker(_location)
+				{		
+					Title = titulo,
+					Popup = new Popup { Content = string.Format("Tipo: {0} <hr> Información: {1}. <br/> <a target='_blank' href='{2}'>Más Información...</a>", titulo, item?.title,enlace)},
+					Tooltip = new Tooltip { Content = string.Format ("GeoRSSPoint: {0}",item?.georsspoint)}
+				};
+				return _marker;
+			}
+			return null;			
+	}
+
+
+		
+	private void ShowDialog(string titulo,string contenido,MudBlazor.Color color)
+	{
+		var parameters = new DialogParameters();
+		parameters.Add("Contenido", contenido);
+		parameters.Add("Color", color);
+		parameters.Add("TextoBoton", "Ok");
+		dialogService.Show<DialogoComponent>(titulo , parameters);
 
 	}
 
