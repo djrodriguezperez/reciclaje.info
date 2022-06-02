@@ -39,17 +39,7 @@ namespace Reciclaje.Info.Server.Controllers
         {
             if (tipologia == null) throw new ArgumentNullException(nameof(tipologia));
             Uri endpoint = new Uri(BaseUriApi, _config[tipologia.ToString()]);
-            if (tipologia == PuntosLimpiosType.Fijos) // Caso de Uso Especial - Invoca la API y devuelve objeo Json
-            {
-                var httpClient = _httpClientFactory.CreateClient();
-                var result = await httpClient.GetFromJsonAsync<PuntosLimpiosFijosDto>(endpoint);
-                return new JsonResult(result);
-            }
-            else // Geo 
-            {               
-                return await GetOpenData(endpoint);
-            }
-           
+            return await GetGeoOpenData(endpoint);
         }
         #endregion
 
@@ -70,11 +60,8 @@ namespace Reciclaje.Info.Server.Controllers
             string jsonFile = _config["Equipamiento"]; // Procesar Previamente
             string jsonString = await System.IO.File.ReadAllTextAsync(jsonFile);
             EquipamientosDto? data = JsonSerializer.Deserialize<EquipamientosDto>(jsonString.NormalizarJson());
-            EquipamientosDto resultDto = new EquipamientosDto();
-                                                   
+            EquipamientosDto resultDto = new EquipamientosDto();                                                   
             resultDto = Buscar(filtro, data)!;
-
-
             return resultDto;
             
     
@@ -130,13 +117,13 @@ namespace Reciclaje.Info.Server.Controllers
         {
             if (tipologia == null) throw new ArgumentNullException(nameof(tipologia));
             Uri endpoint = new Uri(BaseUriApi, _config[tipologia.ToString()]);
-            return await GetOpenData(endpoint);
+            return await GetGeoOpenData(endpoint);
         }
         
         #endregion
 
 
-        private async Task<ActionResult<GeoAtomDto>> GetOpenData(Uri? endpoint)
+        private async Task<ActionResult<GeoAtomDto>> GetGeoOpenData(Uri? endpoint)
         {
             if (endpoint == null) throw new ArgumentNullException(nameof(endpoint));
             try
