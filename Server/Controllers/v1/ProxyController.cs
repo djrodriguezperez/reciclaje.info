@@ -11,9 +11,7 @@ namespace Reciclaje.Info.Server.Controllers
     [ApiController]
     [Route("api/v1/[controller]")]
     public class ProxyController : ControllerBase
-    {
-        private readonly ILogger<ProxyController> _logger;
-        private readonly IHttpClientFactory _httpClientFactory;
+    {       
         private readonly IConfiguration _config;
         private readonly Uri BaseUriApi;
 
@@ -24,18 +22,18 @@ namespace Reciclaje.Info.Server.Controllers
         /// </summary>
         /// <param name="logger"></param>
         /// <param name="httpClientFactory"></param>
-        public ProxyController(ILogger<ProxyController> logger, IHttpClientFactory httpClientFactory, IConfiguration configuration)
-        {
-            _logger = logger;
-            _httpClientFactory = httpClientFactory;
+        public ProxyController(IConfiguration configuration)
+        {            
             _config = configuration;
             BaseUriApi = new Uri(_config[BaseUriParam]);
         }
 
         #region Puntos Limpios
         [HttpGet]
-        [Route("pl/{tipologia}/{filtro?}", Name ="")]
-        public async Task<ActionResult<GeoAtomDto>> GetPuntosLimpiosAsync(PuntosLimpiosType? tipologia, string? filtro)
+        [Route("pl/{tipologia}")]
+        [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(GeoAtomDto))]
+        [ProducesResponseType(StatusCodes.Status404NotFound)]
+        public async Task<ActionResult<GeoAtomDto>> GetPuntosLimpiosAsync(PuntosLimpiosType? tipologia)
         {
             if (tipologia == null) throw new ArgumentNullException(nameof(tipologia));
             Uri endpoint = new Uri(BaseUriApi, _config[tipologia.ToString()]);
@@ -131,13 +129,12 @@ namespace Reciclaje.Info.Server.Controllers
                 var geoResult = await GeoParserCustom.DeserializeGeoFeedToDtoAsync(endpoint);
 
                 if (geoResult != null)
-                    return Ok(geoResult);
+                    return geoResult;
                 else
-                    return NoContent();
+                    return StatusCode(StatusCodes.Status404NotFound); 
             }
-            catch (Exception e)
-            {
-                _logger.LogError(e.Message);
+            catch (Exception)
+            {                
                 return StatusCode(StatusCodes.Status500InternalServerError);
             }
 

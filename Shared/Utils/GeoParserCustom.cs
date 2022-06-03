@@ -4,8 +4,8 @@ namespace Reciclaje.Info.Shared.Utils
 {
     /// <summary>
     /// Parser personalizado para la deserialización del microformato utilizado para el marcado de coordenadas 
-    /// geográficas (GEO) en el portal de datos abiertos de Ayto. Madrid.
-    /// El formato GEO está basado en la especificación estandar ATOM https://www.w3.org/2005/Atom.
+    /// geográficas (GeoRSS-Simple) en el portal de datos abiertos de Ayto. Madrid.
+    /// El formato GeoRSS-Simple está basado en la especificación estandar ATOM https://www.w3.org/2005/Atom.
     /// A partir de la URL del recuros GEO, realizar una lectura mediante LINQ-XML de los elementos en un objeto C#.
     /// </summary>
     public class GeoParserCustom

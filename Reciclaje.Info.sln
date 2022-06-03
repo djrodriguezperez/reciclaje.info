@@ -9,6 +9,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Reciclaje.Info.Server", "Se
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Reciclaje.Info.Shared", "Shared\Reciclaje.Info.Shared.csproj", "{911C15C6-67DA-4DFE-AF65-32A474D524BD}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestProject.Reciclaje.Info", "TestProject.Reciclaje.Info\TestProject.Reciclaje.Info.csproj", "{F51194F3-6F4C-410C-AA54-7D0110981C0A}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,6 +29,10 @@ Global
 		{911C15C6-67DA-4DFE-AF65-32A474D524BD}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{911C15C6-67DA-4DFE-AF65-32A474D524BD}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{911C15C6-67DA-4DFE-AF65-32A474D524BD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F51194F3-6F4C-410C-AA54-7D0110981C0A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F51194F3-6F4C-410C-AA54-7D0110981C0A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F51194F3-6F4C-410C-AA54-7D0110981C0A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F51194F3-6F4C-410C-AA54-7D0110981C0A}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
