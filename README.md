@@ -1,13 +1,13 @@
 # <img src="https://reciclaje.azurewebsites.net/content/img/Icon-Reciclaje-Info.svg" width="35" style="float:left;"> Reciclaje.info [0.1.0-Alpha]
-<strong>Recicjale.info </strong>  es un sistema consumidor de datos abiertos que permite al ciudadano la identificación y geolocalización de equipamiento, contenedores y puntos de interés para la recogida o depósito selectivo de residuos.
+<strong>Recicjale.info </strong> es un sistema consumidor de datos abiertos que permite al ciudadano la identificación y geolocalización de equipamiento, contenedores y puntos de interés para la recogida o depósito selectivo de residuos.
 
-Es una implementación de aplicación web progresiva (PWA) bajo nuevos estándares de desarrollo web utilizando el framework open-source Blazor WebAssembly Net6.0.
-
+Es una implementación de aplicación web progresiva (PWA) bajo estándares de desarrollo web utilizando el framework open-source Blazor WebAssembly y la biblioteca de componentes MudBlazor.
+<p align="center">
+ <img width="550" height="400" src="https://user-images.githubusercontent.com/100622467/171995509-e4dcdd58-5638-4aa2-a262-6a8d37378ab8.png">
+</p>
 Recicjale.info is an open data consumer system that allows the identification and geolocation of equipment, containers and points of interest for the selective collection of waste. The implementation is a progressive web application (PWA) under new web development standards using the open-source framework Blazor WebAssembly Net 6.0.
 
 Demo: https://reciclaje.azurewebsites.net/  | http://www.reciclaje.info/ | http://reciclaje.info/
-
-
 ## Conjunto de Datos [Open Data]
 - Portal dedicado a promover el acceso a los datos del gobierno municipal e impulsar el desarrollo de herramientas creativas para atraer y servir a la ciudadanía.
  https://datos.madrid.es/portal/site/egob. 
