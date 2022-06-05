@@ -11,7 +11,7 @@ builder.RootComponents.Add<App>("#app");
 builder.RootComponents.Add<HeadOutlet>("head::after");
 
 builder.Services.AddScoped(sp => new HttpClient { BaseAddress = new Uri(builder.HostEnvironment.BaseAddress) });
-
+// Configuración Objeto SnackBar de MudBlazor (Global)
 builder.Services.AddMudServices(config =>
 {
     config.SnackbarConfiguration.PositionClass = Defaults.Classes.Position.BottomLeft;
@@ -29,7 +29,5 @@ builder.Services.AddScoped<IGeolocationService,GeolocationService>();
 builder.Services.AddScoped<IGenericGeoService<PuntosLimpiosType>, PuntoLimpioService>();
 builder.Services.AddScoped<IGenericGeoService<ContenedorType>, ContenedorService>();
 builder.Services.AddScoped<IEquipamientoService, EquipamientoService>();
-
-
 
 await builder.Build().RunAsync();

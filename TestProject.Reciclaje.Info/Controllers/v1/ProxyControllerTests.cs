@@ -1,8 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
-using Microsoft.Extensions.Logging;
-using System.Configuration;
-using System.Net.Http.Json;
+using Reciclaje.Info.Shared.Dto;
 
 namespace Reciclaje.Info.Server.Controllers.Tests
 {
@@ -10,8 +8,7 @@ namespace Reciclaje.Info.Server.Controllers.Tests
     public class ProxyControllerTests
     {
         private  IConfiguration _configuration;
-
-        
+                
         [TestInitialize]
         public void Initialize()
         {
@@ -29,8 +26,6 @@ namespace Reciclaje.Info.Server.Controllers.Tests
             Assert.IsNotNull(result);
             Assert.IsInstanceOfType(result, typeof(ActionResult<GeoAtomDto>));
             Assert.IsTrue(result.Value?.entries?.Count() > 0);
-
-
         }
         [TestMethod()]
         public async Task GetPuntosLimpiosMovilesAsyncTest()
@@ -81,9 +76,6 @@ namespace Reciclaje.Info.Server.Controllers.Tests
             Assert.IsNotNull(result);
             Assert.IsInstanceOfType(result, typeof(ActionResult<GeoAtomDto>));
             Assert.IsTrue(result.Value?.entries?.Count() > 0);
-
-
-
         }
 
         [TestMethod()]
@@ -93,8 +85,7 @@ namespace Reciclaje.Info.Server.Controllers.Tests
             var result = await proxy.GetEquipamientoAsync("botellas");
             //Assert
             Assert.IsNotNull(result);
-            Assert.IsTrue(result.Value?.Equipamientos?.Count() > 0);
-            
+            Assert.IsTrue(result.Value?.Equipamientos?.Count() > 0);            
          }
 
         [TestMethod()]
@@ -105,11 +96,6 @@ namespace Reciclaje.Info.Server.Controllers.Tests
             //Assert
             Assert.IsNotNull(result);
             Assert.IsTrue(result.Value?.Equipamientos?.Count() == 0);
-            
-
-
         }
-
-
     }
 }

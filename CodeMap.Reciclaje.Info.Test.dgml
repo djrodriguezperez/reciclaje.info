@@ -1,60 +1,53 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <DirectedGraph DataVirtualized="True" GraphDirection="RightToLeft" Layout="Sugiyama" ZoomLevel="-1" xmlns="http://schemas.microsoft.com/vs/2009/dgml">
   <Nodes>
-    <Node Id="27d25a26-6573-48cd-9b68-76031474d8711" Category="Comment" Bounds="242.629949035644,-43.9862472944185,238.62,25.96" Label="Inyección de Dependencia IConfiguration" UseManualLocation="True" />
-    <Node Id="@10" Category="CodeSchema_Method" Bounds="100.398376668294,175.463781427963,153.573333333333,25.96" CodeSchemaProperty_IsPublic="True" DelayedCrossGroupLinksState="Fetched" Label="GetContendoresAsync" />
-    <Node Id="@11" Category="CodeSchema_Method" Bounds="100.398370615641,287.383994953354,163.016666666667,25.96" CodeSchemaProperty_IsPublic="True" DelayedCrossGroupLinksState="Fetched" Label="GetPuntosLimpiosAsync" />
-    <Node Id="@13" Category="CodeSchema_Method" Bounds="213.68206237793,12.8629458017424,118.02,25.96" CodeSchemaProperty_IsConstructor="True" CodeSchemaProperty_IsPublic="True" CodeSchemaProperty_IsSpecialName="True" DelayedCrossGroupLinksState="Fetched" Label="ProxyController" UseManualLocation="True" />
-    <Node Id="@14" Category="CodeSchema_Method" Bounds="100.398386383057,231.423894953354,158.95,25.96" CodeSchemaProperty_IsPublic="True" DelayedCrossGroupLinksState="Fetched" Label="GetEquipamientoAsync" />
-    <Node Id="@15" Category="CodeSchema_Method" Bounds="318.749578857422,179.178592028559,160.95,25.96" CodeSchemaProperty_IsPrivate="True" DelayedCrossGroupLinksState="Fetched" Label="GetGeoOpenDataAsync" UseManualLocation="True" />
-    <Node Id="@16" Category="CodeSchema_Method" Bounds="324.308401966153,263.893832507075,144.663333333333,25.96" CodeSchemaProperty_IsPrivate="True" CodeSchemaProperty_IsStatic="True" CommonLabel="SearchEquipamiento" DelayedCrossGroupLinksState="Fetched" Icon="CodeSchema_Method" Label="SearchEquipamiento" UseManualLocation="True" />
-    <Node Id="@17" Category="CodeSchema_Field" Bounds="375.038399690789,72.5071042416431,75.0733333333333,25.96" CodeSchemaProperty_IsPrivate="True" DelayedCrossGroupLinksState="Fetched" Label="_config" UseManualLocation="True" />
-    <Node Id="@18" Category="CodeSchema_Field" Bounds="94.636602935791,68.8230458017424,94.38,25.96" CodeSchemaProperty_IsPrivate="True" DelayedCrossGroupLinksState="Fetched" Label="BaseUriApi" UseManualLocation="True" />
-    <Node Id="@19" Category="CodeSchema_Field" Bounds="88.4508665974935,363.344183039291,109.713333333333,25.96" CodeSchemaProperty_IsPrivate="True" CodeSchemaProperty_IsStatic="True" DelayedCrossGroupLinksState="Fetched" Label="BaseUriParam" UseManualLocation="True" />
-    <Node Id="@2" Category="CodeSchema_Assembly" Bounds="20.3983706156411,-163.986547294419,520.851578420003,613.571090148163" DelayedChildNodesState="Incomplete" DelayedCrossGroupLinksState="Fetched" FetchedChildrenCount="6" FilePath="$(4722dc09-7a4e-401f-a0f5-3cf2ff2c2fa8.OutputPath)" Group="Expanded" Label="Reciclaje.Info.Server.dll" />
-    <Node Id="@4" Category="CodeSchema_Namespace" Bounds="40.3983706156411,-123.986447294419,480.851578420003,553.570890148163" DelayedChildNodesState="Fetched" DelayedCrossGroupLinksState="Fetched" FetchedChildrenCount="1" Group="Expanded" Label="Reciclaje‎.Info‎.Server‎.Controllers" />
-    <Node Id="@6" Category="CodeSchema_Class" Bounds="60.3983706156411,-83.9863472944186,440.851578420003,493.570690148163" CodeSchemaProperty_IsPublic="True" CommonLabel="ProxyController" DelayedChildNodesState="Incomplete" DelayedCrossGroupLinksState="Fetched" FetchedChildrenCount="9" Group="Expanded" Icon="CodeSchema_Class" Label="ProxyController" />
-    <Node Id="Constante" Category="Comment" Bounds="270.840512084961,363.624242853744,73.65,25.96" UseManualLocation="True" />
-    <Node Id="MétodosGET" Category="Category4" Bounds="80.3983706156411,135.463681427963,203.016666666667,197.880413525391" Group="Expanded" Label="Métodos GET" UseManualLocation="True">
-      <Category Ref="Category1" />
-    </Node>
+    <Node Id="@10" Category="CodeSchema_Method" Bounds="487.467840576172,306.027962266562,204.2,25.96" CodeSchemaProperty_IsPublic="True" DelayedCrossGroupLinksState="Fetched" Label="GetContenedoresFijosAsyncTest" UseManualLocation="True" />
+    <Node Id="@11" Category="CodeSchema_Method" Bounds="499.749514867453,177.664630432129,204.136666666667,25.96" CodeSchemaProperty_IsPublic="True" DelayedCrossGroupLinksState="Fetched" Label="GetContenedoresPilasAsyncTest" UseManualLocation="True" />
+    <Node Id="@12" Category="CodeSchema_Method" Bounds="480.222840576172,48.0824626877051,194.69,25.96" CodeSchemaProperty_IsPublic="True" DelayedCrossGroupLinksState="Fetched" Label="GetEquipamientoKOAsyncTest" UseManualLocation="True" />
+    <Node Id="@13" Category="CodeSchema_Method" Bounds="499.749514867453,121.704516906738,195.51,25.96" CodeSchemaProperty_IsPublic="True" DelayedCrossGroupLinksState="Fetched" Label="GetEquipamientoOKAsyncTest" UseManualLocation="True" />
+    <Node Id="@14" Category="CodeSchema_Method" Bounds="484.884491984049,481.988057585166,207.366666666667,25.96" CodeSchemaProperty_IsPublic="True" DelayedCrossGroupLinksState="Fetched" Label="GetPuntosLimpiosFijosAsyncTest" UseManualLocation="True" />
+    <Node Id="@15" Category="CodeSchema_Method" Bounds="470.414522501628,426.027957585166,224.306666666667,25.96" CodeSchemaProperty_IsPublic="True" DelayedCrossGroupLinksState="Fetched" Label="GetPuntosLimpiosMovilesAsyncTest" UseManualLocation="True" />
+    <Node Id="@16" Category="CodeSchema_Method" Bounds="456.872825317383,362.027957585166,243.39,25.96" CodeSchemaProperty_IsPublic="True" DelayedCrossGroupLinksState="Fetched" Label="GetPuntosLimpiosProximidadAsyncTest" UseManualLocation="True" />
+    <Node Id="@17" Category="CodeSchema_Method" Bounds="110.824522501628,244.839044126557,79.4866666666667,25.96" CodeSchemaProperty_IsPublic="True" DelayedCrossGroupLinksState="Fetched" Label="Initialize" UseManualLocation="True" />
+    <Node Id="@2" Category="CodeSchema_Assembly" AssemblyTimestamp="06/04/2022 17:26:15" Bounds="-3.14048322041816,-71.9178373122949,774.085005722045,639.866194897461" CodeSchemaProperty_StrongName="TestProject.Reciclaje.Info, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" DelayedChildNodesState="Incomplete" DelayedCrossGroupLinksState="Fetched" FetchedChildrenCount="4" FilePath="$(f51194f3-6f4c-410c-aa54-7d0110981c0a.OutputPath)" Group="Expanded" Label="TestProject.Reciclaje.Info.dll" />
+    <Node Id="@4" Category="CodeSchema_Namespace" Bounds="16.8595167795818,-31.9177373122949,734.085005722045,579.865994897461" DelayedChildNodesState="Fetched" DelayedCrossGroupLinksState="Fetched" FetchedChildrenCount="1" Group="Expanded" Label="Reciclaje‎.Info‎.Server‎.Controllers‎.Tests" />
+    <Node Id="@6" Category="CodeSchema_Class" Bounds="36.8595167795818,8.08236268770509,694.085005722046,519.865794897461" CodeSchemaProperty_IsPublic="True" DelayedChildNodesState="Fetched" DelayedCrossGroupLinksState="Fetched" FetchedChildrenCount="11" Group="Expanded" Label="ProxyControllerTests" />
+    <Node Id="@7" Category="CodeSchema_Method" Bounds="56.8595167795818,158.954587492036,143.666666666667,25.96" CodeSchemaProperty_IsConstructor="True" CodeSchemaProperty_IsPublic="True" CodeSchemaProperty_IsSpecialName="True" DelayedCrossGroupLinksState="Fetched" Label="ProxyControllerTests" UseManualLocation="True" />
+    <Node Id="@8" Category="CodeSchema_Field" Bounds="64.2545517985026,342.055696043061,112.936666666667,25.96" CodeSchemaProperty_IsPrivate="True" DelayedCrossGroupLinksState="Fetched" Label="_configuration" UseManualLocation="True" />
+    <Node Id="@9" Category="CodeSchema_Method" Bounds="464.191189168294,250.067862266562,246.753333333333,25.96" CodeSchemaProperty_IsPublic="True" DelayedCrossGroupLinksState="Fetched" Label="GetContenedoresAceiteUsadoAsyncTest" UseManualLocation="True" />
+    <Node Id="IncializaciónDeLaClaseProxyControllerTest." Category="Comment" Bounds="181.526181233725,52.1144874920359,245.223333333333,73.8400000000001" Label="Incialización de la clase ProxyControllerTest. Se instancia un objeto _configuration que se inyectará a todas las llamadas MethodTest" UseManualLocation="True" />
+    <Node Id="d90f2625-b06a-4ca8-8b93-642a70cba98e1" Category="Comment" Bounds="66.6110933430988,418.482094358491,213.123333333333,57.88" Label="Todas las pruebas unitarias definidas utilizan la instancia del objeto [_configuration] para su ejecución" UseManualLocation="True" />
   </Nodes>
   <Links>
-    <Link Source="27d25a26-6573-48cd-9b68-76031474d8711" Target="@17" Bounds="367.581848038922,-18.0262472944185,35.7636205505915,82.2793521254046" />
-    <Link Source="@10" Target="@15" Category="CodeSchema_Calls" Bounds="253.971710001627,189.728444043391,55.7791281717372,0.933207876416077" Weight="1" />
-    <Link Source="@10" Target="@17" Category="CodeSchema_FieldRead" Bounds="207.201672366448,102.039551929945,167.099004368758,72.2649676684431" Weight="1" />
-    <Link Source="@10" Target="@18" Category="CodeSchema_FieldRead" Bounds="148.981890158962,102.460459129072,23.8874329490444,71.8440638811823" Weight="1" />
-    <Link Source="@11" Target="@15" Category="CodeSchema_Calls" Bounds="207.975510645161,209.150050661513,157.123702697633,78.2339477515724" Weight="1" />
-    <Link Source="@11" Target="@17" Category="CodeSchema_FieldRead" Bounds="195.918868568527,104.583909624971,196.045008609762,181.640823498808" Weight="1" />
-    <Link Source="@11" Target="@18" Category="CodeSchema_FieldRead" Bounds="145.835629247646,102.772142797523,33.6875467794606,183.452584375328" Weight="1" />
-    <Link Source="@13" Target="27d25a26-6573-48cd-9b68-76031474d8711" Bounds="293.069441646227,-13.1910336934901,40.9022975056079,26.0539794952324" />
-    <Link Source="@13" Target="@17" Category="CodeSchema_FieldRead" Bounds="303.133959509353,38.8229458017424,70.7203594691205,30.1541740958593" Weight="2">
-      <Category Ref="CodeSchema_FieldWrite" />
-    </Link>
-    <Link Source="@13" Target="@18" Category="CodeSchema_FieldWrite" Bounds="180.456141097539,38.8229458017424,61.8815497985852,26.4615103912496" Weight="1" />
-    <Link Source="@14" Target="@16" Category="CodeSchema_Calls" Bounds="258.724597445389,256.215174320649,56.8022033233544,8.50852199785857" Weight="1" />
-    <Link Source="@14" Target="@17" Category="CodeSchema_FieldRead" Bounds="199.022265245499,103.517432635959,186.957326225041,126.74720048782" Weight="1" />
+    <Link Source="@10" Target="@8" Category="CodeSchema_FieldRead" Bounds="186.164763345359,326.853693730377,301.303077230813,23.153212861646" Weight="1" />
+    <Link Source="@11" Target="@8" Category="CodeSchema_FieldRead" Bounds="167.225738579029,203.624630432129,396.605783555751,135.52095197647" Weight="1" />
+    <Link Source="@12" Target="@8" Category="CodeSchema_FieldRead" Bounds="148.462716459175,74.042463760376,408.933737961191,263.143042215192" Weight="1" />
+    <Link Source="@13" Target="@8" Category="CodeSchema_FieldRead" Bounds="156.176818847656,147.664520263672,411.354858398438,190.529449462891" Weight="1" />
+    <Link Source="@14" Target="@8" Category="CodeSchema_FieldRead" Bounds="172.74233079553,370.594705562209,372.428618654928,111.393352022957" Weight="1" />
+    <Link Source="@15" Target="@8" Category="CodeSchema_FieldRead" Bounds="186.032519426803,366.910238454743,325.14571786465,59.1177191304228" Weight="1" />
+    <Link Source="@16" Target="@8" Category="CodeSchema_FieldRead" Bounds="186.182667583662,357.891204056511,270.690157733721,11.8081344853139" Weight="1" />
+    <Link Source="@17" Target="@8" Category="CodeSchema_FieldWrite" Bounds="127.348963411903,270.799046020508,19.2341049100501,62.6529472192622" Weight="1" />
     <Link Source="@2" Target="@4" Category="Contains" FetchingParent="@2" />
     <Link Source="@4" Target="@6" Category="Contains" FetchingParent="@4" />
-    <Link Source="@6" Target="27d25a26-6573-48cd-9b68-76031474d8711" Category="Contains" />
+    <Link Source="@6" Target="@10" Category="Contains" FetchingParent="@6" />
+    <Link Source="@6" Target="@11" Category="Contains" FetchingParent="@6" />
+    <Link Source="@6" Target="@12" Category="Contains" FetchingParent="@6" />
     <Link Source="@6" Target="@13" Category="Contains" FetchingParent="@6" />
+    <Link Source="@6" Target="@14" Category="Contains" FetchingParent="@6" />
     <Link Source="@6" Target="@15" Category="Contains" FetchingParent="@6" />
     <Link Source="@6" Target="@16" Category="Contains" FetchingParent="@6" />
     <Link Source="@6" Target="@17" Category="Contains" FetchingParent="@6" />
-    <Link Source="@6" Target="@18" Category="Contains" FetchingParent="@6" />
-    <Link Source="@6" Target="@19" Category="Contains" FetchingParent="@6" />
-    <Link Source="@6" Target="Constante" Category="Contains" />
-    <Link Source="@6" Target="MétodosGET" Category="Contains" />
-    <Link Source="Constante" Target="@19" Bounds="207.16418686516,376.432992375397,63.6763252198009,0.108502063325773" />
-    <Link Source="MétodosGET" Target="@10" Category="Contains" />
-    <Link Source="MétodosGET" Target="@11" Category="Contains" />
-    <Link Source="MétodosGET" Target="@14" Category="Contains" />
+    <Link Source="@6" Target="@7" Category="Contains" FetchingParent="@6" />
+    <Link Source="@6" Target="@8" Category="Contains" FetchingParent="@6" />
+    <Link Source="@6" Target="@9" Category="Contains" FetchingParent="@6" />
+    <Link Source="@6" Target="IncializaciónDeLaClaseProxyControllerTest." Category="Contains" />
+    <Link Source="@6" Target="d90f2625-b06a-4ca8-8b93-642a70cba98e1" Category="Contains" />
+    <Link Source="@7" Target="@17" Bounds="131.998891497451,184.914585571289,13.0415212663314,51.2029119867646" />
+    <Link Source="@9" Target="@8" Category="CodeSchema_FieldRead" Bounds="185.810497368147,276.027862266562,335.882911043152,66.1828729628794" Weight="1" />
+    <Link Source="IncializaciónDeLaClaseProxyControllerTest." Target="@17" Bounds="168.434664171177,125.954484863281,102.111224062976,112.227641074306" />
   </Links>
   <Categories>
-    <Category Id="Category1" Label="Categoría 1" Background="#FFE51400" IsTag="True" />
-    <Category Id="Category4" Label="Categoría 4" Background="#FF1BA1E2" IsTag="True" />
     <Category Id="CodeSchema_Assembly" Label="Ensamblado" BasedOn="File" CanBeDataDriven="True" DefaultAction="Microsoft.Contains" Icon="CodeSchema_Assembly" NavigationActionLabel="Ensamblados" />
-    <Category Id="CodeSchema_Calls" Label="Llamadas" CanBeDataDriven="True" CanLinkedNodesBeDataDriven="True" IncomingActionLabel="Llamado por" OutgoingActionLabel="Llama a" />
     <Category Id="CodeSchema_Class" Label="Clase" BasedOn="CodeSchema_Type" CanBeDataDriven="True" DefaultAction="Node:Both:CodeSchema_Member" Icon="CodeSchema_Class" NavigationActionLabel="Clases" />
     <Category Id="CodeSchema_Field" Label="Campo" BasedOn="CodeSchema_Member" CanBeDataDriven="True" DefaultAction="Microsoft.Contains" Icon="CodeSchema_Field" NavigationActionLabel="Campos" />
     <Category Id="CodeSchema_FieldRead" Label="Lectura de campo" BasedOn="CodeSchema_FieldReference" CanBeDataDriven="True" CanLinkedNodesBeDataDriven="True" IncomingActionLabel="Leído por" OutgoingActionLabel="Lee campos" />
@@ -69,7 +62,7 @@
     <Category Id="File" Label="Archivo" CanBeDataDriven="True" DefaultAction="Microsoft.Contains" Icon="File" NavigationActionLabel="Archivos" />
   </Categories>
   <Properties>
-    <Property Id="Background" Label="Fondo" Description="Color de fondo" DataType="System.Windows.Media.Brush" />
+    <Property Id="AssemblyTimestamp" DataType="System.DateTime" />
     <Property Id="Bounds" DataType="System.Windows.Rect" />
     <Property Id="CanBeDataDriven" Label="CanBeDataDriven" Description="CanBeDataDriven" DataType="System.Boolean" />
     <Property Id="CanLinkedNodesBeDataDriven" Label="CanLinkedNodesBeDataDriven" Description="CanLinkedNodesBeDataDriven" DataType="System.Boolean" />
@@ -77,8 +70,7 @@
     <Property Id="CodeSchemaProperty_IsPrivate" Label="Privado" Description="Marca para indicar que el ámbito es Private." DataType="System.Boolean" />
     <Property Id="CodeSchemaProperty_IsPublic" Label="Público" Description="Marca para indicar que el ámbito es Public." DataType="System.Boolean" />
     <Property Id="CodeSchemaProperty_IsSpecialName" Label="Nombre especial" Description="Marca para indicar que algunos compiladores tratan el método de forma especial." DataType="System.Boolean" />
-    <Property Id="CodeSchemaProperty_IsStatic" Label="Estático" Description="Marca para indicar que el miembro es estático." DataType="System.Boolean" />
-    <Property Id="CommonLabel" DataType="System.String" />
+    <Property Id="CodeSchemaProperty_StrongName" Label="StrongName" Description="StrongName" DataType="System.String" />
     <Property Id="DataVirtualized" Label="Datos virtualizados" Description="Si es true, el gráfico puede contener nodos y vínculos que representan datos de los nodos o vínculos virtualizados (es decir, no creados realmente en el gráfico)." DataType="System.Boolean" />
     <Property Id="DefaultAction" Label="DefaultAction" Description="DefaultAction" DataType="System.String" />
     <Property Id="DelayedChildNodesState" Label="Estado de nodos secundarios retrasados" Description="No se especifica si el estado de los nodos secundarios retrasados no está especificado. NotFetched si el grupo contiene nodos secundarios no recuperados aún en el gráfico. Fetched si el grupo ya ha recuperado todos los nodos secundarios retrasados." DataType="Microsoft.VisualStudio.GraphModel.DelayedDataState" />
@@ -95,7 +87,6 @@
     <Property Id="IsContainment" DataType="System.Boolean" />
     <Property Id="IsEnabled" DataType="System.Boolean" />
     <Property Id="IsProviderRoot" Label="IsProviderRoot" Description="IsProviderRoot" DataType="System.Boolean" />
-    <Property Id="IsTag" DataType="System.Boolean" />
     <Property Id="Label" Label="Etiqueta" Description="Etiqueta Displayable de un objeto Annotatable." DataType="System.String" />
     <Property Id="Layout" DataType="System.String" />
     <Property Id="NavigationActionLabel" Label="NavigationActionLabel" Description="NavigationActionLabel" DataType="System.String" />
@@ -104,50 +95,36 @@
     <Property Id="UseManualLocation" DataType="System.Boolean" />
     <Property Id="Value" DataType="System.String" />
     <Property Id="ValueLabel" DataType="System.String" />
-    <Property Id="Visibility" Label="Visibilidad" Description="Define si un nodo del gráfico está visible o no." DataType="System.Windows.Visibility" />
+    <Property Id="Visibility" Label="Visibility" Description="Defines whether a node in the graph is visible or not" DataType="System.Windows.Visibility" />
     <Property Id="Weight" Label="Peso" Description="Peso" DataType="System.Double" />
     <Property Id="ZoomLevel" DataType="System.String" />
   </Properties>
   <QualifiedNames>
     <Name Id="Assembly" Label="Ensamblado" ValueType="Uri" />
-    <Name Id="GenericArguments" Label="Argumentos genéricos" ValueType="Microsoft.VisualStudio.GraphModel.GraphNodeIdCollection" />
-    <Name Id="GenericParameterCount" Label="Recuento de parámetros genéricos" ValueType="System.String" />
     <Name Id="Member" Label="Miembro" ValueType="System.Object" />
-    <Name Id="Name" Label="Nombre" ValueType="System.String" />
     <Name Id="Namespace" Label="Espacio de nombres" ValueType="System.String" />
-    <Name Id="OverloadingParameters" Label="Parámetro" ValueType="Microsoft.VisualStudio.GraphModel.GraphNodeIdCollection" Formatter="NameValueNoEscape" />
     <Name Id="Type" Label="Tipo" ValueType="System.Object" />
   </QualifiedNames>
   <IdentifierAliases>
-    <Alias n="1" Uri="Assembly=$(4722dc09-7a4e-401f-a0f5-3cf2ff2c2fa8.OutputPathUri)" />
+    <Alias n="1" Uri="Assembly=$(f51194f3-6f4c-410c-aa54-7d0110981c0a.OutputPathUri)" />
     <Alias n="2" Id="(@1)" />
-    <Alias n="3" Id="Namespace=Reciclaje.Info.Server.Controllers" />
+    <Alias n="3" Id="Namespace=Reciclaje.Info.Server.Controllers.Tests" />
     <Alias n="4" Id="(@1 @3)" />
-    <Alias n="5" Id="Type=ProxyController" />
+    <Alias n="5" Id="Type=ProxyControllerTests" />
     <Alias n="6" Id="(@1 @3 @5)" />
-    <Alias n="7" Uri="Assembly=$(ProgramFilesUri)/dotnet/packs/Microsoft.NETCore.App.Ref/6.0.5/ref/net6.0/System.Runtime.dll" />
-    <Alias n="8" Id="Namespace=System" />
-    <Alias n="9" Uri="Assembly=$(911c15c6-67da-4dfe-af65-32a474d524bd.OutputPathUri)" />
-    <Alias n="10" Id="(@1 @3 @5 Member=(Name=GetContendoresAsync OverloadingParameters=[(@7 @8 Type=(Name=Nullable GenericParameterCount=1 GenericArguments=[(@9 Namespace=Reciclaje.Info.Shared.Types Type=ContenedorType)]))]))" />
-    <Alias n="11" Id="(@1 @3 @5 Member=(Name=GetPuntosLimpiosAsync OverloadingParameters=[(@7 @8 Type=(Name=Nullable GenericParameterCount=1 GenericArguments=[(@9 Namespace=Reciclaje.Info.Shared.Types Type=PuntosLimpiosType)]))]))" />
-    <Alias n="12" Uri="Assembly=$(ProgramFilesUri)/dotnet/packs/Microsoft.AspNetCore.App.Ref/6.0.5/ref/net6.0/Microsoft.Extensions.Configuration.Abstractions.dll" />
-    <Alias n="13" Id="(@1 @3 @5 Member=(Name=.ctor OverloadingParameters=[(@12 Namespace=Microsoft.Extensions.Configuration Type=IConfiguration)]))" />
-    <Alias n="14" Id="(@1 @3 @5 Member=(Name=GetEquipamientoAsync OverloadingParameters=[(@7 @8 Type=String)]))" />
-    <Alias n="15" Id="(@1 @3 @5 Member=(Name=GetGeoOpenDataAsync OverloadingParameters=[(@7 @8 Type=Uri)]))" />
-    <Alias n="16" Id="(@1 @3 @5 Member=(Name=SearchEquipamiento OverloadingParameters=[(@7 @8 Type=String),(@9 Namespace=Reciclaje.Info.Shared.Dto Type=EquipamientosDto)]))" />
-    <Alias n="17" Id="(@1 @3 @5 Member=_config)" />
-    <Alias n="18" Id="(@1 @3 @5 Member=BaseUriApi)" />
-    <Alias n="19" Id="(@1 @3 @5 Member=BaseUriParam)" />
+    <Alias n="7" Id="(@1 @3 @5 Member=.ctor)" />
+    <Alias n="8" Id="(@1 @3 @5 Member=_configuration)" />
+    <Alias n="9" Id="(@1 @3 @5 Member=GetContenedoresAceiteUsadoAsyncTest)" />
+    <Alias n="10" Id="(@1 @3 @5 Member=GetContenedoresFijosAsyncTest)" />
+    <Alias n="11" Id="(@1 @3 @5 Member=GetContenedoresPilasAsyncTest)" />
+    <Alias n="12" Id="(@1 @3 @5 Member=GetEquipamientoKOAsyncTest)" />
+    <Alias n="13" Id="(@1 @3 @5 Member=GetEquipamientoOKAsyncTest)" />
+    <Alias n="14" Id="(@1 @3 @5 Member=GetPuntosLimpiosFijosAsyncTest)" />
+    <Alias n="15" Id="(@1 @3 @5 Member=GetPuntosLimpiosMovilesAsyncTest)" />
+    <Alias n="16" Id="(@1 @3 @5 Member=GetPuntosLimpiosProximidadAsyncTest)" />
+    <Alias n="17" Id="(@1 @3 @5 Member=Initialize)" />
   </IdentifierAliases>
   <Styles>
-    <Style TargetType="Node" GroupLabel="Categoría 1" ValueLabel="Tiene categoría">
-      <Condition Expression="HasCategory('Category1')" />
-      <Setter Property="Background" Value="#FFE51400" />
-    </Style>
-    <Style TargetType="Node" GroupLabel="Categoría 4" ValueLabel="Tiene categoría">
-      <Condition Expression="HasCategory('Category4')" />
-      <Setter Property="Background" Value="#FF1BA1E2" />
-    </Style>
     <Style TargetType="Node" GroupLabel="Resultados" ValueLabel="Verdadero">
       <Condition Expression="HasCategory('QueryResult')" />
       <Setter Property="Background" Value="#FFBCFFBE" />
@@ -373,11 +350,7 @@
     </Style>
   </Styles>
   <Paths>
-    <Path Id="4722dc09-7a4e-401f-a0f5-3cf2ff2c2fa8.OutputPath" Value="D:\github\Reciclaje.Info\Server\bin\Debug\net6.0\Reciclaje.Info.Server.dll" />
-    <Path Id="4722dc09-7a4e-401f-a0f5-3cf2ff2c2fa8.OutputPathUri" Value="file:///D:/github/Reciclaje.Info/Server/bin/Debug/net6.0/Reciclaje.Info.Server.dll" />
-    <Path Id="911c15c6-67da-4dfe-af65-32a474d524bd.OutputPath" Value="D:\github\Reciclaje.Info\Shared\bin\Debug\net6.0\Reciclaje.Info.Shared.dll" />
-    <Path Id="911c15c6-67da-4dfe-af65-32a474d524bd.OutputPathUri" Value="file:///D:/github/Reciclaje.Info/Shared/bin/Debug/net6.0/Reciclaje.Info.Shared.dll" />
-    <Path Id="ProgramFiles" Value="C:\Program Files" />
-    <Path Id="ProgramFilesUri" Value="file:///C:/Program Files" />
+    <Path Id="f51194f3-6f4c-410c-aa54-7d0110981c0a.OutputPath" Value="D:\github\Reciclaje.Info\TestProject.Reciclaje.Info\bin\Debug\net6.0\TestProject.Reciclaje.Info.dll" />
+    <Path Id="f51194f3-6f4c-410c-aa54-7d0110981c0a.OutputPathUri" Value="file:///D:/github/Reciclaje.Info/TestProject.Reciclaje.Info/bin/Debug/net6.0/TestProject.Reciclaje.Info.dll" />
   </Paths>
 </DirectedGraph>

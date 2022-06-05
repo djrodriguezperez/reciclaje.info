@@ -37,7 +37,7 @@ namespace Reciclaje.Info.Server.Controllers
         {
             if (tipologia == null) throw new ArgumentNullException(nameof(tipologia));
             Uri endpoint = new Uri(BaseUriApi, _config[tipologia.ToString()]);
-            return await GetGeoOpenData(endpoint);
+            return await GetGeoOpenDataAsync(endpoint);
         }
         #endregion
 
@@ -59,7 +59,7 @@ namespace Reciclaje.Info.Server.Controllers
             string jsonString = await System.IO.File.ReadAllTextAsync(jsonFile);
             EquipamientosDto? data = JsonSerializer.Deserialize<EquipamientosDto>(jsonString.NormalizarJson());
             EquipamientosDto resultDto = new EquipamientosDto();                                                   
-            resultDto = Buscar(filtro, data)!;
+            resultDto = SearchEquipamiento(filtro, data)!;
             return resultDto;
             
     
@@ -70,7 +70,7 @@ namespace Reciclaje.Info.Server.Controllers
         /// <param name="filtro"></param>
         /// <param name="data"></param>
         /// <returns></returns>
-        private static EquipamientosDto? Buscar(string filtro, EquipamientosDto? data)
+        private static EquipamientosDto? SearchEquipamiento(string filtro, EquipamientosDto? data)
         {
             if (data == null || string.IsNullOrWhiteSpace(filtro)) return null;
             var result = new EquipamientosDto();
@@ -115,13 +115,13 @@ namespace Reciclaje.Info.Server.Controllers
         {
             if (tipologia == null) throw new ArgumentNullException(nameof(tipologia));
             Uri endpoint = new Uri(BaseUriApi, _config[tipologia.ToString()]);
-            return await GetGeoOpenData(endpoint);
+            return await GetGeoOpenDataAsync(endpoint);
         }
         
         #endregion
 
 
-        private async Task<ActionResult<GeoAtomDto>> GetGeoOpenData(Uri? endpoint)
+        private async Task<ActionResult<GeoAtomDto>> GetGeoOpenDataAsync(Uri? endpoint)
         {
             if (endpoint == null) throw new ArgumentNullException(nameof(endpoint));
             try

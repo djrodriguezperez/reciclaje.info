@@ -1,4 +1,5 @@
-﻿using System.Xml.Linq;
+﻿using Reciclaje.Info.Shared.Dto;
+using System.Xml.Linq;
 
 namespace Reciclaje.Info.Shared.Utils
 {
@@ -19,14 +20,12 @@ namespace Reciclaje.Info.Shared.Utils
                 {
                     XDocument? doc = XDocument.Load(url.AbsoluteUri);
                     GeoAtomDto _geo = new GeoAtomDto();
-
-
                     XNamespace nsa = "http://www.w3.org/2005/Atom";
                     XNamespace nsgeorss = "http://www.georss.org/georss";
                     XNamespace nsgeo = "http://www.w3.org/2003/01/geo/wgs84_pos#";
 
 
-                    // Header Feed
+                    // Cabecera Feed
                     _geo.title = (string)(from e in doc.Descendants(nsa + "title") select e).First();
                     _geo.generator = (string)(from e in doc.Descendants(nsa + "generator") select e).First();
                     _geo.link = (string)(from e in doc.Descendants(nsa + "link") select e.Attribute("href")).First();
@@ -41,7 +40,6 @@ namespace Reciclaje.Info.Shared.Utils
                            geolat = (string)item.Element(nsgeo + "lat")!,
                            geolong = (string)item.Element(nsgeo + "long")!,
                        }).ToList();
-
 
 
                     _geo.entries = entries;
