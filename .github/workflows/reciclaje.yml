@@ -6,7 +6,7 @@ on:
 env:
   AZURE_WEBAPP_NAME: reciclaje
   AZURE_WEBAPP_PACKAGE_PATH: Server/publish
-  AZURE_WEBAPP_PUBLISH_PROFILE: ${{ secrets.reciclaje_08e5 }}
+  AZURE_WEBAPP_PUBLISH_PROFILE: ${{ secrets.reciclaje_7cb1 }}
   CONFIGURATION: Release
   DOTNET_CORE_VERSION: 6.0.x
   WORKING_DIRECTORY: Server
