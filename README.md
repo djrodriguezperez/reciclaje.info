@@ -2,8 +2,10 @@
 <strong>Recicjale.info </strong> es un sistema consumidor de datos abiertos que permite al ciudadano la identificación y geolocalización de equipamiento, contenedores y puntos de interés para la recogida o depósito selectivo de residuos.
 
 Es una implementación de aplicación web progresiva (PWA) bajo estándares de desarrollo web utilizando el framework open-source Blazor WebAssembly y la biblioteca de componentes MudBlazor.
+
+[![pages-build-deployment](https://github.com/djrodriguezperez/reciclaje.info/actions/workflows/pages/pages-build-deployment/badge.svg?branch=main)](https://github.com/djrodriguezperez/reciclaje.info/actions/workflows/pages/pages-build-deployment)
 <p align="center">
- <img width="550" height="400" src="https://user-images.githubusercontent.com/100622467/171995509-e4dcdd58-5638-4aa2-a262-6a8d37378ab8.png">
+ <img width="400"  src="https://user-images.githubusercontent.com/100622467/171995509-e4dcdd58-5638-4aa2-a262-6a8d37378ab8.png">
 </p>
 Recicjale.info is an open data consumer system that allows the identification and geolocation of equipment, containers and points of interest for the selective collection of waste. The implementation is a progressive web application (PWA) under new web development standards using the open-source framework Blazor WebAssembly Net 6.0.
 
