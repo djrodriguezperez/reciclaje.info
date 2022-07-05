@@ -24,7 +24,6 @@ namespace Reciclaje.Info.Shared.Utils
                     XNamespace nsgeorss = "http://www.georss.org/georss";
                     XNamespace nsgeo = "http://www.w3.org/2003/01/geo/wgs84_pos#";
 
-
                     // Cabecera Feed
                     _geo.title = (string)(from e in doc.Descendants(nsa + "title") select e).First();
                     _geo.generator = (string)(from e in doc.Descendants(nsa + "generator") select e).First();
@@ -36,6 +35,8 @@ namespace Reciclaje.Info.Shared.Utils
                        .Select(item => new Entry()
                        {
                            title = (string)item.Element(nsa + "title")!,
+                           link = System.Web.HttpUtility.HtmlDecode((string)item.Element(nsa + "link")!.Attribute("href")!),
+                           content = System.Web.HttpUtility.HtmlDecode((string)item.Element(nsa + "content")!),
                            georsspoint = (string)item.Element(nsgeorss + "point")!,
                            geolat = (string)item.Element(nsgeo + "lat")!,
                            geolong = (string)item.Element(nsgeo + "long")!,
@@ -44,22 +45,12 @@ namespace Reciclaje.Info.Shared.Utils
 
                     _geo.entries = entries;
                     return _geo;
-
                 }
                 catch (Exception)
                 {
-
                     throw;
                 }
-
-
             }
-
-
-
-
-
-
         }
 
 

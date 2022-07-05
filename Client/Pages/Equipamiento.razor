@@ -14,7 +14,7 @@
 </div>
 
 
-<MudTextField @bind-Value="@Filtro" Label="Describa aquí su residuo..." Variant="Variant.Text" Adornment="Adornment.End"
+<MudTextField @bind-Value="@Descripcion" Label="Describa aquí su residuo..." Variant="Variant.Text" Adornment="Adornment.End"
 			  AdornmentIcon="@Icons.Filled.Search"
 			  AdornmentColor="Color.Secondary"
 			  TextChanged="FindDataAsync"
@@ -51,9 +51,9 @@ else
 					</TitleContent>
 					<ChildContent>
 						<MudText Typo="Typo.subtitle1"> <strong>Tipología de residuos que puedes incluir en este tipo de equipamiento.</strong></MudText>
-						@foreach (var item in @item.Residuos.Split("#"))
+						@foreach (var item2 in @item.Residuos.Split("#"))
 							{
-								<MudText Typo="Typo.body2">@item</MudText>								
+								<MudText Typo="Typo.body2">@item2</MudText>								
 							}
 						
 					</ChildContent>
@@ -68,14 +68,16 @@ else
 
 
 @code {
-	public string? Filtro { get; set; } = string.Empty;
+	public string? Descripcion { get; set; } = string.Empty;
 	public string? Titulo { get; set; }
 	public string? SubTitulo { get; set; }
 	public string? Icono { get; set; }
 
+
 	private EquipamientosDto? datos;
 	private Boolean cargado;
 	private Boolean esVisible;
+	private char[] caracteresDel = { ' ', ',', '.', ':', '/' };
 
 	protected override Task OnInitializedAsync()
 	{
@@ -87,29 +89,36 @@ else
 
 	private async Task FindDataAsync()
 	{
+		Snackbar.Clear();
+		if (String.IsNullOrWhiteSpace(Descripcion)) return;
+		int contResultados = 0;
+
 		try
 		{
-			Filtro = Filtro?.QuitarCaracteresEspeciales();
-			if (!string.IsNullOrEmpty(Filtro) && !string.IsNullOrWhiteSpace(Filtro))
+			// Buscamos por descripción completa
+			contResultados +=   await filtrarCriterio(Descripcion);
+
+			if (contResultados == 0)
 			{
-				cargado = false;
-				esVisible = true;
-				datos = await servicio.GetDataAsync(Filtro!);
-
-
-			@if (datos != null && datos.Equipamientos!.Any())
+				// Si no obtenemos resultados por descripción buscamos aproximaciones por criterios
+				var criterios  = Descripcion?.Split(caracteresDel,StringSplitOptions.RemoveEmptyEntries);			
+				foreach (var item in criterios!)
 				{
-					Snackbar.Add(string.Format("Total de equipamiento encontrado: {0}", datos.Equipamientos!.Count()), Severity.Success);
+					if (item.Count() > 2)
+						contResultados +=   await filtrarCriterio(item);
+				}
+			}
+
+			@if (contResultados > 0)
+				{
+					Snackbar.Add(string.Format("Total de equipamiento encontrado: {0}", contResultados), Severity.Success);
 				}
 				else
 				{
 					Snackbar.Add($"Opps! No hemos encontrado equipamiento en base su descripción. Pruebe con otro valor!", Severity.Info);
-				}
-
-				StateHasChanged();
-				//StateHasChanged();
 			}
 
+			StateHasChanged();
 		}
 		catch (Exception ex)
 		{
@@ -117,8 +126,36 @@ else
 		}
 		finally
 		{			
-			
+
 			cargado = true;
 		}
+	}
+
+
+	private async Task<int> filtrarCriterio(string criterio)
+	{		
+
+		if (!string.IsNullOrEmpty(criterio) && !string.IsNullOrWhiteSpace(criterio))
+		{
+			cargado = false;
+			esVisible = true;
+			var result = await servicio.GetDataAsync(criterio);
+			if (datos == null)
+			{
+				datos = result;
+			}
+			else
+			{
+				foreach (var item in result?.Equipamientos!)
+				{
+					var value = datos?.Equipamientos!.Find(t => t.Titulo.Equals(item.Titulo));
+					if (value == null)
+					{
+						datos?.Equipamientos!.Add(item);		
+					}				
+				}	
+			}			
+		}
+		return datos!.Equipamientos!.Count();
 	}
 }

@@ -6,10 +6,13 @@ MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Reciclaje.Info.Client", "Client\Reciclaje.Info.Client.csproj", "{F46AE812-A4E0-4F49-9547-021F636AC605}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Reciclaje.Info.Server", "Server\Reciclaje.Info.Server.csproj", "{4722DC09-7A4E-401F-A0F5-3CF2FF2C2FA8}"
+	ProjectSection(ProjectDependencies) = postProject
+		{F46AE812-A4E0-4F49-9547-021F636AC605} = {F46AE812-A4E0-4F49-9547-021F636AC605}
+	EndProjectSection
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Reciclaje.Info.Shared", "Shared\Reciclaje.Info.Shared.csproj", "{911C15C6-67DA-4DFE-AF65-32A474D524BD}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestProject.Reciclaje.Info", "TestProject.Reciclaje.Info\TestProject.Reciclaje.Info.csproj", "{F51194F3-6F4C-410C-AA54-7D0110981C0A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TestProject.Reciclaje.Info", "TestProject.Reciclaje.Info\TestProject.Reciclaje.Info.csproj", "{F51194F3-6F4C-410C-AA54-7D0110981C0A}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

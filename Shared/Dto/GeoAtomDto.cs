@@ -26,6 +26,12 @@ namespace Reciclaje.Info.Shared.Dto
         public string? title { get; set; }
         public object? id { get; set; }
 
+        [JsonPropertyName("link")]
+        public string? link { get; set; }
+
+        [JsonPropertyName("content")]
+        public string? content { get; set; }
+
         [JsonPropertyName("georss:point")]
         public string? georsspoint { get; set; }
 
