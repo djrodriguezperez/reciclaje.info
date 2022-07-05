@@ -35,8 +35,8 @@ namespace Reciclaje.Info.Shared.Utils
                        .Select(item => new Entry()
                        {
                            title = (string)item.Element(nsa + "title")!,
-                           link = System.Web.HttpUtility.HtmlDecode((string)item.Element(nsa + "link")!.Attribute("href")!),
-                           content = System.Web.HttpUtility.HtmlDecode((string)item.Element(nsa + "content")!),
+                           link = System.Web.HttpUtility.HtmlDecode((string?)item.Element(nsa + "link")?.Attribute("href")!),
+                           content = System.Web.HttpUtility.HtmlDecode((string?)item.Element(nsa + "content")!),
                            georsspoint = (string)item.Element(nsgeorss + "point")!,
                            geolat = (string)item.Element(nsgeo + "lat")!,
                            geolong = (string)item.Element(nsgeo + "long")!,

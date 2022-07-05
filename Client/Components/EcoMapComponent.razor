@@ -169,30 +169,43 @@
 					{
 						_map.AddLayer(_marker);
 					}
-					
+
 				}
 			}
 		});
 	}
 
-	private Marker? CrearMarcador(Entry item, string titulo, string enlace)
+	private Marker? CrearMarcador(Entry item, string titulo, string enlaceGeo)
 	{
-		
-			float _lat, _long;
-			bool bLat = float.TryParse(item.geolat,NumberStyles.Any, CultureInfo.InvariantCulture, out _lat);
-			bool bLong = float.TryParse(item.geolong!, NumberStyles.Any, CultureInfo.InvariantCulture, out _long);
-			if (bLat && bLong)
-			{
-				var _location = new LatLng() { Lat = _lat , Lng = _long }; 
-				var _marker = new Marker(_location)
-				{		
-					Title = titulo,
-					Popup = new Popup { Content = string.Format("Tipo: {0} <hr> Información: {1}. <br/> <a target='_blank' href='{2}'>Más Información...</a>", titulo, item?.title,enlace)},
-					Tooltip = new Tooltip { Content = string.Format ("GeoRSSPoint: {0}",item?.georsspoint)}
-				};
-				return _marker;
-			}
-			return null;			
+		try
+		{
+            float _lat, _long;
+            bool bLat = float.TryParse(item.geolat!, NumberStyles.Any, CultureInfo.InvariantCulture, out _lat);
+            bool bLong = float.TryParse(item.geolong!, NumberStyles.Any, CultureInfo.InvariantCulture, out _long);
+            if (bLat && bLong)
+            {
+                var via = string.IsNullOrEmpty(item?.title) ? "No identificada." : item?.title;
+                var contenido = string.IsNullOrEmpty(item?.content) ? via : via + "<br/>" + item?.content;
+                var enlace = string.IsNullOrEmpty(item?.link) ? enlaceGeo : item?.link;
+
+
+                var _location = new LatLng() { Lat = _lat, Lng = _long };
+                var _marker = new Marker(_location)
+                    {
+                        Title = titulo,
+                        Popup = new Popup { Content = string.Format("Tipo: {0}<br/>{1}<br/><a target='_blank' href='{2}'>Enlace...</a>", titulo, contenido, enlace) },
+                        Tooltip = new Tooltip { Content = string.Format("Location: {0}", item?.georsspoint) }
+                    };
+                return _marker;
+            }
+            return null;
+        }
+		catch (Exception)
+		{
+			
+			throw;
+		}
+				
 	}
 			
 	private void ShowDialog(string titulo,string contenido,MudBlazor.Color color)
