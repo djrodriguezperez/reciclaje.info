@@ -20,7 +20,7 @@ namespace Reciclaje.Info.Client.Services
 
             Endpoint = string.Format("{0}{1}/", BaseProxy, "equipamiento");
             Titulo = "Tipos de residuos y donde depositarlos.";
-            SubTitulo = "Relación de residuos con identificación del tipo de equipamiento o contenedor donde se pueden depositar para hacer su recogida selectiva.";
+            SubTitulo = "Relación de residuos con identificación del tipo de equipamiento o contenedor donde se pueden depositar para hacer su recogida selectiva.";            
             Icono = Icons.Material.Filled.Compost;
 
         }
@@ -29,8 +29,9 @@ namespace Reciclaje.Info.Client.Services
         public string? Icono { get;  set; }
         public string? Endpoint { get; set; }
         public string? Titulo { get; set; }
+        
 
-    
+
         public HttpClient? httpClient { get; set; }
 
         public async Task<EquipamientosDto?> GetDataAsync(string filtro)

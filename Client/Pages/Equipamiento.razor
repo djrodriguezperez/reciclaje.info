@@ -36,25 +36,43 @@ else
 {
 	@if (datos != null && datos.Equipamientos!.Any())
 	{
-		<MudExpansionPanels Elevation="1" DisableBorders="true" Class="mt-6">
+		<MudExpansionPanels Elevation="1" DisableBorders="true" Class="mt-6" >
 			@foreach (var item in datos.Equipamientos!)
 			{
-				<MudExpansionPanel IsInitiallyExpanded="true">
+				
+				<MudExpansionPanel IsInitiallyExpanded="true" >
 					<TitleContent>
 						<div class="d-flex">
-							<MudAvatar Style="font-size: 1rem;" Color="Color.Default" Variant="Variant.Outlined" Class="mr-3" Image=@item.Avatar> </MudAvatar>
+							<MudAvatar Style="font-size: 1rem;" Color="Color.Default" Variant="Variant.Outlined" Class="mr-3" Image=@item.Avatar> </MudAvatar>							
 							<MudText Typo="Typo.h6"> <strong> @item.Titulo</strong></MudText>
-
-
+							
+							
 
 						</div>
 					</TitleContent>
-					<ChildContent>
+					<ChildContent >
 						<MudText Typo="Typo.subtitle1"> <strong>Tipología de residuos que puedes incluir en este tipo de equipamiento.</strong></MudText>
-						@foreach (var item2 in @item.Residuos.Split("#"))
+						 
+						
+						<MudPaper Class="pa-4 mt-4 mb-5" Elevation="1">
+							@foreach (var item2 in @item.Residuos.Split("#"))
 							{
-								<MudText Typo="Typo.body2">@item2</MudText>								
+								<MudText @key="item2" Class="ma-2">
+									<MudHighlighter Text="@item2"
+												 HighlightedText="@Descripcion"												 
+												 CaseSensitive="false"
+												  />
+								</MudText>
 							}
+						</MudPaper>
+
+					
+							 
+							<MudStack   AlignItems="AlignItems.End" >
+								 <MudPaper Class="pa-4 mud-theme-secondary"  >
+									 <MudButton Href="@item.Enlace"   Variant="Variant.Outlined" EndIcon="@Icons.Filled.ShareLocation" Color="Color.Primary"> Acceso EcoMapa  </MudButton>  
+								 </MudPaper>								
+							</MudStack>
 						
 					</ChildContent>
 				</MudExpansionPanel>
@@ -90,6 +108,7 @@ else
 	private async Task FindDataAsync()
 	{
 		Snackbar.Clear();
+		datos?.Equipamientos!.Clear();
 		if (String.IsNullOrWhiteSpace(Descripcion)) return;
 		int contResultados = 0;
 
@@ -100,6 +119,7 @@ else
 
 			if (contResultados == 0)
 			{
+				Snackbar.Add(string.Format("Información: {0}", "No hemos encontrado resultados en base a su descripción, no obstante, realizaremos una  aproximación de búsqueda por palabras claves..."), Severity.Info);
 				// Si no obtenemos resultados por descripción buscamos aproximaciones por criterios
 				var criterios  = Descripcion?.Split(caracteresDel,StringSplitOptions.RemoveEmptyEntries);			
 				foreach (var item in criterios!)
@@ -115,7 +135,7 @@ else
 				}
 				else
 				{
-					Snackbar.Add($"Opps! No hemos encontrado equipamiento en base su descripción. Pruebe con otro valor!", Severity.Info);
+					Snackbar.Add($"Opps! No hemos encontrado equipamiento en base su descripción. Pruebe con otro valor!", Severity.Warning );
 			}
 
 			StateHasChanged();

@@ -49,7 +49,10 @@ html, body,  #app,  .mud-container {
 }
 
 
-
+.mud-paper {
+    background-color: #ebdfc0a3;    
+}
+    
 /* Estilos Spinner Preload */
 @keyframes spinner-border {
     100% {

@@ -22,6 +22,8 @@ namespace Reciclaje.Info.Shared.Dto
         public string? Color { get; set; }
         [JsonPropertyName("Equipamiento")]
         public string? Titulo { get; set; }
+        [JsonPropertyName("Enlace")]
+        public string? Enlace { get; set; }
         [JsonPropertyName("Residuos")]
         public string Residuos { get; set; } = "Sin Contenido";
     }
